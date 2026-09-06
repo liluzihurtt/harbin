@@ -3,46 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harbin Winter Trip Itinerary | แผนเที่ยวฮาร์บินเมืองน้ำแข็ง 3 เส้นทาง</title>
-  <meta name="description" content="คู่มือแผนการเดินทางท่องเที่ยวฮาร์บินฤดูหนาว 6 วัน 3 สไตล์: ชมสถาปัตยกรรมสุดคลาสสิก, ตะลุยลานสกี Yabuli, หรือท้าลมหนาวขั้วโลกเหนือ Mohe -40°C พร้อมพิกัด Google Maps ทุกจุด" />
+  <title>Harbin Winter Trip Itinerary | แผนเที่ยวฮาร์บินเมืองน้ำแข็ง 3 เส้นทาง (ตารางเวลา Timeline)</title>
+  <meta name="description" content="คู่มือแผนเที่ยวฮาร์บิน ฤดูหนาว 6 วัน 3 รูปแบบ จัดเต็มตารางเวลา Timeline พร้อมพิกัดคลิกเปิด Google Maps ทุกจุด สีสันแยกหมวดหมู่อาหาร การเดินทาง และสถานที่ท่องเที่ยวชัดเจน" />
 
   <!-- Google Fonts: Prompt (Thai) & Plus Jakarta Sans (English) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Font Awesome 6.5.1 via CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     /* ==========================================================================
-       CSS VARIABLES & THEME (Winter Ice & Snow Aesthetic)
+       CSS VARIABLES & THEME (Winter Ice, High-Contrast & Color-Coded Categories)
        ========================================================================== */
     :root {
       --bg-dark: #070d1e;
       --bg-gradient: radial-gradient(circle at 50% 0%, #15274d 0%, #0a132c 45%, #050a18 100%);
-      --card-bg: rgba(16, 29, 62, 0.72);
-      --card-bg-hover: rgba(23, 41, 88, 0.88);
+      --card-bg: rgba(15, 27, 58, 0.78);
+      --card-bg-hover: rgba(22, 39, 82, 0.92);
       --card-border: rgba(180, 225, 255, 0.18);
       --card-border-active: #00f2fe;
 
+      /* Category Color Coding */
+      --color-attraction: #00f2fe;        /* Cyan / Ice Blue for Attractions */
+      --color-attraction-bg: rgba(0, 242, 254, 0.08);
+      --color-attraction-border: rgba(0, 242, 254, 0.4);
+
+      --color-food: #fb923c;              /* Orange / Amber for Food & Restaurants */
+      --color-food-bg: rgba(251, 146, 60, 0.09);
+      --color-food-border: rgba(251, 146, 60, 0.45);
+
+      --color-transport: #c084fc;         /* Purple / Violet for Transportation */
+      --color-transport-bg: rgba(192, 132, 252, 0.09);
+      --color-transport-border: rgba(192, 132, 252, 0.45);
+
+      /* Ice & Snow Accents */
       --ice-50: #f0f9ff;
       --ice-100: #e0f2fe;
       --ice-200: #bae6fd;
       --ice-300: #7dd3fc;
       --ice-400: #38bdf8;
       --ice-500: #0ea5e9;
-      --ice-600: #0284c7;
 
-      --frost-cyan: #00f2fe;
-      --frost-blue: #38bdf8;
       --snow-white: #ffffff;
       --silver-text: #cbd5e1;
       --muted-text: #94a3b8;
-
-      --accent-orange: #fb923c;
-      --accent-green: #34d399;
-      --accent-rose: #fb7185;
 
       --radius-sm: 8px;
       --radius-md: 14px;
@@ -51,7 +58,8 @@
       --radius-full: 9999px;
 
       --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 12px 32px -4px rgba(2, 132, 199, 0.25), 0 8px 16px -6px rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 10px 25px -5px rgba(2, 132, 199, 0.2);
+      --shadow-lg: 0 14px 35px -5px rgba(2, 132, 199, 0.28), 0 8px 16px -6px rgba(0, 0, 0, 0.5);
       --glow-cyan: 0 0 24px rgba(0, 242, 254, 0.35);
 
       --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -82,7 +90,7 @@
       position: relative;
     }
 
-    /* Canvas for interactive snowfall */
+    /* Interactive Snow Canvas */
     #snow-canvas {
       position: fixed;
       top: 0;
@@ -93,35 +101,34 @@
       z-index: 1;
     }
 
-    /* Ambient atmospheric glow spots */
-    .glow-sphere-1 {
+    .ambient-sphere-1 {
       position: fixed;
       top: -120px;
-      left: 5%;
+      left: 8%;
       width: 550px;
       height: 550px;
       background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(0, 242, 254, 0) 70%);
-      filter: blur(80px);
+      filter: blur(85px);
       pointer-events: none;
       z-index: 0;
     }
 
-    .glow-sphere-2 {
+    .ambient-sphere-2 {
       position: fixed;
-      top: 45%;
+      top: 50%;
       right: -80px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(79, 172, 254, 0.12) 0%, rgba(45, 212, 191, 0) 70%);
-      filter: blur(90px);
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(56, 189, 248, 0) 70%);
+      filter: blur(95px);
       pointer-events: none;
       z-index: 0;
     }
 
-    .main-wrapper {
+    .main-container {
       position: relative;
       z-index: 2;
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
       padding: 1.5rem 1.25rem 4rem 1.25rem;
     }
@@ -129,17 +136,17 @@
     /* ==========================================================================
        TOP NAVIGATION BAR
        ========================================================================== */
-    .nav-bar {
+    .top-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.85rem 1.4rem;
-      background: rgba(14, 26, 56, 0.65);
+      background: rgba(14, 26, 56, 0.68);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-full);
-      margin-bottom: 2.2rem;
+      margin-bottom: 2rem;
       box-shadow: var(--shadow-sm);
     }
 
@@ -153,7 +160,7 @@
       color: #ffffff;
     }
 
-    .brand-icon-wrap {
+    .nav-brand-icon {
       background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
       color: #050a18;
       width: 36px;
@@ -163,7 +170,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.1rem;
-      box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
+      box-shadow: 0 0 14px rgba(0, 242, 254, 0.6);
     }
 
     .nav-brand span {
@@ -178,14 +185,14 @@
       gap: 0.6rem;
     }
 
-    .pill-btn {
+    .btn-pill {
       background: rgba(255, 255, 255, 0.08);
       color: var(--ice-100);
       border: 1px solid rgba(255, 255, 255, 0.14);
       padding: 0.48rem 0.95rem;
       border-radius: var(--radius-full);
       font-size: 0.84rem;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -195,7 +202,7 @@
       font-family: inherit;
     }
 
-    .pill-btn:hover {
+    .btn-pill:hover {
       background: rgba(56, 189, 248, 0.2);
       border-color: var(--ice-400);
       color: #ffffff;
@@ -205,22 +212,22 @@
     /* ==========================================================================
        HERO HEADER SECTION
        ========================================================================== */
-    .hero-section {
+    .hero {
       text-align: center;
-      padding: 1rem 0.5rem 2.75rem 0.5rem;
+      padding: 1rem 0.5rem 2.5rem 0.5rem;
     }
 
-    .badge-subzero {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      padding: 0.4rem 1.15rem;
+      padding: 0.42rem 1.2rem;
       border-radius: var(--radius-full);
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.35);
       color: var(--ice-300);
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 1.25rem;
@@ -228,33 +235,33 @@
       box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
     }
 
-    .badge-subzero i {
-      color: var(--frost-cyan);
-      animation: pulse-glow 2s infinite ease-in-out;
+    .hero-badge i {
+      color: var(--color-attraction);
+      animation: pulse-badge 2s infinite ease-in-out;
     }
 
-    @keyframes pulse-glow {
+    @keyframes pulse-badge {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.18); opacity: 0.75; }
+      50% { transform: scale(1.2); opacity: 0.75; }
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-size: clamp(2.2rem, 5.2vw, 3.7rem);
       font-weight: 800;
-      line-height: 1.18;
+      line-height: 1.2;
       letter-spacing: -0.02em;
       margin-bottom: 1.1rem;
     }
 
-    .hero-title .frost-text {
+    .hero-title .glow-text {
       background: linear-gradient(135deg, #ffffff 10%, #bae6fd 40%, #38bdf8 80%, #00f2fe 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 12px rgba(0, 242, 254, 0.25));
+      filter: drop-shadow(0 2px 12px rgba(0, 242, 254, 0.3));
     }
 
     .hero-desc {
-      font-size: clamp(1rem, 2.3vw, 1.25rem);
+      font-size: clamp(1rem, 2.2vw, 1.22rem);
       color: var(--silver-text);
       max-width: 820px;
       margin: 0 auto 1.85rem auto;
@@ -262,16 +269,54 @@
       line-height: 1.65;
     }
 
-    .stats-container {
+    /* Category Color Legend Strip */
+    .legend-strip {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .legend-item.attraction {
+      background: rgba(0, 242, 254, 0.12);
+      border: 1px solid var(--color-attraction-border);
+      color: var(--color-attraction);
+    }
+    .legend-item.food {
+      background: rgba(251, 146, 60, 0.12);
+      border: 1px solid var(--color-food-border);
+      color: var(--color-food);
+    }
+    .legend-item.transport {
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid var(--color-transport-border);
+      color: var(--color-transport);
+    }
+
+    /* Stats Ribbon */
+    .stats-strip {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0.9rem;
-      max-width: 950px;
+      gap: 0.85rem;
+      max-width: 960px;
       margin: 0 auto;
     }
 
-    .stat-chip {
+    .stat-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       backdrop-filter: blur(12px);
@@ -280,30 +325,29 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 0.9rem;
       box-shadow: var(--shadow-sm);
       transition: all var(--transition-fast);
     }
 
-    .stat-chip:hover {
+    .stat-card:hover {
       transform: translateY(-2px);
       border-color: var(--ice-400);
       background: var(--card-bg-hover);
     }
 
-    .stat-chip i {
-      font-size: 1.15rem;
-      color: var(--frost-cyan);
+    .stat-card i {
+      font-size: 1.2rem;
+      color: var(--color-attraction);
     }
 
-    .stat-chip strong {
+    .stat-card strong {
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 700;
       display: block;
       font-size: 0.92rem;
     }
 
-    .stat-chip span {
+    .stat-card span {
       color: var(--muted-text);
       font-size: 0.8rem;
     }
@@ -312,17 +356,17 @@
        LEVEL 1: ROUTE OPTION SWITCHER (3 TABS)
        ========================================================================== */
     .routes-section {
-      margin-top: 2.2rem;
+      margin-top: 2.4rem;
     }
 
-    .section-title-wrap {
+    .section-header {
       text-align: center;
       margin-bottom: 1.6rem;
     }
 
-    .section-heading {
+    .section-title {
       font-size: 1.45rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--ice-100);
       display: inline-flex;
       align-items: center;
@@ -330,12 +374,12 @@
       margin-bottom: 0.35rem;
     }
 
-    .section-subheading {
+    .section-sub {
       color: var(--muted-text);
       font-size: 0.95rem;
     }
 
-    .tabs-grid {
+    .options-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
@@ -343,12 +387,12 @@
     }
 
     @media (max-width: 992px) {
-      .tabs-grid {
+      .options-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .route-tab-card {
+    .option-card-btn {
       background: var(--card-bg);
       border: 1.5px solid var(--card-border);
       border-radius: var(--radius-lg);
@@ -368,7 +412,7 @@
       outline: none;
     }
 
-    .route-tab-card::before {
+    .option-card-btn::before {
       content: '';
       position: absolute;
       top: 0;
@@ -379,32 +423,32 @@
       transition: background var(--transition-fast);
     }
 
-    .route-tab-card:hover {
+    .option-card-btn:hover {
       background: var(--card-bg-hover);
       border-color: rgba(56, 189, 248, 0.45);
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
 
-    .route-tab-card.active {
-      background: linear-gradient(175deg, rgba(20, 42, 88, 0.92) 0%, rgba(11, 23, 50, 0.98) 100%);
+    .option-card-btn.active {
+      background: linear-gradient(175deg, rgba(20, 42, 88, 0.94) 0%, rgba(11, 23, 50, 0.98) 100%);
       border-color: var(--card-border-active);
-      box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 242, 254, 0.08);
+      box-shadow: var(--glow-cyan), inset 0 0 22px rgba(0, 242, 254, 0.08);
       transform: translateY(-2px);
     }
 
-    .route-tab-card.active::before {
+    .option-card-btn.active::before {
       background: linear-gradient(90deg, #00f2fe, #38bdf8);
     }
 
-    .tab-top-row {
+    .opt-header-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.85rem;
     }
 
-    .tab-badge {
+    .opt-badge-pill {
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -416,13 +460,13 @@
       color: var(--ice-200);
     }
 
-    .route-tab-card.active .tab-badge {
+    .option-card-btn.active .opt-badge-pill {
       background: rgba(0, 242, 254, 0.16);
       border-color: rgba(0, 242, 254, 0.45);
-      color: var(--frost-cyan);
+      color: var(--color-attraction);
     }
 
-    .tab-icon-box {
+    .opt-icon-circle {
       width: 44px;
       height: 44px;
       border-radius: var(--radius-md);
@@ -436,41 +480,41 @@
       transition: all var(--transition-fast);
     }
 
-    .route-tab-card.active .tab-icon-box {
+    .option-card-btn.active .opt-icon-circle {
       background: linear-gradient(135deg, #00f2fe, #0284c7);
       color: #050a18;
       box-shadow: 0 0 16px rgba(0, 242, 254, 0.55);
     }
 
-    .tab-title {
+    .opt-name {
       font-size: 1.25rem;
-      font-weight: 700;
+      font-weight: 800;
       color: #ffffff;
       margin-bottom: 0.35rem;
       line-height: 1.3;
     }
 
-    .tab-subtitle {
+    .opt-sub {
       font-size: 0.88rem;
       color: var(--ice-300);
       margin-bottom: 0.75rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    .tab-desc {
+    .opt-desc {
       font-size: 0.84rem;
       color: var(--muted-text);
       line-height: 1.5;
       margin-bottom: 1.15rem;
     }
 
-    .tab-features {
+    .opt-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.45rem;
     }
 
-    .feature-tag {
+    .opt-tag {
       font-size: 0.74rem;
       padding: 0.22rem 0.55rem;
       border-radius: var(--radius-sm);
@@ -482,10 +526,10 @@
     }
 
     /* ==========================================================================
-       MAIN ITINERARY CONTAINER & CONTROLS
+       ITINERARY WRAPPER & CONTROLS
        ========================================================================== */
-    .itinerary-main-box {
-      background: rgba(13, 23, 50, 0.82);
+    .itinerary-box {
+      background: rgba(13, 23, 50, 0.84);
       border: 1px solid var(--card-border);
       border-radius: var(--radius-xl);
       padding: 1.75rem;
@@ -496,13 +540,13 @@
     }
 
     @media (max-width: 640px) {
-      .itinerary-main-box {
+      .itinerary-box {
         padding: 1.15rem 0.85rem;
         border-radius: var(--radius-lg);
       }
     }
 
-    .itinerary-summary-bar {
+    .summary-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -513,33 +557,33 @@
       border-bottom: 1px solid rgba(180, 225, 255, 0.12);
     }
 
-    .summary-text-group h3 {
+    .summary-text h3 {
       font-size: 1.35rem;
-      font-weight: 700;
+      font-weight: 800;
       color: #ffffff;
       margin-bottom: 0.2rem;
     }
 
-    .summary-text-group p {
-      font-size: 0.88rem;
+    .summary-text p {
+      font-size: 0.9rem;
       color: var(--ice-300);
     }
 
-    .action-controls {
+    .itinerary-controls {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       flex-wrap: wrap;
     }
 
-    .btn-action {
+    .ctrl-action-btn {
       background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: var(--ice-200);
-      padding: 0.45rem 0.9rem;
+      padding: 0.45rem 0.95rem;
       border-radius: var(--radius-md);
       font-size: 0.82rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -548,79 +592,79 @@
       font-family: inherit;
     }
 
-    .btn-action:hover {
+    .ctrl-action-btn:hover {
       background: rgba(56, 189, 248, 0.18);
       border-color: var(--ice-400);
       color: #ffffff;
     }
 
-    /* Filter & Search Bar */
-    .filter-wrapper {
+    /* Filter & Search Box */
+    .filter-row {
       margin-bottom: 1.35rem;
     }
 
-    .search-field {
+    .search-input-wrap {
       position: relative;
       width: 100%;
     }
 
-    .search-field input {
+    .search-input-wrap input {
       width: 100%;
-      background: rgba(8, 17, 40, 0.75);
-      border: 1px solid rgba(180, 225, 255, 0.18);
+      background: rgba(8, 17, 40, 0.78);
+      border: 1px solid rgba(180, 225, 255, 0.2);
       border-radius: var(--radius-md);
-      padding: 0.7rem 1rem 0.7rem 2.45rem;
+      padding: 0.72rem 1rem 0.72rem 2.5rem;
       color: #ffffff;
       font-family: inherit;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       outline: none;
       transition: all var(--transition-fast);
     }
 
-    .search-field input:focus {
-      border-color: var(--frost-cyan);
+    .search-input-wrap input:focus {
+      border-color: var(--color-attraction);
       box-shadow: 0 0 16px rgba(0, 242, 254, 0.28);
     }
 
-    .search-field i {
+    .search-input-wrap i {
       position: absolute;
-      left: 0.9rem;
+      left: 0.95rem;
       top: 50%;
       transform: translateY(-50%);
       color: var(--muted-text);
-      font-size: 0.92rem;
+      font-size: 0.95rem;
     }
 
     /* ==========================================================================
-       LEVEL 2: ACCORDION LIST (DAYS 1 TO 6)
+       LEVEL 2: DAY ACCORDION
        ========================================================================== */
-    .accordion-container {
+    .day-accordion-list {
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
+      gap: 1.15rem;
     }
 
-    .acc-item {
+    .day-acc-item {
       background: var(--card-bg);
-      border: 1px solid rgba(180, 225, 255, 0.14);
+      border: 1.5px solid rgba(180, 225, 255, 0.14);
       border-radius: var(--radius-lg);
       overflow: hidden;
       transition: all var(--transition-smooth);
       box-shadow: var(--shadow-sm);
     }
 
-    .acc-item:hover {
-      border-color: rgba(56, 189, 248, 0.35);
+    .day-acc-item:hover {
+      border-color: rgba(56, 189, 248, 0.4);
     }
 
-    .acc-item.active {
-      border-color: rgba(56, 189, 248, 0.6);
-      background: rgba(16, 30, 64, 0.92);
-      box-shadow: 0 4px 24px rgba(0, 242, 254, 0.12);
+    .day-acc-item.active {
+      border-color: rgba(56, 189, 248, 0.65);
+      background: rgba(16, 30, 66, 0.94);
+      box-shadow: 0 6px 28px rgba(0, 242, 254, 0.14);
     }
 
-    .acc-header {
-      padding: 1.15rem 1.4rem;
+    .day-acc-header {
+      padding: 1.2rem 1.4rem;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -630,11 +674,11 @@
       gap: 1rem;
     }
 
-    .acc-header:hover {
+    .day-acc-header:hover {
       background: rgba(255, 255, 255, 0.035);
     }
 
-    .acc-day-info {
+    .day-meta-group {
       display: flex;
       align-items: center;
       gap: 1.1rem;
@@ -642,14 +686,14 @@
       min-width: 0;
     }
 
-    .day-num-tag {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(0, 242, 254, 0.05));
-      border: 1px solid rgba(56, 189, 248, 0.32);
-      color: var(--frost-cyan);
+    .day-number-badge {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(0, 242, 254, 0.06));
+      border: 1.5px solid rgba(56, 189, 248, 0.35);
+      color: var(--color-attraction);
       font-weight: 800;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       letter-spacing: 0.04em;
-      padding: 0.45rem 0.85rem;
+      padding: 0.48rem 0.9rem;
       border-radius: var(--radius-md);
       flex-shrink: 0;
       display: flex;
@@ -657,23 +701,23 @@
       gap: 0.35rem;
     }
 
-    .acc-item.active .day-num-tag {
+    .day-acc-item.active .day-number-badge {
       background: linear-gradient(135deg, #00f2fe, #0284c7);
       color: #050a18;
       border-color: transparent;
-      box-shadow: 0 0 14px rgba(0, 242, 254, 0.45);
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.5);
     }
 
-    .day-title-wrap {
+    .day-title-info {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.22rem;
       min-width: 0;
     }
 
-    .day-vibe-name {
-      font-size: 0.98rem;
-      font-weight: 600;
+    .day-vibe-title {
+      font-size: 1.05rem;
+      font-weight: 700;
       color: #ffffff;
       white-space: nowrap;
       overflow: hidden;
@@ -683,17 +727,17 @@
       gap: 0.45rem;
     }
 
-    .day-quick-summary {
-      font-size: 0.82rem;
+    .day-summary-text {
+      font-size: 0.84rem;
       color: var(--muted-text);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .acc-chevron {
-      width: 34px;
-      height: 34px;
+    .day-acc-arrow {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -705,191 +749,343 @@
       flex-shrink: 0;
     }
 
-    .acc-item.active .acc-chevron {
+    .day-acc-item.active .day-acc-arrow {
       transform: rotate(180deg);
-      background: rgba(56, 189, 248, 0.2);
+      background: rgba(56, 189, 248, 0.22);
       color: #ffffff;
       border-color: var(--ice-400);
     }
 
-    /* Accordion Body & Collapse */
-    .acc-body-wrapper {
+    /* Accordion Body */
+    .day-acc-collapse {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .acc-body-content {
-      padding: 0 1.4rem 1.4rem 1.4rem;
-      border-top: 1px solid rgba(180, 225, 255, 0.08);
-      padding-top: 1.25rem;
+    .day-acc-content {
+      padding: 0 1.4rem 1.6rem 1.4rem;
+      border-top: 1px solid rgba(180, 225, 255, 0.1);
+      padding-top: 1.35rem;
     }
 
-    .vibe-callout-pill {
-      margin-bottom: 1rem;
-      padding: 0.6rem 0.95rem;
+    .day-highlight-ribbon {
+      margin-bottom: 1.35rem;
+      padding: 0.65rem 1rem;
       background: rgba(56, 189, 248, 0.08);
-      border-left: 3px solid var(--frost-cyan);
+      border-left: 4px solid var(--color-attraction);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      font-size: 0.86rem;
+      font-size: 0.9rem;
       color: var(--ice-200);
       display: flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.6rem;
     }
 
     /* ==========================================================================
-       CARD DETAILS GRID (Attractions, Transport, Food)
+       TIMETABLE / TIMELINE LAYOUT (Requirement 1 & 2)
        ========================================================================== */
-    .day-details-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 1rem;
+    .timeline-track {
+      position: relative;
+      padding-left: 2rem;
+      margin-left: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
     }
 
-    @media (max-width: 960px) {
-      .day-details-grid {
-        grid-template-columns: 1fr;
+    /* Vertical rail line */
+    .timeline-track::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      bottom: 25px;
+      left: 7px;
+      width: 3px;
+      background: linear-gradient(to bottom, #00f2fe 0%, #c084fc 50%, #fb923c 100%);
+      border-radius: var(--radius-full);
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.35);
+    }
+
+    @media (max-width: 640px) {
+      .timeline-track {
+        padding-left: 1.6rem;
+        margin-left: 0.25rem;
+        gap: 1.15rem;
+      }
+      .timeline-track::before {
+        left: 5px;
       }
     }
 
-    .card-column {
-      background: rgba(9, 17, 39, 0.62);
-      border: 1px solid rgba(180, 225, 255, 0.1);
-      border-radius: var(--radius-md);
-      padding: 1.15rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      transition: border-color var(--transition-fast);
+    .timeline-entry {
+      position: relative;
     }
 
-    .card-column:hover {
-      border-color: rgba(56, 189, 248, 0.35);
-    }
-
-    .col-header {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 0.86rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    }
-
-    .col-header.attractions-title { color: var(--frost-cyan); }
-    .col-header.transport-title { color: var(--ice-400); }
-    .col-header.food-title { color: var(--accent-orange); }
-
-    .items-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    /* ATTRACTION BOX WITH GOOGLE MAPS LINK */
-    .attraction-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: var(--radius-sm);
-      padding: 0.75rem 0.85rem;
+    /* Timeline Node Dot */
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 18px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #070d1e;
+      border: 3px solid #00f2fe;
+      transform: translateX(-50%);
+      z-index: 2;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.8);
       transition: all var(--transition-fast);
+    }
+
+    @media (max-width: 640px) {
+      .timeline-dot {
+        left: -1.6rem;
+        width: 15px;
+        height: 15px;
+        border-width: 2.5px;
+      }
+    }
+
+    .timeline-entry.type-attraction .timeline-dot {
+      border-color: var(--color-attraction);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.7);
+    }
+    .timeline-entry.type-food .timeline-dot {
+      border-color: var(--color-food);
+      box-shadow: 0 0 12px rgba(251, 146, 60, 0.7);
+    }
+    .timeline-entry.type-transport .timeline-dot {
+      border-color: var(--color-transport);
+      box-shadow: 0 0 12px rgba(192, 132, 252, 0.7);
+    }
+
+    /* Timeline Card */
+    .timeline-card {
+      background: rgba(9, 17, 39, 0.7);
+      border: 1px solid rgba(180, 225, 255, 0.12);
+      border-left-width: 5px;
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.35rem;
       display: flex;
       flex-direction: column;
+      gap: 0.75rem;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .timeline-card:hover {
+      background: rgba(16, 31, 68, 0.88);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Card Category Theme Accents */
+    .timeline-entry.type-attraction .timeline-card {
+      border-left-color: var(--color-attraction);
+      background: linear-gradient(90deg, var(--color-attraction-bg) 0%, rgba(9, 17, 39, 0.75) 100%);
+    }
+    .timeline-entry.type-attraction .timeline-card:hover {
+      border-color: var(--color-attraction-border);
+      border-left-color: var(--color-attraction);
+      box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
+    }
+
+    .timeline-entry.type-food .timeline-card {
+      border-left-color: var(--color-food);
+      background: linear-gradient(90deg, var(--color-food-bg) 0%, rgba(9, 17, 39, 0.75) 100%);
+    }
+    .timeline-entry.type-food .timeline-card:hover {
+      border-color: var(--color-food-border);
+      border-left-color: var(--color-food);
+      box-shadow: 0 4px 20px rgba(251, 146, 60, 0.15);
+    }
+
+    .timeline-entry.type-transport .timeline-card {
+      border-left-color: var(--color-transport);
+      background: linear-gradient(90deg, var(--color-transport-bg) 0%, rgba(9, 17, 39, 0.75) 100%);
+    }
+    .timeline-entry.type-transport .timeline-card:hover {
+      border-color: var(--color-transport-border);
+      border-left-color: var(--color-transport);
+      box-shadow: 0 4px 20px rgba(192, 132, 252, 0.15);
+    }
+
+    /* Timeline Header: Time + Category Badge */
+    .timeline-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .category-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
       gap: 0.4rem;
     }
 
-    .attraction-box:hover {
-      background: rgba(56, 189, 248, 0.08);
-      border-color: rgba(56, 189, 248, 0.3);
+    .category-badge.attraction {
+      background: rgba(0, 242, 254, 0.15);
+      border: 1px solid var(--color-attraction-border);
+      color: var(--color-attraction);
+    }
+    .category-badge.food {
+      background: rgba(251, 146, 60, 0.15);
+      border: 1px solid var(--color-food-border);
+      color: var(--color-food);
+    }
+    .category-badge.transport {
+      background: rgba(192, 132, 252, 0.15);
+      border: 1px solid var(--color-transport-border);
+      color: var(--color-transport);
     }
 
-    .attraction-headline {
+    /* ==========================================================================
+       PROMINENT LOCATION TITLES & CLICKABLE HYPERLINKS (Requirement 2 & 3)
+       ========================================================================== */
+    .timeline-title-row {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.85rem;
     }
 
-    .attraction-title {
-      font-weight: 600;
-      color: #ffffff;
-      font-size: 0.92rem;
-      line-height: 1.4;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      flex: 1;
-      min-width: 180px;
-    }
-
-    .maps-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.26rem 0.65rem;
-      font-size: 0.74rem;
-      font-weight: 600;
-      background: rgba(14, 165, 233, 0.16);
-      color: var(--ice-300);
-      border: 1px solid rgba(14, 165, 233, 0.4);
-      border-radius: var(--radius-full);
+    /* The Main Location Link (Big, bold, prominent, highly visible) */
+    .location-title-link {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-weight: 800;
+      line-height: 1.35;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       transition: all var(--transition-fast);
-      white-space: nowrap;
-      margin-left: auto;
     }
 
-    .maps-link-btn:hover {
-      background: var(--ice-500);
+    /* Attraction Title Link */
+    .timeline-entry.type-attraction .location-title-link {
       color: #ffffff;
-      box-shadow: 0 0 12px rgba(14, 165, 233, 0.55);
+      border-bottom: 2px solid rgba(0, 242, 254, 0.35);
+      padding-bottom: 2px;
+    }
+    .timeline-entry.type-attraction .location-title-link:hover {
+      color: var(--color-attraction);
+      border-bottom-color: var(--color-attraction);
+      text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
       transform: translateY(-1px);
     }
 
-    .attraction-notes {
-      font-size: 0.82rem;
-      color: var(--muted-text);
-      line-height: 1.45;
+    /* Food Title Link / Text */
+    .timeline-entry.type-food .location-title-link {
+      color: #ffffff;
+      border-bottom: 2px solid rgba(251, 146, 60, 0.35);
+      padding-bottom: 2px;
+    }
+    .timeline-entry.type-food .location-title-link:hover {
+      color: var(--color-food);
+      border-bottom-color: var(--color-food);
+      text-shadow: 0 0 10px rgba(251, 146, 60, 0.6);
+      transform: translateY(-1px);
     }
 
-    /* TRANSPORT & FOOD ROWS */
-    .info-item-row {
-      display: flex;
-      gap: 0.65rem;
-      align-items: flex-start;
+    /* Transport Title Text */
+    .timeline-entry.type-transport .location-title-link {
+      color: #ffffff;
+      cursor: default;
+    }
+
+    .title-icon {
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .timeline-entry.type-attraction .title-icon { color: var(--color-attraction); }
+    .timeline-entry.type-food .title-icon { color: var(--color-food); }
+    .timeline-entry.type-transport .title-icon { color: var(--color-transport); }
+
+    /* Prominent Google Maps Action Button */
+    .btn-maps-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.42rem 0.95rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.18), rgba(2, 132, 199, 0.28));
+      color: #ffffff;
+      border: 1.5px solid var(--color-attraction);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+      white-space: nowrap;
+    }
+
+    .btn-maps-action:hover {
+      background: linear-gradient(135deg, #00f2fe, #0284c7);
+      color: #050a18;
+      border-color: #ffffff;
+      box-shadow: 0 0 18px rgba(0, 242, 254, 0.65);
+      transform: translateY(-2px);
+    }
+
+    .btn-maps-action i {
       font-size: 0.88rem;
     }
 
-    .info-item-row i {
-      margin-top: 0.25rem;
+    /* Timeline Body & Description */
+    .timeline-desc {
+      font-size: 0.92rem;
+      color: var(--silver-text);
+      line-height: 1.6;
+    }
+
+    .timeline-desc strong {
+      color: #ffffff;
+    }
+
+    .timeline-subnote {
+      font-size: 0.84rem;
+      color: var(--muted-text);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border-left: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .timeline-subnote i {
+      margin-top: 0.2rem;
       flex-shrink: 0;
     }
 
-    .info-item-row .transport-icon { color: var(--ice-400); }
-    .info-item-row .food-icon { color: var(--accent-orange); }
-
-    .item-body strong {
-      color: #ffffff;
-      display: block;
-      font-size: 0.88rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .item-body span {
-      font-size: 0.82rem;
-      color: var(--silver-text);
-      line-height: 1.45;
-      display: block;
-    }
-
     /* ==========================================================================
-       SURVIVAL GUIDE & WINTER TIPS
+       WINTER SURVIVAL TIPS SECTION
        ========================================================================== */
     .survival-section {
       margin-top: 3.5rem;
@@ -910,7 +1106,7 @@
 
     .survival-header h3 {
       font-size: 1.35rem;
-      font-weight: 700;
+      font-weight: 800;
       color: #ffffff;
     }
 
@@ -920,7 +1116,7 @@
       gap: 1.25rem;
     }
 
-    .survival-box {
+    .survival-card {
       background: rgba(9, 17, 39, 0.55);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-md);
@@ -930,8 +1126,8 @@
       gap: 0.6rem;
     }
 
-    .survival-box-title {
-      font-size: 0.95rem;
+    .survival-card-title {
+      font-size: 0.96rem;
       font-weight: 700;
       color: var(--ice-200);
       display: flex;
@@ -939,8 +1135,8 @@
       gap: 0.55rem;
     }
 
-    .survival-box p {
-      font-size: 0.85rem;
+    .survival-card p {
+      font-size: 0.86rem;
       color: var(--muted-text);
       line-height: 1.55;
     }
@@ -954,7 +1150,7 @@
       padding: 2rem 1rem;
       color: var(--muted-text);
       font-size: 0.85rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     footer a {
@@ -966,26 +1162,29 @@
       text-decoration: underline;
     }
 
-    /* Print media query */
+    /* Print styles */
     @media print {
       body {
         background: #ffffff !important;
         color: #111827 !important;
       }
-      #snow-canvas, .glow-sphere-1, .glow-sphere-2, .nav-bar, .action-controls, .filter-wrapper {
+      #snow-canvas, .ambient-sphere-1, .ambient-sphere-2, .top-nav, .itinerary-controls, .filter-row {
         display: none !important;
       }
-      .itinerary-main-box, .acc-item, .card-column {
+      .itinerary-box, .day-acc-item, .timeline-card {
         background: #ffffff !important;
         border: 1px solid #e5e7eb !important;
         box-shadow: none !important;
         color: #111827 !important;
       }
-      .acc-body-wrapper {
+      .day-acc-collapse {
         max-height: none !important;
       }
-      .maps-link-btn {
+      .btn-maps-action {
         border: 1px solid #0284c7 !important;
+        color: #0369a1 !important;
+      }
+      .location-title-link {
         color: #0369a1 !important;
       }
     }
@@ -996,51 +1195,67 @@
   <!-- Snowfall canvas -->
   <canvas id="snow-canvas"></canvas>
 
-  <!-- Ambient frost spheres -->
-  <div class="glow-sphere-1"></div>
-  <div class="glow-sphere-2"></div>
+  <!-- Ambient glowing spheres -->
+  <div class="ambient-sphere-1"></div>
+  <div class="ambient-sphere-2"></div>
 
-  <div class="main-wrapper">
+  <div class="main-container">
 
     <!-- Top Navigation Bar -->
-    <header class="nav-bar">
+    <header class="top-nav">
       <a href="#" class="nav-brand">
-        <div class="brand-icon-wrap">
+        <div class="nav-brand-icon">
           <i class="fa-solid fa-snowflake"></i>
         </div>
         <span>Harbin Winter Itinerary</span>
       </a>
 
       <div class="nav-actions">
-        <button id="toggle-snow-btn" class="pill-btn" title="เปิด/ปิด แอนิเมชันหิมะตก">
+        <button id="toggle-snow-btn" class="btn-pill" title="เปิด/ปิด แอนิเมชันหิมะตก">
           <i class="fa-regular fa-snowflake"></i>
-          <span class="btn-text">Snow: ON</span>
+          <span class="snow-btn-label">Snow: ON</span>
         </button>
-        <button id="btn-print" class="pill-btn" title="พิมพ์หรือบันทึกเป็น PDF">
+        <button id="btn-print" class="btn-pill" title="พิมพ์หรือบันทึกเป็น PDF">
           <i class="fa-solid fa-print"></i>
-          <span class="btn-text">Print / PDF</span>
+          <span>Print / PDF</span>
         </button>
       </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="badge-subzero">
+    <section class="hero">
+      <div class="hero-badge">
         <i class="fa-solid fa-icicles"></i>
-        <span>Harbin Ice City • 6-Day Winter Journey</span>
+        <span>Harbin Winter Timetable • 6-Day Travel Timeline</span>
       </div>
 
       <h1 class="hero-title">
-        มหัศจรรย์เมืองน้ำแข็ง <span class="frost-text">ฮาร์บิน</span>
+        มหัศจรรย์เมืองน้ำแข็ง <span class="glow-text">ฮาร์บิน</span>
       </h1>
 
       <p class="hero-desc">
-        คู่มือแผนท่องเที่ยวฮาร์บินฤดูหนาว 6 วัน ครบทั้ง 3 รูปแบบเส้นทาง: สโลว์ไลฟ์ชมสถาปัตยกรรมรัสเซีย, ตะลุยลานสกีระดับตำนาน Yabuli, หรือมุ่งหน้าสู่ขั้วโลกเหนือแดนมังกร Mohe ท้าความหนาวระดับ -40°C
+        คู่มือแผนเที่ยวฮาร์บินฤดูหนาว 6 วัน ปรับโฉมใหม่ในรูปแบบ <strong>Timeline ตารางเวลารายวัน</strong> ลำดับเหตุการณ์เช้าจรดค่ำชัดเจน พร้อมแยกโค้ดสีหมวดหมู่ และพิกัด <strong>Google Maps คลิกได้ทันทีทุกสถานที่</strong>
       </p>
 
+      <!-- Category Legend Strip -->
+      <div class="legend-strip">
+        <div class="legend-item attraction">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>ฟ้า/น้ำเงิน: สถานที่ท่องเที่ยว (คลิกเปิดแผนที่ได้)</span>
+        </div>
+        <div class="legend-item food">
+          <i class="fa-solid fa-utensils"></i>
+          <span>ส้ม: อาหาร & เมนูห้ามพลาด</span>
+        </div>
+        <div class="legend-item transport">
+          <i class="fa-solid fa-route"></i>
+          <span>ม่วง: การเดินทาง & คมนาคม</span>
+        </div>
+      </div>
+
       <!-- Stats Bar -->
-      <div class="stats-container">
-        <div class="stat-chip">
+      <div class="stats-strip">
+        <div class="stat-card">
           <i class="fa-solid fa-temperature-arrow-down"></i>
           <div>
             <strong>-15°C ถึง -35°C</strong>
@@ -1048,141 +1263,141 @@
           </div>
         </div>
 
-        <div class="stat-chip">
+        <div class="stat-card">
+          <i class="fa-solid fa-timeline"></i>
+          <div>
+            <strong>Timeline กำกับเวลา</strong>
+            <span>วางตารางชัดเจน เช้าจรดค่ำ</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-map-pin"></i>
+          <div>
+            <strong>Clickable Maps Link</strong>
+            <span>คลิกชื่อสถานที่เปิด Google Maps ทันที</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
           <i class="fa-solid fa-clock-rotate-left"></i>
           <div>
             <strong>6 วัน 5 คืน</strong>
-            <span>ระยะเวลามาตรฐานทุกเส้นทาง</span>
-          </div>
-        </div>
-
-        <div class="stat-chip">
-          <i class="fa-solid fa-map-location-dot"></i>
-          <div>
-            <strong>Google Maps Ready</strong>
-            <span>คลิกเปิดพิกัดจริงได้ทันทีทุกจุด</span>
-          </div>
-        </div>
-
-        <div class="stat-chip">
-          <i class="fa-solid fa-language"></i>
-          <div>
-            <strong>TH / EN / 中文</strong>
-            <span>ชื่อสถานที่ครบ 3 ภาษา ค้นหาง่าย</span>
+            <span>ระยะเวลามาตรฐานทั้ง 3 รูท</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- LEVEL 1: ROUTE OPTION SWITCHER (3 TABS) -->
-    <section class="routes-section" id="itinerary-routes">
-      <div class="section-title-wrap">
-        <h2 class="section-heading">
-          <i class="fa-solid fa-compass" style="color: var(--frost-cyan);"></i>
+    <section class="routes-section" id="routes">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="fa-solid fa-compass" style="color: var(--color-attraction);"></i>
           เลือกเส้นทางการเดินทางของคุณ
         </h2>
-        <p class="section-subheading">คลิกเลือกตัวเลือกรูทด้านล่างเพื่อสลับรายละเอียดแผนการเดินทาง 6 วัน</p>
+        <p class="section-sub">คลิกเลือกรูทเพื่อสลับดูตารางเวลา Timeline 6 วันของแต่ละรูปแบบ</p>
       </div>
 
-      <div class="tabs-grid" role="tablist">
-        <!-- Option 1 Tab Button -->
-        <button class="route-tab-card active" id="tab-btn-opt1" data-option="opt1" role="tab" aria-selected="true">
+      <div class="options-grid" role="tablist">
+        <!-- Option 1 Card -->
+        <button class="option-card-btn active" id="tab-opt1" data-option="opt1" role="tab" aria-selected="true">
           <div>
-            <div class="tab-top-row">
-              <span class="tab-badge">Option 01 • Classic Chill</span>
-              <div class="tab-icon-box">
+            <div class="opt-header-row">
+              <span class="opt-badge-pill">Option 01 • Classic Chill</span>
+              <div class="opt-icon-circle">
                 <i class="fa-solid fa-city"></i>
               </div>
             </div>
-            <div class="tab-title">Harbin Atmospheric & Chill</div>
-            <div class="tab-subtitle">สโลว์ไลฟ์ สถาปัตยกรรม & เทศกาลน้ำแข็ง</div>
-            <p class="tab-desc">
-              ดื่มด่ำบรรยากาศเมืองฮาร์บินแบบจุใจ เดินเล่นถนนคนเดินจงยาง ชมโบสถ์เซนต์โซเฟีย ตะลุยเมืองน้ำแข็งระดับโลก และสัมผัสหมู่บ้านรัสเซีย Volga Manor
+            <div class="opt-name">Harbin Atmospheric & Chill</div>
+            <div class="opt-sub">สโลว์ไลฟ์ สถาปัตยกรรม & เทศกาลน้ำแข็ง</div>
+            <p class="opt-desc">
+              เก็บบรรยากาศสุดคลาสสิก เดินเล่นถนนคนเดินจงยาง ชมโบสถ์เซนต์โซเฟีย สัมผัสแม่น้ำซงฮวา ตะลุยเมืองน้ำแข็งระดับโลก และคฤหาสน์รัสเซียวอลก้า
             </p>
           </div>
-          <div class="tab-features">
-            <span class="feature-tag"><i class="fa-solid fa-person-walking"></i> เที่ยวสบาย</span>
-            <span class="feature-tag"><i class="fa-solid fa-camera"></i> ถ่ายรูปสวย</span>
-            <span class="feature-tag"><i class="fa-solid fa-hotel"></i> พัก Daoli</span>
+          <div class="opt-tags">
+            <span class="opt-tag"><i class="fa-solid fa-person-walking"></i> เที่ยวสบาย</span>
+            <span class="opt-tag"><i class="fa-solid fa-camera"></i> ถ่ายรูปสวย</span>
+            <span class="opt-tag"><i class="fa-solid fa-hotel"></i> พัก Daoli</span>
           </div>
         </button>
 
-        <!-- Option 2 Tab Button -->
-        <button class="route-tab-card" id="tab-btn-opt2" data-option="opt2" role="tab" aria-selected="false">
+        <!-- Option 2 Card -->
+        <button class="option-card-btn" id="tab-opt2" data-option="opt2" role="tab" aria-selected="false">
           <div>
-            <div class="tab-top-row">
-              <span class="tab-badge">Option 02 • Snowboard & Ski</span>
-              <div class="tab-icon-box">
+            <div class="opt-header-row">
+              <span class="opt-badge-pill">Option 02 • Snowboard & Ski</span>
+              <div class="opt-icon-circle">
                 <i class="fa-solid fa-person-snowboarding"></i>
               </div>
             </div>
-            <div class="tab-title">Harbin + Snowboard & Yabuli</div>
-            <div class="tab-subtitle">เมืองน้ำแข็ง + ลานสกีระดับเอเชีย</div>
-            <p class="tab-desc">
-              นั่งรถไฟความเร็วสูงสู่ Yabuli Ski Resort สนุกสุดเหวี่ยงกับการเล่นสโนว์บอร์ดและสกีเต็มวัน เติมพลังด้วยหม้อไฟร้อนๆ ก่อนกลับมาเก็บไฮไลท์ในเมือง
+            <div class="opt-name">Harbin + Snowboard & Yabuli</div>
+            <div class="opt-sub">เมืองน้ำแข็ง + ลานสกีระดับเอเชีย</div>
+            <p class="opt-desc">
+              นั่งรถไฟความเร็วสูงสู่ Yabuli Ski Resort เล่นสโนว์บอร์ดและสกีเต็มวัน เติมพลังด้วยหม้อไฟร้อนๆ ก่อนกลับมาเก็บไฮไลท์เมืองน้ำแข็งฮาร์บิน
             </p>
           </div>
-          <div class="tab-features">
-            <span class="feature-tag"><i class="fa-solid fa-train-fast"></i> รถไฟความเร็วสูง</span>
-            <span class="feature-tag"><i class="fa-solid fa-person-skating"></i> กีฬาหิมะ</span>
-            <span class="feature-tag"><i class="fa-solid fa-fire"></i> หม้อไฟอุ่นๆ</span>
+          <div class="opt-tags">
+            <span class="opt-tag"><i class="fa-solid fa-train-fast"></i> รถไฟความเร็วสูง</span>
+            <span class="opt-tag"><i class="fa-solid fa-person-skating"></i> กีฬาหิมะ</span>
+            <span class="opt-tag"><i class="fa-solid fa-fire"></i> หม้อไฟอุ่นๆ</span>
           </div>
         </button>
 
-        <!-- Option 3 Tab Button -->
-        <button class="route-tab-card" id="tab-btn-opt3" data-option="opt3" role="tab" aria-selected="false">
+        <!-- Option 3 Card -->
+        <button class="option-card-btn" id="tab-opt3" data-option="opt3" role="tab" aria-selected="false">
           <div>
-            <div class="tab-top-row">
-              <span class="tab-badge">Option 03 • Arctic Explorer</span>
-              <div class="tab-icon-box">
+            <div class="opt-header-row">
+              <span class="opt-badge-pill">Option 03 • Arctic Explorer</span>
+              <div class="opt-icon-circle">
                 <i class="fa-solid fa-compass-drafting"></i>
               </div>
             </div>
-            <div class="tab-title">Harbin + Mohe (Arctic Village)</div>
-            <div class="tab-subtitle">จุดเหนือสุดของจีน & ท้าความหนาว -40°C</div>
-            <p class="tab-desc">
-              บินลัดฟ้าสู่เมืองโม่เหอ (Mohe) และหมู่บ้านเป่ยจี๋ชุน (Arctic Village) ส่งโปสการ์ดจากที่ทำการไปรษณีย์เหนือสุดแดนมังกร พร้อมสู้ความหนาวระดับขั้วโลก
+            <div class="opt-name">Harbin + Mohe (Arctic Village)</div>
+            <div class="opt-sub">จุดเหนือสุดของจีน & ท้าความหนาว -40°C</div>
+            <p class="opt-desc">
+              บินสู่เมืองโม่เหอ (Mohe) และหมู่บ้านเป่ยจี๋ชุน ขั้วโลกเหนือแดนมังกร ส่งโปสการ์ดที่ไปรษณีย์เหนือสุด และสาดน้ำร้อนเป็นน้ำแข็งในอุณหภูมิติดลบ 40 องศา
             </p>
           </div>
-          <div class="tab-features">
-            <span class="feature-tag"><i class="fa-solid fa-plane-departure"></i> บินภายใน</span>
-            <span class="feature-tag"><i class="fa-solid fa-snowflake"></i> ขั้วโลกเหนือจีน</span>
-            <span class="feature-tag"><i class="fa-solid fa-car-side"></i> รถเหมาส่วนตัว</span>
+          <div class="opt-tags">
+            <span class="opt-tag"><i class="fa-solid fa-plane-departure"></i> บินภายใน</span>
+            <span class="opt-tag"><i class="fa-solid fa-snowflake"></i> ขั้วโลกเหนือจีน</span>
+            <span class="opt-tag"><i class="fa-solid fa-car-side"></i> รถเหมาส่วนตัว</span>
           </div>
         </button>
       </div>
 
-      <!-- ITINERARY DISPLAY CONTAINER -->
-      <div class="itinerary-main-box">
+      <!-- ITINERARY MAIN CONTAINER -->
+      <div class="itinerary-box">
 
-        <!-- Top summary of selected option -->
-        <div class="itinerary-summary-bar">
-          <div class="summary-text-group">
-            <h3 id="current-route-title">Option 1: Harbin Atmospheric & Chill (6 Days)</h3>
-            <p id="current-route-sub">เส้นทางเน้นเก็บบรรยากาศ เดินชิล ถ่ายรูปสถาปัตยกรรม และเต็มอิ่มกับเทศกาลน้ำแข็ง</p>
+        <!-- Top summary bar -->
+        <div class="summary-bar">
+          <div class="summary-text">
+            <h3 id="active-route-title">Option 1: Harbin Atmospheric & Chill (6 Days)</h3>
+            <p id="active-route-subtitle">ตารางเวลาแบบ Timeline เรียงลำดับเหตุการณ์ตั้งแต่เช้าจรดค่ำ</p>
           </div>
 
-          <div class="action-controls">
-            <button id="btn-expand-all" class="btn-action" title="ขยายทุกวัน">
-              <i class="fa-solid fa-angles-down"></i> ขยายทั้งหมด
+          <div class="itinerary-controls">
+            <button id="btn-expand-all" class="ctrl-action-btn" title="ขยายทุกวัน">
+              <i class="fa-solid fa-angles-down"></i> ขยายทุกวัน
             </button>
-            <button id="btn-collapse-all" class="btn-action" title="ยุบทุกวัน">
-              <i class="fa-solid fa-angles-up"></i> ยุบทั้งหมด
+            <button id="btn-collapse-all" class="ctrl-action-btn" title="ยุบทุกวัน">
+              <i class="fa-solid fa-angles-up"></i> ยุบทุกวัน
             </button>
           </div>
         </div>
 
-        <!-- Filter & Search Bar -->
-        <div class="filter-wrapper">
-          <div class="search-field">
+        <!-- Filter & Search Box -->
+        <div class="filter-row">
+          <div class="search-input-wrap">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="search-input" placeholder="ค้นหาสถานที่, อาหาร, หรือการเดินทาง เช่น โซเฟีย, Metro, สตูว์..." />
+            <input type="text" id="search-box" placeholder="ค้นหาตามชื่อสถานที่, อาหาร, หรือการเดินทาง เช่น โซเฟีย, Metro, สตูว์, ไอศกรีม..." />
           </div>
         </div>
 
-        <!-- LEVEL 2: ACCORDION CONTAINER -->
-        <div class="accordion-container" id="accordion-root">
-          <!-- Populated by JavaScript -->
+        <!-- LEVEL 2: DAY ACCORDION (Populated via JS) -->
+        <div class="day-accordion-list" id="day-accordion-root">
+          <!-- Dynamically Rendered Accordions with Timelines -->
         </div>
 
       </div>
@@ -1191,14 +1406,14 @@
     <!-- WINTER SURVIVAL TIPS SECTION -->
     <section class="survival-section">
       <div class="survival-header">
-        <i class="fa-solid fa-shield-halved" style="color: var(--frost-cyan); font-size: 1.6rem;"></i>
+        <i class="fa-solid fa-shield-halved" style="color: var(--color-attraction); font-size: 1.6rem;"></i>
         <h3>ข้อแนะนำ & เคล็ดลับการเตรียมตัวรับมือความหนาว -20°C ถึง -40°C</h3>
       </div>
 
       <div class="survival-grid">
-        <div class="survival-box">
-          <div class="survival-box-title">
-            <i class="fa-solid fa-shirt" style="color: var(--ice-400);"></i>
+        <div class="survival-card">
+          <div class="survival-card-title">
+            <i class="fa-solid fa-shirt" style="color: var(--color-attraction);"></i>
             <span>การแต่งกายแบบเลเยอร์ (Layering)</span>
           </div>
           <p>
@@ -1209,8 +1424,8 @@
           </p>
         </div>
 
-        <div class="survival-box">
-          <div class="survival-box-title">
+        <div class="survival-card">
+          <div class="survival-card-title">
             <i class="fa-solid fa-mobile-screen-button" style="color: #38bdf8;"></i>
             <span>การดูแลอุปกรณ์อิเล็กทรอนิกส์</span>
           </div>
@@ -1219,8 +1434,8 @@
           </p>
         </div>
 
-        <div class="survival-box">
-          <div class="survival-box-title">
+        <div class="survival-card">
+          <div class="survival-card-title">
             <i class="fa-solid fa-credit-card" style="color: #34d399;"></i>
             <span>แอปพลิเคชัน & การชำระเงิน</span>
           </div>
@@ -1229,8 +1444,8 @@
           </p>
         </div>
 
-        <div class="survival-box">
-          <div class="survival-box-title">
+        <div class="survival-card">
+          <div class="survival-card-title">
             <i class="fa-solid fa-hand-holding-heart" style="color: #fb7185;"></i>
             <span>แผ่นร้อน & อุปกรณ์เสริม</span>
           </div>
@@ -1243,7 +1458,7 @@
 
     <!-- Footer -->
     <footer>
-      <p>© 2024-2025 Harbin Winter Trip Itinerary. Designed with <i class="fa-solid fa-heart" style="color: #fb7185;"></i> for Winter Explorers.</p>
+      <p>© 2024-2025 Harbin Winter Trip Itinerary. Refactored with Timetable & Prominent Maps Integration.</p>
       <p style="margin-top: 0.4rem; font-size: 0.8rem; color: var(--muted-text);">
         Interactive Single-Page HTML • Styled with Ice & Snow Theme • Ready for GitHub Pages
       </p>
@@ -1252,191 +1467,309 @@
   </div>
 
   <!-- ==========================================================================
-       VANILLA JAVASCRIPT: DATA & INTERACTION LOGIC
-       ========================================================================== -->
+       VANILLA JAVASCRIPT: TIMETABLE DATA & TIMELINE RENDERING
+       ========================================================================== */ -->
   <script>
     /* --------------------------------------------------------------------------
-       1. DATA SOURCE (The 3 Itinerary Options with complete Google Maps URLs)
+       1. COMPLETE TIMETABLE DATA (Categorized, Scheduled & Clickable Maps)
+       Categories: 'attraction' (Blue), 'food' (Orange), 'transport' (Purple)
        -------------------------------------------------------------------------- */
     const ITINERARY_DATA = {
       opt1: {
         title: "Option 1: Harbin Atmospheric & Chill (6 Days)",
-        subtitle: "สัมผัสแรกกับเมืองน้ำแข็ง สถาปัตยกรรมรัสเซีย & สโลว์ไลฟ์สุดคลาสสิก",
+        subtitle: "ตารางเวลาสโลว์ไลฟ์ สถาปัตยกรรมรัสเซีย & มหัศจรรย์เทศกาลน้ำแข็งระดับโลก",
         days: [
           {
             dayNumber: 1,
             vibe: "สัมผัสแรกกับเมืองน้ำแข็ง",
-            preview: "Zhongyang Pedestrian Street • ไอศกรีม Madieer • เกี๊ยว Dongfang Jiaozi Wang",
-            attractions: [
+            preview: "สนามบิน HRB • Zhongyang Street • ไอศกรีม Madieer • เกี๊ยวตงฟาง",
+            timeline: [
               {
-                name: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง / 中央大街)",
-                desc: "เดินเล่นชมสถาปัตยกรรมยุโรปและรัสเซียอายุกว่าร้อยปี พร้อมโคมไฟและประติมากรรมน้ำแข็งริมทาง",
-                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin"
-              }
-            ],
-            transport: [
-              {
-                mode: "Airport Shuttle Bus หรือ Taxi / DiDi",
-                detail: "นั่งจากสนามบินนานาชาติไท่ผิง (HRB) เข้าสู่โรงแรมที่พักในย่าน Daoli District ใจกลางเมือง"
-              }
-            ],
-            food: [
-              {
-                highlight: "ไอศกรีม Madieer (หม่าเตี๋ยเอ่อร์ - 马迭尔冰棍)",
-                detail: "กินไอศกรีมแท่งรสคลาสสิกท้าความหนาวระดับติดลบกลางถนนคนเดิน เป็น Signature ประจำเมืองฮาร์บิน"
+                time: "13:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินทางจากสนามบินไท่ผิง (HRB) เข้าสู่ที่พักย่าน Daoli",
+                mapsUrl: null,
+                desc: "นั่ง <strong>Airport Shuttle Bus</strong> หรือเรียก <strong>Taxi / DiDi</strong> จากสนามบินนานาชาติไท่ผิง (HRB) เข้าสู่โรงแรมที่พักในย่าน Daoli District ใจกลางเมือง",
+                note: "แนะนำเลือกที่พักใกล้ถนนคนเดินจงยางเพื่อให้สะดวกต่อการเดินเที่ยวตลอดทริป"
               },
               {
-                highlight: "Dongfang Jiaozi Wang (东方饺子王)",
-                detail: "มื้อค่ำร้านราชาเกี๊ยวชื่อดัง ลิ้มลองเกี๊ยวต้มไส้หมู กุ่ยช่าย เนื้อ และเห็ดร้อนๆ ซดน้ำซุปอุ่นใจ"
+                time: "15:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง / 中央大街)",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin",
+                desc: "เดินเล่นชมสถาปัตยกรรมสไตล์ยุโรปและรัสเซียอายุกว่าร้อยปี ปูด้วยหินแกรนิตทรงหลังเต่า ถ่ายรูปคู่โคมไฟระยิบระยับและประติมากรรมน้ำแข็งริมทางเดิน",
+                note: "ช่วงเวลาบ่ายแก่ๆ แสงแดดจะกระทบตึกสไตล์บาโรกสวยงามมาก"
+              },
+              {
+                time: "17:00",
+                type: "food",
+                badgeText: "Food & Treat",
+                title: "ไอศกรีม Madieer (หม่าเตี๋ยเอ่อร์ - 马迭尔冰棍)",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin",
+                desc: "กินไอศกรีมแท่งรสคลาสสิกท้าความหนาวระดับติดลบกลางถนนคนเดิน เป็น Signature ประจำเมืองฮาร์บินที่ไม่ละลายในมือ",
+                note: "รสชาติต้นตำรับรสนมและวานิลลา หอมมันกลมกล่อม"
+              },
+              {
+                time: "18:30",
+                type: "food",
+                badgeText: "Dinner",
+                title: "Dongfang Jiaozi Wang (ร้านราชาเกี๊ยวตงฟาง / 东方饺子王)",
+                mapsUrl: "https://goo.gl/maps/search/Dongfang+Jiaozi+Wang+Harbin",
+                desc: "มื้อค่ำร้านราชาเกี๊ยวชื่อดัง ลิ้มลองเกี๊ยวต้มไส้หมู กุ่ยช่าย เนื้อ และเห็ดร้อนๆ เสิร์ฟพร้อมซุปและน้ำจิ้มจิ๊กโฉ่วผสมน้ำมันพริกเผ็ดหอม",
+                note: "เกี๊ยวทำสดใหม่ แป้งบางไส้แน่น ช่วยคลายหนาวได้ดีเยี่ยม"
               }
             ]
           },
           {
             dayNumber: 2,
             vibe: "สถาปัตยกรรมรัสเซีย & เมืองน้ำแข็งระดับโลก",
-            preview: "St. Sophia Cathedral • Harbin Ice and Snow World • อาหารรัสเซีย",
-            attractions: [
+            preview: "St. Sophia Cathedral • อาหารรัสเซีย • Metro Line 2 • Harbin Ice and Snow World",
+            timeline: [
               {
-                name: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย / 圣索菲亚大教堂)",
-                desc: "ช่วงเช้า: ชมโบสถ์คริสต์ออร์โธดอกซ์สไตล์ไบแซนไทน์อันงดงาม ถ่ายรูปคู่ฝูงนกพิราบและหิมะขาวโพลน",
-                url: "https://goo.gl/maps/search/St.+Sophia+Cathedral+Harbin"
+                time: "09:00",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย / 圣索菲亚大教堂)",
+                mapsUrl: "https://goo.gl/maps/search/St.+Sophia+Cathedral+Harbin",
+                desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์สไตล์ไบแซนไทน์อันงดงาม มรดกสถาปัตยกรรมรัสเซีย ถ่ายรูปคู่ฝูงนกพิราบบินตัดกับยอดโดมหัวหอมสีเขียวและหิมะขาวโพลน",
+                note: "ช่วงเช้าแสงแดดส่องด้านหน้าโบสถ์ ถ่ายภาพบุคคลได้สวยที่สุด"
               },
               {
-                name: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะฮาร์บิน / 哈尔滨冰雪大世界)",
-                desc: "ช่วงบ่าย-ค่ำ: ไฮไลท์อันดับ 1 ของโลก ชมปราสาทน้ำแข็งแกะสลักยักษ์ประดับไฟ LED หลากสี สไลเดอร์น้ำแข็งยักษ์ และชิงช้าสวรรค์",
-                url: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World"
-              }
-            ],
-            transport: [
-              {
-                mode: "เดิน หรือ DiDi (ช่วงเช้า)",
-                detail: "เดินชิลล์จากที่พักไปโบสถ์เซนต์โซเฟีย (ประมาณ 10-15 นาที)"
+                time: "12:00",
+                type: "food",
+                badgeText: "Lunch",
+                title: "ร้านอาหารรัสเซีย Lucia หรือ Huamei Western Restaurant (华梅西餐厅)",
+                mapsUrl: "https://goo.gl/maps/search/Huamei+Western+Restaurant+Harbin",
+                desc: "สัมผัสวัฒนธรรมอาหารรัสเซียต้นตำรับ ลิ้มลองซุปบีทรูทสีแดงสด (Borscht), ขนมปังรัสเซียทาเนย, สเต็กเนื้อ และไส้กรอกฮาร์บินรมควัน",
+                note: "ร้านตั้งอยู่ใกล้ถนนจงยาง เดินถึงได้ใน 5-10 นาที"
               },
               {
-                mode: "Metro Line 2 (รถไฟใต้ดินสาย 2)",
-                detail: "ไป Ice and Snow World แนะนำให้นั่งรถไฟใต้ดิน (Metro Line 2) สะดวกที่สุด เลี่ยงปัญหารถติดและหาแท็กซี่ยากช่วงเลิกงาน"
-              }
-            ],
-            food: [
+                time: "14:00",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินทางด้วยรถไฟใต้ดิน Metro Line 2 สู่ Ice and Snow World",
+                mapsUrl: null,
+                desc: "ขึ้นรถไฟใต้ดิน <strong>Metro Line 2</strong> จากสถานีในเมือง ตรงสู่สถานี <strong>Ice and Snow World Station</strong> สะดวก รวดเร็ว และไม่ต้องเสี่ยงกับปัญหารถติดบนสะพานข้ามแม่น้ำ",
+                note: "เลี่ยงการเรียกแท็กซี่ช่วง 16:00-18:00 เพราะการจราจรหนาแน่นมาก"
+              },
               {
-                highlight: "ร้านอาหารรัสเซีย Lucia หรือ Huamei Western Restaurant (华梅西餐厅)",
-                detail: "อาหารรัสเซียที่ร้าน Lucia หรือ Huamei Western Restaurant เช่น ซุปบีทรูท (Borscht), ขนมปังรัสเซีย, สเต็กเนื้อ และไส้กรอกฮาร์บินรมควัน"
+                time: "14:30",
+                type: "attraction",
+                badgeText: "Attraction Highlight",
+                title: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะฮาร์บิน / 哈尔滨冰雪大世界)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World",
+                desc: "ไฮไลท์อันดับ 1 ของโลก ชมปราสาทน้ำแข็งแกะสลักยักษ์ประดับไฟ LED หลากสียามค่ำคืน เล่นสไลเดอร์น้ำแข็งยักษ์ (Ice Slide) และขึ้นชิงช้าสวรรค์ชมวิวมุมสูง",
+                note: "แนะนำเข้าตั้งแต่บ่ายสองเพื่อถ่ายภาพกลางวัน แล้วอยู่ต่อจนถึงเวลาเปิดไฟช่วง 16:30 น."
+              },
+              {
+                time: "19:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินทางกลับที่พักด้วย Metro Line 2",
+                mapsUrl: null,
+                desc: "นั่งรถไฟใต้ดิน Metro Line 2 กลับสู่ย่าน Daoli District อย่างรวดเร็วและอุ่นสบาย",
+                note: "ควรเตรียมแผ่นร้อน (Warm Pad) ไว้สำหรับมือถือเพราะอุณหภูมิลานน้ำแข็งลดฮวบถึง -25°C"
               }
             ]
           },
           {
             dayNumber: 3,
             vibe: "วิถีชีวิตท้องถิ่น & แม่น้ำซงฮวา",
-            preview: "Hongzhuan Morning Market • Songhua River • Diamond Sea",
-            attractions: [
+            preview: "Hongzhuan Market • Songhua River • Diamond Sea • Dongbei BBQ",
+            timeline: [
               {
-                name: "Hongzhuan Morning Market (ตลาดเช้าหงจวน / 红专早市)",
-                desc: "สัมผัสวิถีชีวิตตลาดเช้า ควันฉุยท่ามกลางความหนาว ชมพ่อค้าแม่ค้าขายอาหารเช้าและผลไม้แช่แข็ง",
-                url: "https://goo.gl/maps/search/Hongzhuan+Morning+Market"
+                time: "07:00",
+                type: "food",
+                badgeText: "Breakfast Street Food",
+                title: "สตรีทฟู้ดตลาดเช้าหงจวน (Hongzhuan Street Food)",
+                mapsUrl: "https://goo.gl/maps/search/Hongzhuan+Morning+Market",
+                desc: "ลิ้มลองอาหารเช้าพื้นเมืองร้อนๆ ควันพวยพุ่ง ซาลาเปานึ่งไส้หมูสับ, ปาท่องโก๋ยักษ์ทอดกรอบ, น้ำเต้าหู้ร้อน และถังหูลู่ผลไม้เคลือบน้ำตาลแช่แข็งกรอบอร่อย",
+                note: "ตลาดเปิดตั้งแต่ 06:00 - 09:00 น. บรรยากาศคึกคักและเต็มไปด้วยไออุ่นวิถีชีวิตชาวฮาร์บิน"
               },
               {
-                name: "Songhua River (แม่น้ำซงฮวา / 松花江)",
-                desc: "เดินเล่นลานน้ำแข็งยักษ์บนผืนแม่น้ำที่กลายเป็นน้ำแข็งหนา กิจกรรมลากเลื่อน สเก็ตน้ำแข็ง",
-                url: "https://goo.gl/maps/search/Songhua+River+Harbin"
+                time: "07:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Hongzhuan Morning Market (ตลาดเช้าหงจวน / 红专早市)",
+                mapsUrl: "https://goo.gl/maps/search/Hongzhuan+Morning+Market",
+                desc: "เดินชมตลาดเช้ากลางแจ้งที่คึกคักที่สุดในฮาร์บิน แผงขายปลาแช่แข็งตั้งตรงเป็นแท่ง ผลไม้แช่แข็ง และผักสดท่ามกลางอุณหภูมิติดลบยี่สิบองศา",
+                note: "เดินเท้าจากที่พักย่าน Daoli ได้อย่างสะดวก"
               },
               {
-                name: "Diamond Sea (ทะเลเพชรฮาร์บิน / 钻石海)",
-                desc: "ชมก้อนน้ำแข็งโปร่งแสงขนาดยักษ์ที่ถูกตัดขึ้นจากแม่น้ำซงฮวา วางเรียงรายระยิบระยับประดุจทะเลเพชร",
-                url: "https://goo.gl/maps/search/Harbin+Diamond+Sea"
-              }
-            ],
-            transport: [
+                time: "10:00",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Songhua River (แม่น้ำซงฮวา / 松花江 - เดินเล่นลานน้ำแข็ง)",
+                mapsUrl: "https://goo.gl/maps/search/Songhua+River+Harbin",
+                desc: "เดินเล่นบนผืนแม่น้ำซงฮวาที่กลายเป็นแผ่นน้ำแข็งหนาทึบ สนุกกับกิจกรรมลากเลื่อนหิมะ สเก็ตน้ำแข็ง ม้าลากเลื่อน และสโนว์คาร์ท",
+                note: "เดินทะลุจากปลายถนนคนเดินจงยางสู่ริมแม่น้ำได้โดยตรง"
+              },
               {
-                mode: "เดินเท้าเป็นหลัก (Walking Friendly)",
-                detail: "สถานที่อยู่ใกล้กันในย่าน Daoli สามารถเดินเท้าเชื่อมต่อกันได้อย่างเพลิดเพลิน"
-              }
-            ],
-            food: [
+                time: "13:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Diamond Sea (ทะเลเพชรฮาร์บิน / 钻石海)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Diamond+Sea",
+                desc: "ชมและถ่ายรูปกับก้อนน้ำแข็งโปร่งแสงขนาดยักษ์ที่ถูกตัดขึ้นจากแม่น้ำซงฮวา วางเรียงรายริมฝั่งน้ำสะท้อนแสงแดดระยิบระยับประดุจทะเลเพชรกลางหิมะ",
+                note: "สวมรองเท้ากันลื่นเพื่อความปลอดภัยในการเดินบนแผ่นน้ำแข็ง"
+              },
               {
-                highlight: "สตรีทฟู้ดตลาดเช้า (Street Food)",
-                detail: "สตรีทฟู้ดตลาดเช้า ซาลาเปาร้อนๆ ควันพวยพุ่ง, ปาท่องโก๋ยักษ์, ถังหูลู่แช่แข็งกรุบกรอบ"
+                time: "18:00",
+                type: "food",
+                badgeText: "Dinner",
+                title: "ร้านปิ้งย่างบาร์บีคิวตงเป่ย (Dongbei BBQ / 东北烧烤)",
+                mapsUrl: "https://goo.gl/maps/search/Dongbei+BBQ+Harbin",
+                desc: "ปิดท้ายวันด้วยบาร์บีคิวปิ้งย่างสไตล์อีสานจีน เนื้อแกะย่างโรยผงยี่หร่า, เอ็นเนื้อย่าง, ปีกไก่ย่าง และขนมปังปิ้งเนยน้ำตาลแสนอร่อย",
+                note: "จิบเบียร์ฮาร์บิน (Harbin Beer) เย็นฉ่ำคู่กับบาร์บีคิวร้อนๆ"
               }
             ]
           },
           {
             dayNumber: 4,
             vibe: "ความยิ่งใหญ่ยุคใหม่",
-            preview: "Harbin Railway Station • Giant Snowman • Harbin Grand Theatre",
-            attractions: [
+            preview: "Harbin Station • เถี่ยกัวตุ้น • Giant Snowman • Harbin Grand Theatre",
+            timeline: [
               {
-                name: "Harbin Railway Station (สถานีรถไฟฮาร์บิน / 哈尔滨站)",
-                desc: "สถานีรถไฟสไตล์ยุโรปคลาสสิกสุดอลังการ หนึ่งในสถานีรถไฟที่สวยที่สุดในจีน",
-                url: "https://goo.gl/maps/search/Harbin+Railway+Station"
+                time: "09:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Harbin Railway Station (สถานีรถไฟฮาร์บิน / 哈尔滨站)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Railway+Station",
+                desc: "ชมความโอ่อ่าของสถานีรถไฟสถาปัตยกรรมยุโรปคลาสสิกที่สวยงามที่สุดแห่งหนึ่งของจีน หลังคารูปโดมและหอนาฬิกาโบราณสะท้อนกลิ่นอายประวัติศาสตร์",
+                note: "สามารถเดินทางด้วย DiDi หรือ Metro Line 2"
               },
               {
-                name: "Giant Snowman at Music Park (ตุ๊กตาหิมะยักษ์ สวนดนตรี / 音乐公园大雪人)",
-                desc: "จุดถ่ายรูปแลนด์มาร์กยอดฮิต สโนว์แมนไซส์ยักษ์สวมหมวกแดงน่ารักริมแม่น้ำ",
-                url: "https://goo.gl/maps/search/Harbin+Music+Park"
+                time: "11:30",
+                type: "food",
+                badgeText: "Lunch Highlight",
+                title: "เถี่ยกัวตุ้น (Tie Guo Dun - 铁锅炖 สตูว์กระทะเหล็กไซส์ยักษ์)",
+                mapsUrl: "https://goo.gl/maps/search/Tie+Guo+Dun+Harbin",
+                desc: "ลองกิน เถี่ยกัวตุ้น สตูว์กระทะเหล็กไซส์ยักษ์ เมนูเด็ดอันดับ 1 ของภาคอีสานจีน ต้มซี่โครงหมู ห่าน หรือปลา พร้อมแป้งข้าวโพดแปะขอบกระทะหอมกรอบ",
+                note: "ทานร่วมกันรอบโต๊ะกระทะร้อน เพิ่มพลังความอบอุ่นสู้ความหนาว"
               },
               {
-                name: "Harbin Grand Theatre (โรงละครฮาร์บินแกรนด์เธียเตอร์ / 哈尔滨大剧院)",
-                desc: "สถาปัตยกรรมล้ำสมัยระดับโลก รูปทรงเกลียวหิมะและน้ำแข็ง สวยงามสะกดสายตา",
-                url: "https://goo.gl/maps/search/Harbin+Grand+Theatre"
-              }
-            ],
-            transport: [
+                time: "13:45",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เรียก Taxi หรือ DiDi สู่ Music Park",
+                mapsUrl: null,
+                desc: "เรียก Taxi หรือ DiDi เพื่อความรวดเร็วและอุ่นสบายในการข้ามฝั่งแม่น้ำไปยังสวนดนตรี",
+                note: "แอป DiDi ใน Alipay ใช้งานง่ายและคำนวณราคาชัดเจน"
+              },
               {
-                mode: "Taxi หรือ DiDi (แอปเรียกรถ)",
-                detail: "เรียก Taxi หรือ DiDi (แอปเรียกรถ) เพื่อความรวดเร็วและอุ่นสบายในการย้ายจุดข้ามฝั่งแม่น้ำ"
-              }
-            ],
-            food: [
+                time: "14:15",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Giant Snowman at Music Park (ตุ๊กตาหิมะยักษ์ สวนดนตรี / 音乐公园大雪人)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Music+Park",
+                desc: "จุดเช็คอินยอดฮิตริมฝั่งแม่น้ำ ถ่ายรูปคู่กับสโนว์แมนไซส์ยักษ์สวมหมวกและผ้าพันคอสีแดงสดสุดน่ารัก",
+                note: "เตรียมมุมกล้องมุมกว้างเพื่อเก็บภาพตุ๊กตาหิมะคู่กับท้องฟ้าฤดูหนาว"
+              },
               {
-                highlight: "เถี่ยกัวตุ้น (Tie Guo Dun - 铁锅炖)",
-                detail: "ลองกิน เถี่ยกัวตุ้น (Tie Guo Dun - สตูว์กระทะเหล็กไซส์ยักษ์) เมนูเด็ดภาคอีสานจีน ตุ๋นไก่ ห่าน หรือซี่โครงหมู พร้อมแป้งข้าวโพดแปะขอบกระทะ"
+                time: "16:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Harbin Grand Theatre (โรงละครฮาร์บินแกรนด์เธียเตอร์ / 哈尔滨大剧院)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Grand+Theatre",
+                desc: "สถาปัตยกรรมล้ำสมัยระดับโลก รูปทรงเกลียวหิมะและน้ำแข็งโค้งมนกลมกลืนกับธรรมชาติ ถ่ายรูปสวยทั้งช่วงแสงทไวไลท์และยามเปิดไฟกลางคืน",
+                note: "ตัวอาคารเปิดให้เดินขึ้นบันไดวนภายนอกชมวิวมุมสูงได้"
               }
             ]
           },
           {
             dayNumber: 5,
             vibe: "กลิ่นอายหมู่บ้านรัสเซีย",
-            preview: "Volga Manor • สถาปัตยกรรมสไตล์ยุโรป • อาหารกลางวันรัสเซีย",
-            attractions: [
+            preview: "Volga Manor • สถาปัตยกรรมยุโรป • อาหารกลางวันรัสเซีย • ชาบูหม้อไฟ",
+            timeline: [
               {
-                name: "Volga Manor (คฤหาสน์วอลก้า / 伏尔加庄园)",
-                desc: "เดินชิลๆ ถ่ายรูปสไตล์ยุโรป หมู่บ้านรัสเซียจำลองปราสาท โบสถ์ไม้ และสะพานหิมะ",
-                url: "https://goo.gl/maps/search/Volga+Manor+Harbin"
-              }
-            ],
-            transport: [
+                time: "09:00",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เหมา Taxi หรือเรียก DiDi มุ่งหน้าสู่ Volga Manor",
+                mapsUrl: null,
+                desc: "เดินทางออกจากตัวเมืองฮาร์บินสู่ Volga Manor ระยะทางประมาณ 30 กม. ใช้เวลาเดินทางประมาณ 50-60 นาที",
+                note: "แนะนำนัดหมายเวลากลับหรือเหมาคนขับไป-กลับล่วงหน้าเพื่อความสะดวก"
+              },
               {
-                mode: "เหมา Taxi หรือเรียก DiDi",
-                detail: "อยู่นอกเมือง ใช้เวลาเดินทางประมาณ 1 ชม. แนะนำนัดเวลากลับหรือจ้างเหมาแบบไป-กลับ"
-              }
-            ],
-            food: [
+                time: "10:15",
+                type: "attraction",
+                badgeText: "Attraction Highlight",
+                title: "Volga Manor (คฤหาสน์วอลก้า / 伏尔加庄园)",
+                mapsUrl: "https://goo.gl/maps/search/Volga+Manor+Harbin",
+                desc: "เดินชิลๆ ถ่ายรูปสไตล์ยุโรป ท่ามกลางหมู่บ้านรัสเซียจำลอง ปราสาทโบราณ โบสถ์ไม้เซนต์นิโคลัส และสะพานหิมะ ดั่งหลุดเข้าไปในเทพนิยายรัสเซีย",
+                note: "มีกิจกรรมเล่นสไลเดอร์หิมะจากยอดปราสาทและชิมวอดก้าในแก้วน้ำแข็ง"
+              },
               {
-                highlight: "อาหารกลางวันสไตล์รัสเซียที่ร้านอาหารใน Volga Manor",
-                detail: "ทานอาหารกลางวันสไตล์รัสเซียที่ร้านอาหารใน Volga Manor ท่ามกลางวิวหิมะและปราสาทคลาสสิก"
+                time: "12:30",
+                type: "food",
+                badgeText: "Lunch",
+                title: "อาหารกลางวันสไตล์รัสเซียที่ร้านอาหารใน Volga Manor",
+                mapsUrl: "https://goo.gl/maps/search/Volga+Manor+Harbin",
+                desc: "ทานอาหารกลางวันสไตล์รัสเซียที่ร้านอาหารใน Volga Manor จิบไวน์อุ่น ขนมปังอบสด สเต็กเนื้อ และซุปบอร์ช ท่ามกลางวิวปราสาทหิมะ",
+                note: "บรรยากาศในร้านตกแต่งด้วยไม้และเตาผิงรัสเซียแท้ๆ"
+              },
+              {
+                time: "16:00",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินทางกลับเข้าสู่ตัวเมืองฮาร์บิน",
+                mapsUrl: null,
+                desc: "นั่งรถ Taxi/DiDi เดินทางกลับเข้าสู่ย่าน Daoli District พักผ่อนและเตรียมตัวสำหรับมื้อค่ำ",
+                note: "ใช้เวลาประมาณ 1 ชั่วโมงในการเดินทางกลับ"
+              },
+              {
+                time: "18:30",
+                type: "food",
+                badgeText: "Dinner",
+                title: "ชาบูหม้อไฟทองแดงตงเป่ย (Copper Pot Hot Pot)",
+                mapsUrl: "https://goo.gl/maps/search/Hot+Pot+Harbin",
+                desc: "ล้อมวงกินหม้อไฟทองแดงแบบดั้งเดิม ลวกเนื้อแกะสไลซ์นุ่มๆ จิ้มน้ำจิ้มถั่วลิสงและงาเข้มข้น คลายความเหนื่อยล้าหลังกลับจากนอกเมือง",
+                note: "น้ำซุปใสกลมกล่อมช่วยชูรสชาติของเนื้อแกะชั้นดี"
               }
             ]
           },
           {
             dayNumber: 6,
             vibe: "เดินทางกลับ",
-            preview: "เช็คเอาท์ • ช้อปปิ้งของฝาก • เดินทางไปสนามบิน (HRB) - BKK",
-            attractions: [
+            preview: "ช้อปปิ้งของฝาก • เช็คเอาท์ • Taxi สนามบิน HRB • บิน HRB - BKK",
+            timeline: [
               {
-                name: "ซื้อของฝากย่านถนนคนเดินก่อนกลับ (Harbin Souvenirs)",
-                desc: "เลือกซื้อไส้กรอกแดงฮาร์บิน, ช็อกโกแลตรัสเซีย, และของที่ระลึกเมืองน้ำแข็ง",
-                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin"
-              }
-            ],
-            transport: [
+                time: "09:00",
+                type: "attraction",
+                badgeText: "Souvenirs & Shopping",
+                title: "ซื้อของฝากย่านถนนคนเดินก่อนกลับ (Harbin Souvenirs / 中央大街)",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin",
+                desc: "เดินเล่นช้อปปิ้งของฝากยอดนิยม: ไส้กรอกแดงฮาร์บิน (Harbin Red Sausage), ช็อกโกแลตรัสเซีย, ชาตงเป่ย และตุ๊กตาแม่ลูกดก",
+                note: "ร้าน Churin (ชิวหลิน) บนถนนจงยางเป็นร้านของฝากเก่าแก่ที่สุด"
+              },
               {
-                mode: "Taxi / DiDi ไปสนามบิน",
-                detail: "เช็คเอาท์, นั่ง Taxi ไปสนามบิน (HRB) - BKK เดินทางกลับโดยสวัสดิภาพ"
-              }
-            ],
-            food: [
+                time: "11:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เช็คเอาท์จากที่พัก นั่ง Taxi/DiDi ไปสนามบินไท่ผิง (HRB)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Taiping+International+Airport",
+                desc: "เช็คเอาท์จากโรงแรม นั่ง Taxi หรือ Airport Shuttle Bus ไปยังสนามบิน Harbin Taiping International Airport (HRB) ใช้เวลาประมาณ 45-60 นาที",
+                note: "เผื่อเวลาเช็คอินและโหลดสัมภาระอย่างน้อย 2.5 - 3 ชั่วโมงก่อนเวลาเครื่องออก"
+              },
               {
-                highlight: "มื้อส่งท้ายก่อนขึ้นเครื่อง",
-                detail: "ทานเกี๊ยวน้ำหรือบะหมี่ร้อนๆ สบายท้องที่สนามบินก่อนขึ้นเครื่องบิน"
+                time: "13:00",
+                type: "food",
+                badgeText: "Airport Meal",
+                title: "รับประทานอาหารอุ่นๆ ก่อนขึ้นเครื่องบิน",
+                mapsUrl: null,
+                desc: "ทานเกี๊ยวน้ำร้อนๆ หรือบะหมี่เนื้ออุ่นสบายท้องภายในอาคารผู้โดยสารสนามบิน",
+                note: "จิบชาร้อนเติมความอบอุ่นก่อนเดินทาง"
+              },
+              {
+                time: "15:00",
+                type: "transport",
+                badgeText: "Flight",
+                title: "บินลัดฟ้ากลับสู่กรุงเทพฯ (HRB - BKK)",
+                mapsUrl: null,
+                desc: "ออกเดินทางจากสนามบินนานาชาติไท่ผิงฮาร์บิน บินกลับสู่กรุงเทพฯ (BKK) โดยสวัสดิภาพพร้อมความทรงจำสุดประทับใจ",
+                note: "สิ้นสุดทริปฮาร์บิน 6 วันอย่างสมบูรณ์แบบ"
               }
             ]
           }
@@ -1445,154 +1778,272 @@
 
       opt2: {
         title: "Option 2: Harbin + Snowboard & Yabuli (6 Days)",
-        subtitle: "ทริปไฮไลท์เมืองน้ำแข็ง ผสานความมันส์บนลานสกีระดับตำนานของเอเชีย",
+        subtitle: "ตารางเวลาเที่ยวเมืองน้ำแข็ง + ผจญภัยบนลานสกีระดับเอเชีย Yabuli Ski Resort",
         days: [
           {
             dayNumber: 1,
-            vibe: "สัมผัสแรก & เช็คอินฮาร์บิน",
-            preview: "Zhongyang Pedestrian Street • อาหารจีนท้องถิ่น Dongbei",
-            attractions: [
+            vibe: "เริ่มต้นทริปตะลุยหิมะ",
+            preview: "สนามบิน HRB • เช็คอินที่พัก • Zhongyang Street • อาหารจีนตงเป่ย",
+            timeline: [
               {
-                name: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง)",
-                desc: "เดินเล่นชมสถาปัตยกรรมยุโรปและปรับตัวกับความหนาวเย็น",
-                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street"
-              }
-            ],
-            transport: [
+                time: "14:00",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินทางจากสนามบิน HRB เข้าที่พักตัวเมืองฮาร์บิน",
+                mapsUrl: null,
+                desc: "ขึ้น Airport Bus หรือ Taxi ไปยังที่พักใจกลางเมืองฮาร์บิน เช็คอินและเก็บสัมภาระ",
+                note: "เตรียมเสื้อผ้าอุ่นหนาสำหรับกิจกรรมลุยหิมะในวันถัดไป"
+              },
               {
-                mode: "Airport Bus / Taxi",
-                detail: "Airport Bus/Taxi ไปที่พักย่านใจกลางเมืองฮาร์บิน"
-              }
-            ],
-            food: [
+                time: "16:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง)",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                desc: "เดินเล่นชมสถาปัตยกรรมยุโรปคลาสสิก ปรับร่างกายให้คุ้นเคยกับความหนาวเย็นและหิมะขาว",
+                note: "ชมประติมากรรมน้ำแข็งและแสงไฟประดับตลอดยาวกว่า 1.4 กิโลเมตร"
+              },
               {
-                highlight: "อาหารจีนท้องถิ่น (Dongbei Cuisine)",
-                detail: "อาหารจีนท้องถิ่นภาคอีสาน เช่น Guo Bao Rou (หมูชุบแป้งทอดกรอบซอสเปรี้ยวหวาน) รสชาติต้นตำรับ"
+                time: "18:30",
+                type: "food",
+                badgeText: "Dinner",
+                title: "อาหารจีนท้องถิ่นภาคอีสาน (Dongbei Cuisine)",
+                mapsUrl: "https://goo.gl/maps/search/Dongbei+Cuisine+Harbin",
+                desc: "อาหารจีนท้องถิ่นภาคอีสาน ชิม Guo Bao Rou (หมูทอดเปรี้ยวหวานกรอบกระทะ), ต้มผักกาดดองกระดูกหมู และเกี๊ยวต้มร้อนๆ",
+                note: "รสชาติเข้มข้น จานใหญ่จุใจตามสไตล์ชาวตงเป่ย"
               }
             ]
           },
           {
             dayNumber: 2,
-            vibe: "โบสถ์ประวัติศาสตร์ & ปราสาทน้ำแข็ง",
-            preview: "St. Sophia Cathedral • Harbin Ice and Snow World • อาหารรัสเซีย",
-            attractions: [
+            vibe: "ไฮไลท์เมืองน้ำแข็ง & สถาปัตยกรรม",
+            preview: "St. Sophia • อาหารรัสเซีย • Metro Line 2 • Harbin Ice and Snow World",
+            timeline: [
               {
-                name: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย)",
-                desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์มรดกสถาปัตยกรรมรัสเซียอันเลื่องชื่อ",
-                url: "https://goo.gl/maps/search/St.+Sophia+Cathedral"
+                time: "09:00",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย)",
+                mapsUrl: "https://goo.gl/maps/search/St.+Sophia+Cathedral",
+                desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์มรดกสถาปัตยกรรมรัสเซียอันเลื่องชื่อ ถ่ายภาพยอดโดมสีเขียวตัดกับหิมะขาว",
+                note: "เปิดให้เข้าชมพิพิธภัณฑ์ประวัติศาสตร์ด้านในโบสถ์"
               },
               {
-                name: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะ)",
-                desc: "ชมปราสาทน้ำแข็งแกะสลักระดับโลกสุดตระการตายามค่ำคืน",
-                url: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World"
-              }
-            ],
-            transport: [
+                time: "12:00",
+                type: "food",
+                badgeText: "Lunch",
+                title: "อาหารรัสเซียต้นตำรับฮาร์บิน",
+                mapsUrl: "https://goo.gl/maps/search/Huamei+Western+Restaurant+Harbin",
+                desc: "อาหารรัสเซีย ซุปบอร์ช ขนมปังอบชีสร้อนๆ และสเต็กเนื้อ เพื่อเตรียมพลังงานสำหรับลานน้ำแข็ง",
+                note: "ร้านอาหารรัสเซียรอบถนนจงยางมีบรรยากาศย้อนยุคอบอุ่น"
+              },
               {
-                mode: "Metro Line 2",
-                detail: "เดินทางด้วยรถไฟใต้ดิน Metro Line 2 สะดวกรวดเร็ว ตรงสู่หน้าทางเข้างาน"
-              }
-            ],
-            food: [
+                time: "14:00",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินทางด้วย Metro Line 2 ไปยัง Ice and Snow World",
+                mapsUrl: null,
+                desc: "นั่งรถไฟใต้ดินสาย 2 ตรงสู่หน้าประตูทางเข้างาน สะดวกและเลี่ยงการจราจรติดขัด",
+                note: "ใช้เวลาเพียง 15-20 นาทีจากใจกลางเมือง"
+              },
               {
-                highlight: "อาหารรัสเซีย",
-                detail: "ลิ้มลองอาหารรัสเซีย ซุปบอร์ช และขนมปังอบเนยร้อนๆ คลายหนาว"
+                time: "14:30",
+                type: "attraction",
+                badgeText: "Attraction Highlight",
+                title: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะ)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World",
+                desc: "ชมปราสาทน้ำแข็งแกะสลักยักษ์ระดับโลกสุดตระการตา สนุกกับสไลเดอร์น้ำแข็งยาวกว่า 500 เมตร และชิงช้าสวรรค์ยักษ์",
+                note: "ช่วงค่ำไฟประดับเปิดครบทุกจุด อลังการดั่งเมืองในเทพนิยาย"
               }
             ]
           },
           {
             dayNumber: 3,
-            vibe: "มุ่งหน้าสู่ลานสกี",
-            preview: "รถไฟความเร็วสูง Harbin - Yabuli • พักผ่อนในรีสอร์ท",
-            attractions: [
+            vibe: "มุ่งหน้าสู่ลานสกี Yabuli",
+            preview: "รถไฟความเร็วสูง Harbin - Yabuli • เช็คอินรีสอร์ท • วอร์มอัพสกี",
+            timeline: [
               {
-                name: "Yabuli Ski Resort (ลานสกียาบูลี่ / 亚布力滑雪场)",
-                desc: "ลานสกีระดับโลกที่ใหญ่ที่สุดในประเทศจีน มีสิ่งอำนวยความสะดวกครบครันและเส้นทางสกีทุกระดับ",
-                url: "https://goo.gl/maps/search/Yabuli+Ski+Resort"
-              }
-            ],
-            transport: [
+                time: "08:30",
+                type: "transport",
+                badgeText: "Bullet Train",
+                title: "นั่งรถไฟความเร็วสูง Harbin Station - Yabuli West Station",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Railway+Station",
+                desc: "นั่งรถไฟความเร็วสูง (High-speed train) จากสถานี Harbin Railway Station สู่ Yabuli West Station (ประมาณ 1 - 1.5 ชม.) แล้วต่อ Shuttle Bus เข้าสู่ที่พักในรีสอร์ท",
+                note: "ควรจองตั๋วรถไฟความเร็วสูงล่วงหน้าผ่าน Trip.com หรือ 12306"
+              },
               {
-                mode: "รถไฟความเร็วสูง + Shuttle Bus",
-                detail: "นั่งรถไฟความเร็วสูง (High-speed train) จาก Harbin Station - Yabuli West Station (ประมาณ 1.5 ชม.), ต่อ Shuttle bus เข้าที่พัก"
-              }
-            ],
-            food: [
+                time: "11:30",
+                type: "attraction",
+                badgeText: "Ski Resort",
+                title: "Yabuli Ski Resort (ลานสกียาบูลี่ / 亚布力滑雪场)",
+                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                desc: "ลานสกีระดับโลกที่ใหญ่ที่สุดในประเทศจีน มีสิ่งอำนวยความสะดวกครบครัน เส้นทางสกีมาตรฐานสากลทุกระดับความยาก",
+                note: "เช็คอินโรงแรมและติดต่อรับอุปกรณ์สกี / สโนว์บอร์ด"
+              },
               {
-                highlight: "ทานอาหารอุ่นๆ ในรีสอร์ทที่ Yabuli",
-                detail: "ทานอาหารอุ่นๆ ในรีสอร์ทที่ Yabuli เช่น บะหมี่ร้อน ข้าวหน้าเนื้อตุ๋น เติมพลังเตรียมเล่นสกี"
+                time: "12:30",
+                type: "food",
+                badgeText: "Lunch",
+                title: "ทานอาหารอุ่นๆ ในรีสอร์ทที่ Yabuli",
+                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                desc: "ทานอาหารอุ่นๆ ในรีสอร์ทที่ Yabuli เช่น ราเมนร้อนๆ ข้าวหน้าเนื้อตุ๋น หรือซุปเห็ดป่า เติมพลังเตรียมเล่นหิมะ",
+                note: "มีคาเฟ่และร้านอาหารกระจายอยู่ทั่วบริเวณคลับเฮาส์"
+              },
+              {
+                time: "14:00",
+                type: "attraction",
+                badgeText: "Activity",
+                title: "ซ้อมสโนว์บอร์ด & วอร์มอัพร่างกายช่วงบ่าย",
+                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                desc: "เริ่มเล่นสโนว์บอร์ดหรือสกีรอบบ่าย ปรับความคุ้นเคยกับเนินหิมะธรรมชาติและเช็คสภาพอุปกรณ์",
+                note: "มีโซนลานสกีสำหรับผู้เริ่มต้นพร้อมบันไดเลื่อนพรมวิเศษ (Magic Carpet)"
               }
             ]
           },
           {
             dayNumber: 4,
-            vibe: "สนุกสุดเหวี่ยงบนเนินหิมะ",
-            preview: "เล่น Snowboard เต็มวัน • หม้อไฟ Hot Pot คลายหนาว",
-            attractions: [
+            vibe: "สนุกสุดเหวี่ยงบนเนินหิมะเต็มวัน",
+            preview: "เล่น Snowboard เต็มวัน • เคเบิลคาร์ชมวิวเขา • หม้อไฟ Hot Pot",
+            timeline: [
               {
-                name: "เล่น Snowboard เต็มวันที่ Yabuli",
-                desc: "สนุกกับการเล่นสโนว์บอร์ดและสกีเต็มวันบนลานหิมะธรรมชาติคุณภาพสูง",
-                url: "https://goo.gl/maps/search/Yabuli+Ski+Resort"
-              }
-            ],
-            transport: [
+                time: "09:00",
+                type: "attraction",
+                badgeText: "Extreme Sport Highlight",
+                title: "เล่น Snowboard เต็มวันที่ Yabuli Ski Resort",
+                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                desc: "เล่นสโนว์บอร์ดและสกีเต็มวันบนลานหิมะธรรมชาติคุณภาพพรีเมียม ขึ้นกระเช้าลอยฟ้าชมวิวยอดเขาที่ปกคลุมด้วยหิมะขาวบริสุทธิ์แบบพาโนรามา",
+                note: "มีบริการครูฝึกสอนมืออาชีพสำหรับผู้ที่ต้องการเทคนิคขั้นสูง"
+              },
               {
-                mode: "เดิน หรือ Shuttle bus ภายในรีสอร์ท",
-                detail: "เดินทางสะดวกภายในพื้นที่ของสกีรีสอร์ทและโรงแรม"
-              }
-            ],
-            food: [
+                time: "12:30",
+                type: "food",
+                badgeText: "Lunch",
+                title: "พักรับประทานอาหารกลางวันและโกโก้ร้อนใน Ski Club",
+                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                desc: "พักคลายเมื่อยด้วยช็อกโกแลตร้อน ขนมปังปิ้ง และซุปกระดูกหมูอุ่นๆ ชมวิวนักสกีผ่านหน้าต่างกระจกบานใหญ่",
+                note: "พักผ่อนเพื่อเติมความอบอุ่นก่อนลุยต่อรอบบ่าย"
+              },
               {
-                highlight: "หม้อไฟ (Hot Pot)",
-                detail: "หม้อไฟ (Hot Pot) คลายหนาวหลังเล่นสกี เนื้อแกะและเนื้อวัวสไลซ์บาง จิ้มน้ำจิ้มงาเข้มข้น"
+                time: "14:00",
+                type: "attraction",
+                badgeText: "Activity",
+                title: "ลุยเนินหิมะต่อเนื่องรอบบ่าย & ถ่ายภาพแอคชั่น",
+                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                desc: "สนุกกับการเล่นสโนว์บอร์ดต่อเนื่องบนเส้นทางลาดชันปานกลาง พร้อมถ่ายภาพและวิดีโอแอคชั่นสุดเท่บนเนินหิมะ",
+                note: "ลานสกีจะเริ่มทยอยปิดช่วง 16:30 น. ก่อนแสงหมด"
+              },
+              {
+                time: "17:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินหรือ Shuttle Bus กลับโรงแรมที่พัก",
+                mapsUrl: null,
+                desc: "เดินหรือนั่ง Shuttle Bus ภายในรีสอร์ทกลับห้องพัก อาบน้ำอุ่นเพื่อผ่อนคลายกล้ามเนื้อ",
+                note: "โรงแรมในรีสอร์ทมีระบบทำความร้อนและห้องซาวน่า"
+              },
+              {
+                time: "18:30",
+                type: "food",
+                badgeText: "Dinner Highlight",
+                title: "หม้อไฟ (Hot Pot) คลายหนาวหลังเล่นสกี",
+                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                desc: "หม้อไฟ (Hot Pot) คลายหนาวหลังเล่นสกี เนื้อแพะและเนื้อวัวสไลซ์บาง ลวกในน้ำซุปสมุนไพรร้อนกรุ่น จิ้มน้ำจิ้มงาเข้มข้น",
+                note: "เมนูฟินที่สุดหลังจากการออกกำลังกายบนหิมะมาทั้งวัน"
               }
             ]
           },
           {
             dayNumber: 5,
             vibe: "กลับสู่ฮาร์บิน & ชมแม่น้ำเยือกแข็ง",
-            preview: "รถไฟความเร็วสูงกลับ Harbin • Songhua River • เถี่ยกัวตุ้น",
-            attractions: [
+            preview: "รถไฟความเร็วสูงกลับ Harbin • เถี่ยกัวตุ้น • Songhua River",
+            timeline: [
               {
-                name: "กลับเข้า Harbin, เดินเล่น Songhua River",
-                desc: "เดินทางกลับเข้าสู่ฮาร์บิน เดินเล่นบนผืนน้ำแข็งแม่น้ำซงฮวา ชมพระอาทิตย์ตกดิน",
-                url: "https://goo.gl/maps/search/Songhua+River"
-              }
-            ],
-            transport: [
+                time: "09:30",
+                type: "transport",
+                badgeText: "Bullet Train",
+                title: "รถไฟความเร็วสูง Yabuli West - Harbin",
+                mapsUrl: null,
+                desc: "นั่งรถไฟความเร็วสูงจาก Yabuli West กลับเข้าสู่สถานี Harbin Railway Station อย่างตรงเวลาและสะดวกสบาย",
+                note: "ใช้เวลาเดินทางเพียง 1 ชั่วโมง 15 นาที"
+              },
               {
-                mode: "รถไฟความเร็วสูง Yabuli - Harbin",
-                detail: "นั่งรถไฟความเร็วสูง Yabuli West - Harbin กลับเข้าสู่ตัวเมืองฮาร์บินอย่างรวดเร็ว"
-              }
-            ],
-            food: [
+                time: "11:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เช็คอินโรงแรมในฮาร์บินและเก็บสัมภาระ",
+                mapsUrl: null,
+                desc: "เดินทางเข้าโรงแรมที่พักย่านใจกลางเมือง Daoli District เพื่อเก็บกระเป๋า",
+                note: "เตรียมตัวสำหรับมื้อกลางวันและกิจกรรมรอบบ่าย"
+              },
               {
-                highlight: "เถี่ยกัวตุ้น (สตูว์กระทะเหล็ก)",
-                detail: "เถี่ยกัวตุ้น (สตูว์กระทะเหล็ก) อาหารอีสานจานเด็ดไซส์ยักษ์ ทานร้อนๆ ฉลองจบทริปสกี"
+                time: "12:15",
+                type: "food",
+                badgeText: "Lunch",
+                title: "เถี่ยกัวตุ้น (สตูว์กระทะเหล็ก)",
+                mapsUrl: "https://goo.gl/maps/search/Tie+Guo+Dun+Harbin",
+                desc: "เถี่ยกัวตุ้น (สตูว์กระทะเหล็ก) อาหารอีสานจานเด็ดไซส์ยักษ์ ทานร้อนๆ ฉลองความสำเร็จจบทริปสกี",
+                note: "ซุปเข้มข้นตุ๋นเนื้อเปื่อยนุ่มพร้อมแผ่นแป้งข้าวโพดกรอบนอกนุ่มใน"
+              },
+              {
+                time: "14:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "กลับเข้า Harbin, เดินเล่น Songhua River (แม่น้ำซงฮวา)",
+                mapsUrl: "https://goo.gl/maps/search/Songhua+River",
+                desc: "กลับเข้าสู่ Harbin เดินเล่นบนผืนน้ำแข็งแม่น้ำซงฮวา ชมพระอาทิตย์ตกดินเหนือแม่น้ำเยือกแข็งอันกว้างใหญ่",
+                note: "ช่วง 16:00 แสงเย็นสีส้มสะท้อนกับผิวน้ำแข็งสวยงามมาก"
+              },
+              {
+                time: "18:00",
+                type: "food",
+                badgeText: "Dinner",
+                title: "เกี๊ยวร้อนๆ และอาหารว่างย่าน Daoli",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                desc: "ทานอาหารค่ำสบายๆ เดินเล่นซื้อของฝากบนถนนคนเดินจงยางก่อนวันเดินทางกลับ",
+                note: "พักผ่อนเติมพลังหลังจากลุยสกีมาหลายวัน"
               }
             ]
           },
           {
             dayNumber: 6,
             vibe: "เดินทางกลับ",
-            preview: "เช็คเอาท์ • HRB - BKK",
-            attractions: [
+            preview: "เช็คเอาท์ • Taxi สนามบิน HRB • HRB - BKK",
+            timeline: [
               {
-                name: "เดินทางสู่สนามบินฮาร์บินไท่ผิง",
-                desc: "เดินทางสู่สนามบินเตรียมตัวบินกลับกรุงเทพฯ",
-                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street"
-              }
-            ],
-            transport: [
+                time: "09:00",
+                type: "attraction",
+                badgeText: "Sightseeing",
+                title: "Zhongyang Pedestrian Street (เดินเล่นรอบเช้า)",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                desc: "แวะถ่ายรูปเก็บตกบรรยากาศเมืองและซื้อของฝากชิ้นสุดท้าย",
+                note: "บรรยากาศยามเช้าเงียบสงบ เหมาะแก่การถ่ายรูปมุมกว้าง"
+              },
               {
-                mode: "Taxi / Shuttle Bus สู่สนามบิน HRB",
-                detail: "เช็คเอาท์, HRB - BKK เดินทางกลับโดยสวัสดิภาพ"
-              }
-            ],
-            food: [
+                time: "11:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เช็คเอาท์, HRB - BKK นั่ง Taxi ไปสนามบิน",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Taiping+International+Airport",
+                desc: "เช็คเอาท์จากที่พัก นั่งรถ Taxi หรือ Airport Bus ไปยังสนามบินนานาชาติไท่ผิง (HRB)",
+                note: "เผื่อเวลาเดินทางไปสนามบินประมาณ 1 ชั่วโมง"
+              },
               {
-                highlight: "อาหารว่างก่อนขึ้นเครื่อง",
-                detail: "ชิมชาร้อนและของว่างที่สนามบิน"
+                time: "13:00",
+                type: "food",
+                badgeText: "Airport Meal",
+                title: "ของว่างและอาหารสนามบิน",
+                mapsUrl: null,
+                desc: "จิบชาร้อนและรับประทานของว่างที่สนามบินก่อนขึ้นเครื่องบิน",
+                note: "เตรียมตัวขึ้นเครื่องเดินทางกลับประเทศไทย"
+              },
+              {
+                time: "15:00",
+                type: "transport",
+                badgeText: "Flight",
+                title: "ออกเดินทางบินตรง HRB - BKK",
+                mapsUrl: null,
+                desc: "บินกลับสู่กรุงเทพมหานครโดยสวัสดิภาพ จบทริปสโนว์บอร์ดและเมืองน้ำแข็งสุดประทับใจ",
+                note: "ปลอดภัยและเต็มอิ่มกับประสบการณ์หิมะระดับโลก"
               }
             ]
           }
@@ -1601,159 +2052,281 @@
 
       opt3: {
         title: "Option 3: Harbin + Mohe (Arctic Village) (6 Days)",
-        subtitle: "ทริปขั้วโลกเหนือแดนมังกร สัมผัสความหนาวสุดขั้ว -40°C และจุดเหนือสุดของจีน",
+        subtitle: "ตารางเวลาการผจญภัยสู่จุดเหนือสุดของแดนมังกร สัมผัสความหนาวขั้วโลก -40°C",
         days: [
           {
             dayNumber: 1,
-            vibe: "เริ่มต้นทริป & เช็คอินฮาร์บิน",
-            preview: "Zhongyang Pedestrian Street • เตรียมพร้อมตะลุยขั้วโลก",
-            attractions: [
+            vibe: "เช็คอินฮาร์บิน & ซึมซับบรรยากาศ",
+            preview: "สนามบิน HRB • Zhongyang Street • ปรับตัวเตรียมลุยขั้วโลก",
+            timeline: [
               {
-                name: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง)",
-                desc: "เดินเล่นชมบรรยกรรมสไตล์ยุโรป ซื้ออุปกรณ์กันหนาวเพิ่มเติม",
-                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street"
-              }
-            ],
-            transport: [
+                time: "14:00",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินทางจากสนามบิน HRB เข้าที่พักในฮาร์บิน",
+                mapsUrl: null,
+                desc: "Airport Bus หรือ Taxi เข้าสู่ที่พักในฮาร์บิน เช็คอินและเตรียมเสื้อผ้ากันหนาวขั้นสูงสุด",
+                note: "ที่โม่เหออุณหภูมิอาจแตะ -40°C จึงต้องเตรียมอุปกรณ์ให้พร้อมตั้งแต่วันแรก"
+              },
               {
-                mode: "Airport Bus / Taxi",
-                detail: "Airport Bus/Taxi เข้าสู่ที่พักในฮาร์บิน"
-              }
-            ],
-            food: [
+                time: "16:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง)",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                desc: "เดินเล่นชมสถาปัตยกรรมยุโรป ซื้ออุปกรณ์กันหนาวเพิ่มเติม เช่น แผ่นร้อนแปะเท้า ถุงมือกันลม และหมวกไหมพรมหนา",
+                note: "บนถนนจงยางมีร้านจำหน่ายอุปกรณ์เอาท์ดอร์ฤดูหนาวครบครัน"
+              },
               {
-                highlight: "อาหารท้องถิ่นตงเป่ย",
-                detail: "ทานอาหารจีนอุ่นๆ เพื่อปรับตัวกับสภาพอากาศ"
+                time: "18:30",
+                type: "food",
+                badgeText: "Dinner",
+                title: "อาหารท้องถิ่นตงเปื่อุ่นๆ (Dongbei Food)",
+                mapsUrl: "https://goo.gl/maps/search/Dongbei+Cuisine+Harbin",
+                desc: "ทานอาหารจีนอุ่นๆ เพื่อปรับตัวกับสภาพอากาศ เช่น บะหมี่ร้อน เกี๊ยวต้ม หรือข้าวอบหม้อดิน",
+                note: "พักผ่อนนอนเร็วเพื่อเตรียมตื่นเช้าบินสู่เมืองโม่เหอ"
               }
             ]
           },
           {
             dayNumber: 2,
             vibe: "มุ่งหน้าสู่จุดเหนือสุดของจีน",
-            preview: "บินภายใน HRB - Mohe • รถเช่าเหมาคัน • Beiji Cun (Arctic Village)",
-            attractions: [
+            preview: "บิน HRB - Mohe • รถเช่าเหมาคัน • หมู่บ้าน Beiji Cun",
+            timeline: [
               {
-                name: "เดินทางไป Mohe & Beiji Cun (Arctic Village)",
-                desc: "เดินทางถึงเมืองโม่เหอ จุดเหนือสุดของประเทศจีน และเดินทางเข้าสู่หมู่บ้านเป่ยจี๋ชุน ดินแดนขั้วโลกเหนือแดนมังกร",
-                url: "https://goo.gl/maps/search/Beiji+Cun+Mohe"
-              }
-            ],
-            transport: [
+                time: "08:30",
+                type: "transport",
+                badgeText: "Domestic Flight",
+                title: "บินภายในประเทศ HRB - Mohe (OHE) ประมาณ 2 ชม.",
+                mapsUrl: "https://goo.gl/maps/search/Mohe+Gulian+Airport",
+                desc: "บินจาก Harbin (HRB) สู่ Mohe Gulian Airport (OHE) สนามบินที่อยู่เหนือสุดของจีน ใช้เวลาบินประมาณ 2 ชั่วโมง ชมวิวมุมสูงป่าสนหิมะไทกา",
+                note: "เมื่อก้าวลงจากเครื่องบินจะสัมผัสได้ถึงไอหนาวระดับขั้วโลกทันที"
+              },
               {
-                mode: "บิน HRB - Mohe (OHE) + รถเช่าเหมาคัน",
-                detail: "บินภายในประเทศ HRB - Mohe (OHE) ประมาณ 2 ชม., นั่งรถเช่าเหมาคันเข้า Beiji Cun (Arctic Village)"
-              }
-            ],
-            food: [
+                time: "11:30",
+                type: "transport",
+                badgeText: "Private Car",
+                title: "นั่งรถเช่าเหมาคันเข้า Beiji Cun (Arctic Village)",
+                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                desc: "นั่งรถเช่าเหมาคันพร้อมคนขับท้องถิ่นที่มีระบบทำความร้อน มุ่งหน้าเข้าสู่หมู่บ้านเป่ยจี๋ชุน (ใช้เวลาประมาณ 1.5 ชม.)",
+                note: "คนขับท้องถิ่นมีความชำนาญในการขับรถบนถนนน้ำแข็งและหิมะ"
+              },
               {
-                highlight: "อาหารท้องถิ่นตงเป่ยแท้ๆ ในหมู่บ้าน",
-                detail: "อาหารท้องถิ่นตงเป่ยแท้ๆ ในหมู่บ้านโม่เหอ ผัดผักป่าดอง ซุปกระดูกหมูมันฝรั่งร้อนๆ"
+                time: "13:30",
+                type: "attraction",
+                badgeText: "Attraction Highlight",
+                title: "เดินทางไป Mohe & Beiji Cun (Arctic Village / 北极村)",
+                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                desc: "เดินทางถึงหมู่บ้านเป่ยจี๋ชุน ดินแดนขั้วโลกเหนือแดนมังกร ชมบ้านไม้ท่อนซุงสไตล์รัสเซีย (Mukeden) ที่ปกคลุมด้วยหิมะหนาเหมือนบ้านขนมปังผิง",
+                note: "ที่นี่คือหมู่บ้านที่อยู่ทางตอนเหนือสุดของประเทศจีน ติดชายแดนรัสเซีย"
+              },
+              {
+                time: "14:30",
+                type: "food",
+                badgeText: "Lunch",
+                title: "อาหารท้องถิ่นตงเป่ยแท้ๆ ในหมู่บ้านโม่เหอ",
+                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                desc: "อาหารท้องถิ่นตงเป่ยแท้ๆ ในหมู่บ้าน ปรุงจากวัตถุดิบชาวบ้าน เช่น ผัดผักป่าดอง, ซุปกระดูกหมูมันฝรั่งร้อนๆ และไข่เจียวเห็ดป่า",
+                note: "รสชาติพื้นบ้านแท้ๆ ทานในห้องอุ่นด้วยเตาผิงคัง (Kang bed)"
+              },
+              {
+                time: "16:00",
+                type: "attraction",
+                badgeText: "Nightfall",
+                title: "ชมพระอาทิตย์ตกดินเหนือขั้วโลกแดนเหนือ",
+                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                desc: "ชมท้องฟ้ายามเย็นที่เริ่มมืดตั้งแต่ 16:00 น. ไฟในหมู่บ้านเริ่มเปิดสว่างส่องกระทบหิมะขาว อากาศลดฮวบลงอย่างรวดเร็ว",
+                note: "ช่วงกลางคืนสามารถออกมาดูดาวระยิบระยับเต็มท้องฟ้าได้ชัดเจนมาก"
               }
             ]
           },
           {
             dayNumber: 3,
             vibe: "สัมผัสความหนาวระดับขั้วโลก -40°C",
-            preview: "จุดเหนือสุดของจีน • Northernmost Post Office • ปลาย่างแม่น้ำเย็น",
-            attractions: [
+            preview: "สาดน้ำร้อนเป็นน้ำแข็ง • Northernmost Post Office • ชายแดนจีน-รัสเซีย • ปลาย่างแม่น้ำเย็น",
+            timeline: [
               {
-                name: "เที่ยวจุดเหนือสุดของจีน (China's Northernmost Point)",
-                desc: "ชมแลนด์มาร์กจุดเหนือสุดของประเทศจีน ริมฝั่งแม่น้ำเฮยหลงเจียง ชายแดนจีน-รัสเซีย ทดลองสาดน้ำร้อนกลายเป็นละอองน้ำแข็ง",
-                url: "https://goo.gl/maps/search/Beiji+Cun+Mohe"
+                time: "07:30",
+                type: "attraction",
+                badgeText: "Iconic Experience",
+                title: "สาดน้ำร้อนกลายเป็นละอองน้ำแข็ง (Splash Water Freeze ท้าความหนาว -40°C)",
+                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                desc: "สัมผัสประสบการณ์ไฮไลท์ระดับตำนาน: ตักน้ำร้อนเดือดใส่กระติกแล้วสาดขึ้นสู่อากาศ น้ำร้อนจะกลายเป็นเกล็ดน้ำแข็งรูปพัดฟุ้งกระจายในเสี้ยววินาที",
+                note: "ต้องทำในอุณหภูมิติดลบ 30 ถึง 40 องศาเซลเซียสเท่านั้น ถ่ายวิดีโอสโลว์โมชั่นสวยมาก"
               },
               {
-                name: "Northernmost Post Office (ที่ทำการไปรษณีย์เหนือสุดของจีน)",
-                desc: "Northernmost Post Office (ส่งโปสการ์ด) ส่งโปสการ์ดพร้อมประทับตราที่ทำการไปรษณีย์เหนือสุดแดนมังกรเป็นที่ระลึก",
-                url: "https://goo.gl/maps/search/Northernmost+Post+Office+China"
-              }
-            ],
-            transport: [
+                time: "09:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Northernmost Post Office (ที่ทำการไปรษณีย์เหนือสุดของจีน / 最北邮政局)",
+                mapsUrl: "https://goo.gl/maps/search/Northernmost+Post+Office+China",
+                desc: "Northernmost Post Office (ส่งโปสการ์ด) ส่งโปสการ์ดพร้อมประทับตราประจำวันที่ทำการไปรษณีย์เหนือสุดแดนมังกรส่งกลับมาเป็นที่ระลึกที่บ้าน",
+                note: "มีโปสการ์ดและแสตมป์ลายพิเศษของหมู่บ้านเป่ยจี๋ชุนจำหน่าย"
+              },
               {
-                mode: "รถเช่าเหมาคันพาทัวร์ในหมู่บ้าน",
-                detail: "รถเช่าเหมาคันพาทัวร์ในหมู่บ้าน พร้อมระบบทำความร้อนตลอดการเดินทาง"
-              }
-            ],
-            food: [
+                time: "11:00",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "เที่ยวจุดเหนือสุดของจีน & แม่น้ำเฮยหลงเจียง (China's Northernmost Point)",
+                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                desc: "เที่ยวจุดเหนือสุดของจีน ถ่ายรูปคู่เสาหลักเขตแดนเหนือสุด ริมฝั่งแม่น้ำเฮยหลงเจียง (Amur River) ซึ่งฝั่งตรงข้ามคือผืนแผ่นดินประเทศรัสเซีย",
+                note: "ยืนมองเห็นหมู่บ้านฝั่งรัสเซียได้อย่างชัดเจน"
+              },
               {
-                highlight: "ปลาย่างหรือสตูว์ร้อนๆ สู้ความหนาว -40 องศา",
-                detail: "ปลาย่างหรือสตูว์ร้อนๆ สู้ความหนาว -40 องศา ปรุงจากปลาแม่น้ำเย็นเนื้อหวานสด"
+                time: "12:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "รถเช่าเหมาคันพาทัวร์ในหมู่บ้าน",
+                mapsUrl: null,
+                desc: "รถเช่าเหมาคันพาทัวร์ในหมู่บ้าน พร้อมระบบทำความร้อนตลอดการเดินทาง สะดวกและอุ่นสบาย",
+                note: "ไม่แนะนำให้เดินเท้าระยะไกลเนื่องจากความหนาวเย็นสุดขีด"
+              },
+              {
+                time: "13:00",
+                type: "food",
+                badgeText: "Lunch Highlight",
+                title: "ปลาย่างหรือสตูว์ร้อนๆ สู้ความหนาว -40 องศา",
+                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                desc: "ปลาย่างหรือสตูว์ร้อนๆ สู้ความหนาว -40 องศา ลิ้มลองปลาแม่น้ำเฮยหลงเจียงเนื้อหวานแน่น ต้มในหม้อซุปร้อนๆ กลิ่นหอมสมุนไพร",
+                note: "ปลาแม่น้ำเย็นมีไขมันดีและเนื้อสัมผัสสดหวานเป็นเอกลักษณ์"
               }
             ]
           },
           {
             dayNumber: 4,
             vibe: "บินกลับสู่ฮาร์บิน",
-            preview: "รถเช่าสู่สนามบิน • บิน Mohe - Harbin • พักผ่อนในเมือง",
-            attractions: [
+            preview: "รถเช่าไปสนามบิน • บิน Mohe - Harbin • พักผ่อน Daoli • บาร์บีคิวตงเป่ย",
+            timeline: [
               {
-                name: "บินกลับ Harbin & พักผ่อนย่านตัวเมือง",
-                desc: "เดินทางกลับสู่ฮาร์บิน เตรียมตัวสำหรับเทศกาลน้ำแข็งระดับโลกในวันถัดไป",
-                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street"
-              }
-            ],
-            transport: [
+                time: "08:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "รถเช่าไปสนามบิน Mohe (OHE)",
+                mapsUrl: "https://goo.gl/maps/search/Mohe+Gulian+Airport",
+                desc: "นั่งรถเช่าเดินทางออกจากหมู่บ้านเป่ยจี๋ชุน มุ่งหน้าสู่สนามบิน Mohe Gulian Airport",
+                note: "ชมวิวทิวทัศน์ป่าสนไทกาขาวโพลนสองข้างทางส่งท้าย"
+              },
               {
-                mode: "รถเช่าไปสนามบิน + บิน Mohe - Harbin",
-                detail: "รถเช่าไปสนามบิน, บิน Mohe - Harbin (HRB) และเดินทางเข้าโรงแรมที่พัก"
-              }
-            ],
-            food: [
+                time: "11:00",
+                type: "transport",
+                badgeText: "Domestic Flight",
+                title: "บิน Mohe (OHE) - Harbin (HRB)",
+                mapsUrl: null,
+                desc: "บินกลับ Harbin ด้วยเที่ยวบินภายในประเทศ ใช้เวลาประมาณ 2 ชั่วโมง เดินทางกลับสู่เมืองหลวงแห่งน้ำแข็ง",
+                note: "เดินทางถึงสนามบินไท่ผิงฮาร์บินช่วงบ่าย"
+              },
               {
-                highlight: "พักผ่อนและทานอาหารใกล้ที่พักใน Harbin",
-                detail: "พักผ่อนและทานอาหารใกล้ที่พักใน Harbin เช่น บาร์บีคิวปิ้งย่างตงเป่ย หรือเกี๊ยวต้มร้อนๆ"
+                time: "14:00",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เดินทางเข้าโรงแรมที่พักในฮาร์บิน",
+                mapsUrl: null,
+                desc: "นั่ง Taxi หรือ Airport Bus เข้าเช็คอินโรงแรมที่พักในย่าน Daoli District เพื่อเตรียมเที่ยวต่อ",
+                note: "เก็บกระเป๋าและพักผ่อนในห้องพักอุ่นๆ"
+              },
+              {
+                time: "15:30",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "Zhongyang Pedestrian Street (เดินเล่นผ่อนคลายในเมือง)",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                desc: "เดินเล่นผ่อนคลายในตัวเมืองฮาร์บิน ช้อปปิ้งและสัมผัสบรรยากาศความคึกคักหลังกลับจากหมู่บ้านขั้วโลก",
+                note: "จิบชาร้อนหรือกาแฟในคาเฟ่สไตล์รัสเซีย"
+              },
+              {
+                time: "18:00",
+                type: "food",
+                badgeText: "Dinner",
+                title: "พักผ่อนและทานอาหารใกล้ที่พักใน Harbin",
+                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                desc: "พักผ่อนและทานอาหารใกล้ที่พักใน Harbin เช่น บาร์บีคิวปิ้งย่างตงเป่ย หรือเกี๊ยวต้มร้อนๆ อิ่มอร่อยสบายๆ",
+                note: "เติมพลังเพื่อเตรียมตัวชมไฮไลท์ปราสาทน้ำแข็งระดับโลกในวันถัดไป"
               }
             ]
           },
           {
             dayNumber: 5,
             vibe: "ไฮไลท์ระดับโลกในฮาร์บิน",
-            preview: "St. Sophia Cathedral • Harbin Ice and Snow World • เถี่ยกัวตุ้น",
-            attractions: [
+            preview: "St. Sophia • เถี่ยกัวตุ้น • Metro Line 2 • Harbin Ice and Snow World",
+            timeline: [
               {
-                name: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย)",
-                desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์สถาปัตยกรรมรัสเซียอันงดงาม",
-                url: "https://goo.gl/maps/search/St.+Sophia+Cathedral"
+                time: "09:00",
+                type: "attraction",
+                badgeText: "Attraction",
+                title: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย)",
+                mapsUrl: "https://goo.gl/maps/search/St.+Sophia+Cathedral",
+                desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์สถาปัตยกรรมรัสเซียอันงดงาม ถ่ายภาพมรดกทางประวัติศาสตร์คู่กับหิมะขาว",
+                note: "แสงแดดยามเช้าส่องกระทบยอดโดมสวยงามมาก"
               },
               {
-                name: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะ)",
-                desc: "สัมผัสความยิ่งใหญ่ตระการตาของปราสาทน้ำแข็งแกะสลักยักษ์ระดับโลก",
-                url: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World"
-              }
-            ],
-            transport: [
+                time: "12:00",
+                type: "food",
+                badgeText: "Lunch",
+                title: "เถี่ยกัวตุ้น (Tie Guo Dun - สตูว์กระทะเหล็กยักษ์)",
+                mapsUrl: "https://goo.gl/maps/search/Tie+Guo+Dun+Harbin",
+                desc: "เถี่ยกัวตุ้น สตูว์กระทะเหล็กไซส์ยักษ์เมนูยอดฮิต ตุ๋นซี่โครงหมูและผักพร้อมแป้งข้าวโพดแปะขอบกระทะ",
+                note: "มื้อกลางวันอิ่มอร่อยเต็มพิกัดก่อนไปลุยงานน้ำแข็ง"
+              },
               {
-                mode: "Metro Line 2",
-                detail: "เดินทางด้วยรถไฟใต้ดิน Metro Line 2 สะดวกรวดเร็ว ตรงสู่ Ice and Snow World"
-              }
-            ],
-            food: [
+                time: "14:00",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "นั่ง Metro Line 2 สู่ Ice and Snow World",
+                mapsUrl: null,
+                desc: "เดินทางด้วยรถไฟใต้ดิน Metro Line 2 สะดวกรวดเร็ว ตรงสู่สถานี Ice and Snow World",
+                note: "เดินทางรวดเร็ว เลี่ยงปัญหารถติดบนสะพาน"
+              },
               {
-                highlight: "เถี่ยกัวตุ้น (Tie Guo Dun)",
-                detail: "เถี่ยกัวตุ้น สตูว์กระทะเหล็กไซส์ยักษ์เมนูยอดฮิต ปิดท้ายทริปสุดประทับใจ"
+                time: "14:30",
+                type: "attraction",
+                badgeText: "Attraction Highlight",
+                title: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะ)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World",
+                desc: "สัมผัสความยิ่งใหญ่ตระการตาของปราสาทน้ำแข็งแกะสลักยักษ์ระดับโลก สนุกกับสไลเดอร์ยักษ์และแสงสีไฟ LED ยามค่ำคืน",
+                note: "ไฮไลท์ปิดท้ายทริปฮาร์บินอย่างยิ่งใหญ่และประทับใจไม่รู้ลืม"
               }
             ]
           },
           {
             dayNumber: 6,
-            vibe: "เดินทางกลับ",
-            preview: "เช็คเอาท์ • HRB - BKK",
-            attractions: [
+            vibe: "สิ้นสุดการเดินทางสุดประทับใจ",
+            preview: "เช็คเอาท์ • HRB - BKK บินกลับประเทศไทย",
+            timeline: [
               {
-                name: "สนามบินนานาชาติไท่ผิง (HRB)",
-                desc: "เดินทางถึงสนามบินเตรียมตัวเดินทางกลับสู่กรุงเทพฯ",
-                url: "https://goo.gl/maps/search/Harbin+Taiping+International+Airport"
-              }
-            ],
-            transport: [
+                time: "09:00",
+                type: "attraction",
+                badgeText: "Airport Sight",
+                title: "สนามบินนานาชาติไท่ผิง (HRB)",
+                mapsUrl: "https://goo.gl/maps/search/Harbin+Taiping+International+Airport",
+                desc: "เดินทางถึงสนามบินเตรียมตัวเช็คอินและโหลดสัมภาระ",
+                note: "เผื่อเวลาเช็คอินอย่างน้อย 2.5 ชั่วโมง"
+              },
               {
-                mode: "HRB - BKK",
-                detail: "เช็คเอาท์, HRB - BKK เดินทางกลับประเทศไทยโดยสวัสดิภาพ"
-              }
-            ],
-            food: [
+                time: "11:30",
+                type: "transport",
+                badgeText: "Transportation",
+                title: "เช็คเอาท์, HRB - BKK นั่ง Taxi ไปสนามบิน",
+                mapsUrl: null,
+                desc: "เช็คเอาท์และเดินทางไปสนามบินเพื่อบินกลับ HRB - BKK เดินทางกลับโดยสวัสดิภาพ",
+                note: "สิ้นสุดทริปขั้วโลกเหนือแดนมังกรอย่างสมบูรณ์แบบ"
+              },
               {
-                highlight: "อาหารว่างก่อนขึ้นเครื่อง",
-                detail: "รับประทานของว่างและเครื่องดื่มอุ่นๆ ที่สนามบิน"
+                time: "12:30",
+                type: "food",
+                badgeText: "Airport Snack",
+                title: "อาหารว่างและเครื่องดื่มอุ่นๆ ก่อนขึ้นเครื่อง",
+                mapsUrl: null,
+                desc: "ชิมกาแฟอุ่นๆ และของว่างที่สนามบินก่อนขึ้นเครื่องบิน",
+                note: "พักผ่อนสบายๆ รอเวลาบอร์ดดิ้ง"
+              },
+              {
+                time: "14:30",
+                type: "transport",
+                badgeText: "Flight",
+                title: "เดินทางกลับสู่กรุงเทพมหานคร (BKK)",
+                mapsUrl: null,
+                desc: "ออกเดินทางบินตรงกลับสู่ประเทศไทยพร้อมความทรงจำสุดเอ็กซ์ตรีมแห่งขั้วโลกเหนือ",
+                note: "ถึงกรุงเทพฯ โดยสวัสดิภาพ"
               }
             ]
           }
@@ -1762,150 +2335,160 @@
     };
 
     /* --------------------------------------------------------------------------
-       2. INTERACTIVITY & ACCORDION RENDERING
+       2. APPLICATION LOGIC & TIMELINE RENDERING
        -------------------------------------------------------------------------- */
     let currentOption = 'opt1';
     let searchQuery = '';
 
-    const accordionRoot = document.getElementById('accordion-root');
-    const tabButtons = document.querySelectorAll('.route-tab-card');
-    const currentRouteTitle = document.getElementById('current-route-title');
-    const currentRouteSub = document.getElementById('current-route-sub');
+    const accordionRoot = document.getElementById('day-accordion-root');
+    const tabButtons = document.querySelectorAll('.option-card-btn');
+    const activeRouteTitle = document.getElementById('active-route-title');
+    const activeRouteSubtitle = document.getElementById('active-route-subtitle');
     const btnExpandAll = document.getElementById('btn-expand-all');
     const btnCollapseAll = document.getElementById('btn-collapse-all');
-    const searchInput = document.getElementById('search-input');
+    const searchBox = document.getElementById('search-box');
     const btnPrint = document.getElementById('btn-print');
 
-    function renderAccordions() {
+    function renderItinerary() {
       const data = ITINERARY_DATA[currentOption];
       if (!data) return;
 
-      currentRouteTitle.textContent = data.title;
-      currentRouteSub.textContent = data.subtitle;
+      activeRouteTitle.textContent = data.title;
+      activeRouteSubtitle.textContent = data.subtitle;
 
       let html = '';
 
-      data.days.forEach((day, index) => {
-        // Search filter matching
+      data.days.forEach((day, dayIndex) => {
+        // Search filter matching across timeline entries
         const q = searchQuery.toLowerCase().trim();
-        let matchesSearch = true;
+        let matchedEntries = day.timeline;
+
         if (q) {
           const matchVibe = day.vibe && day.vibe.toLowerCase().includes(q);
           const matchPreview = day.preview && day.preview.toLowerCase().includes(q);
-          const matchAttr = day.attractions && day.attractions.some(a => a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q));
-          const matchFood = day.food && day.food.some(f => (f.highlight && f.highlight.toLowerCase().includes(q)) || (f.detail && f.detail.toLowerCase().includes(q)));
-          const matchTrans = day.transport && day.transport.some(t => (t.mode && t.mode.toLowerCase().includes(q)) || (t.detail && t.detail.toLowerCase().includes(q)));
-          matchesSearch = matchVibe || matchPreview || matchAttr || matchFood || matchTrans;
+
+          matchedEntries = day.timeline.filter(item => {
+            const mTitle = item.title && item.title.toLowerCase().includes(q);
+            const mDesc = item.desc && item.desc.toLowerCase().includes(q);
+            const mBadge = item.badgeText && item.badgeText.toLowerCase().includes(q);
+            return mTitle || mDesc || mBadge || matchVibe || matchPreview;
+          });
+
+          if (matchedEntries.length === 0 && !matchVibe && !matchPreview) {
+            return; // Skip day if no match
+          }
+          if (matchedEntries.length === 0 && (matchVibe || matchPreview)) {
+            matchedEntries = day.timeline; // Show all if day title matched
+          }
         }
 
-        if (!matchesSearch) return;
-
-        // Default open the first day, or open all if searching
-        const isOpen = searchQuery ? true : (index === 0);
+        // Open first day by default, or open all if searching
+        const isOpen = searchQuery ? true : (dayIndex === 0);
 
         html += `
-          <div class="acc-item ${isOpen ? 'active' : ''}" data-day-index="${index}">
-            <div class="acc-header" role="button" tabindex="0" aria-expanded="${isOpen}">
-              <div class="acc-day-info">
-                <div class="day-num-tag">
+          <div class="day-acc-item ${isOpen ? 'active' : ''}" data-day-index="${dayIndex}">
+            <!-- Accordion Header -->
+            <div class="day-acc-header" role="button" tabindex="0" aria-expanded="${isOpen}">
+              <div class="day-meta-group">
+                <div class="day-number-badge">
                   <i class="fa-solid fa-calendar-day"></i>
                   <span>DAY 0${day.dayNumber}</span>
                 </div>
-                <div class="day-title-wrap">
-                  <span class="day-vibe-name">
-                    <i class="fa-solid fa-sparkles" style="color: var(--frost-cyan); font-size: 0.8rem;"></i>
-                    ${day.vibe || 'กิจกรรมประจำวัน'}
+                <div class="day-title-info">
+                  <span class="day-vibe-title">
+                    <i class="fa-solid fa-sparkles" style="color: var(--color-attraction); font-size: 0.85rem;"></i>
+                    ${day.vibe}
                   </span>
-                  <span class="day-quick-summary">${day.preview || ''}</span>
+                  <span class="day-summary-text">${day.preview}</span>
                 </div>
               </div>
 
-              <div class="acc-chevron" aria-label="Toggle Details">
+              <div class="day-acc-arrow" aria-label="Toggle Details">
                 <i class="fa-solid fa-chevron-down"></i>
               </div>
             </div>
 
-            <div class="acc-body-wrapper" style="${isOpen ? 'max-height: 2500px;' : ''}">
-              <div class="acc-body-content">
+            <!-- Accordion Body: Timeline Track -->
+            <div class="day-acc-collapse" style="${isOpen ? 'max-height: 4000px;' : ''}">
+              <div class="day-acc-content">
 
-                ${day.vibe ? `
-                  <div class="vibe-callout-pill">
-                    <i class="fa-solid fa-snowflake"></i>
-                    <span><strong>Day Highlight:</strong> ${day.vibe}</span>
-                  </div>
-                ` : ''}
+                <div class="day-highlight-ribbon">
+                  <i class="fa-solid fa-clock"></i>
+                  <span><strong>ไฮไลท์และกำหนดการ:</strong> ${day.vibe} • ${day.preview}</span>
+                </div>
 
-                <div class="day-details-grid">
+                <!-- Timeline Layout -->
+                <div class="timeline-track">
+                  ${matchedEntries.map((item, entryIdx) => {
+                    let typeIcon = 'fa-map-location-dot';
+                    let categoryClass = 'attraction';
 
-                  <!-- Attractions Card -->
-                  <div class="card-column">
-                    <div class="col-header attractions-title">
-                      <i class="fa-solid fa-map-pin"></i>
-                      <span>สถานที่ท่องเที่ยว & ไฮไลท์</span>
-                    </div>
-                    <div class="items-list">
-                      ${day.attractions.map(att => `
-                        <div class="attraction-box">
-                          <div class="attraction-headline">
-                            <span class="attraction-title">
-                              <i class="fa-regular fa-snowflake" style="font-size: 0.72rem; color: var(--frost-cyan);"></i>
-                              ${att.name}
+                    if (item.type === 'food') {
+                      typeIcon = 'fa-utensils';
+                      categoryClass = 'food';
+                    } else if (item.type === 'transport') {
+                      typeIcon = 'fa-route';
+                      categoryClass = 'transport';
+                    }
+
+                    return `
+                      <div class="timeline-entry type-${item.type}">
+                        <!-- Node Dot -->
+                        <div class="timeline-dot"></div>
+
+                        <!-- Card Content -->
+                        <div class="timeline-card">
+                          <!-- Meta row: Time & Category -->
+                          <div class="timeline-meta-row">
+                            <div class="time-badge">
+                              <i class="fa-regular fa-clock"></i>
+                              <span>${item.time} น.</span>
+                            </div>
+
+                            <span class="category-badge ${categoryClass}">
+                              <i class="fa-solid ${typeIcon}"></i>
+                              <span>${item.badgeText}</span>
                             </span>
-                            ${att.url ? `
-                              <a href="${att.url}" target="_blank" rel="noopener noreferrer" class="maps-link-btn" title="คลิกเปิดพิกัดบน Google Maps">
-                                <i class="fa-solid fa-diamond-turn-right"></i>
-                                <span>Google Maps</span>
+                          </div>
+
+                          <!-- Prominent Title & Maps Action Row -->
+                          <div class="timeline-title-row">
+                            ${item.mapsUrl ? `
+                              <a href="${item.mapsUrl}" target="_blank" rel="noopener noreferrer" class="location-title-link" title="คลิกเพื่อเปิดดูพิกัดบน Google Maps ในแท็บใหม่">
+                                <i class="fa-solid ${typeIcon} title-icon"></i>
+                                <span>${item.title}</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.78rem; opacity: 0.85;"></i>
                               </a>
-                            ` : ''}
-                          </div>
-                          ${att.desc ? `<div class="attraction-notes">${att.desc}</div>` : ''}
-                        </div>
-                      `).join('')}
-                    </div>
-                  </div>
 
-                  <!-- Transportation Card -->
-                  <div class="card-column">
-                    <div class="col-header transport-title">
-                      <i class="fa-solid fa-van-shuttle"></i>
-                      <span>การเดินทาง & ขนส่ง</span>
-                    </div>
-                    <div class="items-list">
-                      ${day.transport.map(tr => `
-                        <div class="info-item-row">
-                          <i class="fa-solid fa-route transport-icon"></i>
-                          <div class="item-body">
-                            <strong>${tr.mode}</strong>
-                            <span>${tr.detail}</span>
+                              <a href="${item.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn-maps-action" title="เปิดตำแหน่งบน Google Maps">
+                                <i class="fa-solid fa-diamond-turn-right"></i>
+                                <span>เปิด Google Maps</span>
+                              </a>
+                            ` : `
+                              <div class="location-title-link">
+                                <i class="fa-solid ${typeIcon} title-icon"></i>
+                                <span>${item.title}</span>
+                              </div>
+                            `}
                           </div>
-                        </div>
-                      `).join('')}
-                    </div>
-                  </div>
 
-                  <!-- Food & Dining Card -->
-                  <div class="card-column">
-                    <div class="col-header food-title">
-                      <i class="fa-solid fa-utensils"></i>
-                      <span>อาหาร & เมนูเด็ดห้ามพลาด</span>
-                    </div>
-                    <div class="items-list">
-                      ${day.food && day.food.length > 0 ? day.food.map(fd => `
-                        <div class="info-item-row">
-                          <i class="fa-solid fa-bowl-hot food-icon"></i>
-                          <div class="item-body">
-                            <strong>${fd.highlight}</strong>
-                            <span>${fd.detail}</span>
+                          <!-- Description -->
+                          <div class="timeline-desc">
+                            ${item.desc}
                           </div>
-                        </div>
-                      `).join('') : `
-                        <div style="font-size: 0.84rem; color: var(--muted-text);">
-                          พักผ่อนและรับประทานอาหารตามอัธยาศัย
-                        </div>
-                      `}
-                    </div>
-                  </div>
 
+                          <!-- Subnote / Tip -->
+                          ${item.note ? `
+                            <div class="timeline-subnote">
+                              <i class="fa-solid fa-circle-info" style="color: var(--ice-300);"></i>
+                              <span><strong>Tip:</strong> ${item.note}</span>
+                            </div>
+                          ` : ''}
+
+                        </div>
+                      </div>
+                    `;
+                  }).join('')}
                 </div>
 
               </div>
@@ -1918,7 +2501,7 @@
         html = `
           <div style="text-align: center; padding: 3rem 1rem; color: var(--muted-text);">
             <i class="fa-solid fa-magnifying-glass" style="font-size: 2.5rem; color: var(--ice-400); margin-bottom: 1rem; display: block;"></i>
-            <h4 style="color: #ffffff; margin-bottom: 0.5rem;">ไม่พบข้อมูลที่ตรงกับคำค้นหา "${searchQuery}"</h4>
+            <h4 style="color: #ffffff; margin-bottom: 0.5rem;">ไม่พบกิจกรรมที่ตรงกับคำค้นหา "${searchQuery}"</h4>
             <p style="font-size: 0.9rem;">ลองค้นหาด้วยคำอื่น เช่น "โซเฟีย", "Metro", หรือ "สตูว์"</p>
           </div>
         `;
@@ -1929,11 +2512,11 @@
     }
 
     function bindAccordionEvents() {
-      const headers = accordionRoot.querySelectorAll('.acc-header');
+      const headers = accordionRoot.querySelectorAll('.day-acc-header');
       headers.forEach(header => {
         header.addEventListener('click', () => {
-          const item = header.closest('.acc-item');
-          const collapse = item.querySelector('.acc-body-wrapper');
+          const item = header.closest('.day-acc-item');
+          const collapse = item.querySelector('.day-acc-collapse');
           const isActive = item.classList.contains('active');
 
           if (isActive) {
@@ -1941,7 +2524,7 @@
             item.classList.remove('active');
             header.setAttribute('aria-expanded', 'false');
           } else {
-            collapse.style.maxHeight = (collapse.scrollHeight + 350) + 'px';
+            collapse.style.maxHeight = (collapse.scrollHeight + 400) + 'px';
             item.classList.add('active');
             header.setAttribute('aria-expanded', 'true');
           }
@@ -1960,27 +2543,27 @@
         btn.setAttribute('aria-selected', 'true');
 
         currentOption = btn.dataset.option;
-        renderAccordions();
+        renderItinerary();
       });
     });
 
     // Expand All / Collapse All Controls
     btnExpandAll.addEventListener('click', () => {
-      const items = accordionRoot.querySelectorAll('.acc-item');
+      const items = accordionRoot.querySelectorAll('.day-acc-item');
       items.forEach(item => {
-        const collapse = item.querySelector('.acc-body-wrapper');
-        const header = item.querySelector('.acc-header');
-        collapse.style.maxHeight = '2500px';
+        const collapse = item.querySelector('.day-acc-collapse');
+        const header = item.querySelector('.day-acc-header');
+        collapse.style.maxHeight = '4000px';
         item.classList.add('active');
         header.setAttribute('aria-expanded', 'true');
       });
     });
 
     btnCollapseAll.addEventListener('click', () => {
-      const items = accordionRoot.querySelectorAll('.acc-item');
+      const items = accordionRoot.querySelectorAll('.day-acc-item');
       items.forEach(item => {
-        const collapse = item.querySelector('.acc-body-wrapper');
-        const header = item.querySelector('.acc-header');
+        const collapse = item.querySelector('.day-acc-collapse');
+        const header = item.querySelector('.day-acc-header');
         collapse.style.maxHeight = '0px';
         item.classList.remove('active');
         header.setAttribute('aria-expanded', 'false');
@@ -1988,9 +2571,9 @@
     });
 
     // Search filter
-    searchInput.addEventListener('input', (e) => {
+    searchBox.addEventListener('input', (e) => {
       searchQuery = e.target.value;
-      renderAccordions();
+      renderItinerary();
     });
 
     // Print functionality
@@ -2023,7 +2606,7 @@
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * -canvas.height;
-        this.radius = Math.random() * 2.6 + 0.8;
+        this.radius = Math.random() * 2.5 + 0.8;
         this.density = Math.random() * 1 + 0.5;
         this.speedY = Math.random() * 1.2 + 0.5;
         this.speedX = Math.sin(Math.random() * Math.PI) * 0.4;
@@ -2073,13 +2656,13 @@
     const toggleSnowBtn = document.getElementById('toggle-snow-btn');
     toggleSnowBtn.addEventListener('click', () => {
       isSnowing = !isSnowing;
-      const btnText = toggleSnowBtn.querySelector('.btn-text');
+      const label = toggleSnowBtn.querySelector('.snow-btn-label');
       if (isSnowing) {
-        btnText.textContent = 'Snow: ON';
+        label.textContent = 'Snow: ON';
         toggleSnowBtn.style.color = 'var(--ice-100)';
         animateSnow();
       } else {
-        btnText.textContent = 'Snow: OFF';
+        label.textContent = 'Snow: OFF';
         toggleSnowBtn.style.color = 'var(--muted-text)';
         cancelAnimationFrame(animationFrameId);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -2087,7 +2670,7 @@
     });
 
     // Initial render on load
-    renderAccordions();
+    renderItinerary();
   </script>
 </body>
 </html>
