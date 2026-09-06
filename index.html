@@ -984,12 +984,13 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       transition: all var(--transition-fast);
+      cursor: pointer;
     }
 
     /* Attraction Title Link */
     .timeline-entry.type-attraction .location-title-link {
       color: #ffffff;
-      border-bottom: 2px solid rgba(0, 242, 254, 0.35);
+      border-bottom: 2px solid rgba(0, 242, 254, 0.45);
       padding-bottom: 2px;
     }
     .timeline-entry.type-attraction .location-title-link:hover {
@@ -1002,7 +1003,7 @@
     /* Food Title Link / Text */
     .timeline-entry.type-food .location-title-link {
       color: #ffffff;
-      border-bottom: 2px solid rgba(251, 146, 60, 0.35);
+      border-bottom: 2px solid rgba(251, 146, 60, 0.45);
       padding-bottom: 2px;
     }
     .timeline-entry.type-food .location-title-link:hover {
@@ -1042,6 +1043,7 @@
       transition: all var(--transition-fast);
       box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
       white-space: nowrap;
+      cursor: pointer;
     }
 
     .btn-maps-action:hover {
@@ -1472,7 +1474,8 @@
   <script>
     /* --------------------------------------------------------------------------
        1. COMPLETE TIMETABLE DATA (Categorized, Scheduled & Clickable Maps)
-       Categories: 'attraction' (Blue), 'food' (Orange), 'transport' (Purple)
+       All Google Maps URLs use the standard cross-platform format:
+       https://www.google.com/maps/search/?api=1&query=...
        -------------------------------------------------------------------------- */
     const ITINERARY_DATA = {
       opt1: {
@@ -1489,7 +1492,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เดินทางจากสนามบินไท่ผิง (HRB) เข้าสู่ที่พักย่าน Daoli",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "นั่ง <strong>Airport Shuttle Bus</strong> หรือเรียก <strong>Taxi / DiDi</strong> จากสนามบินนานาชาติไท่ผิง (HRB) เข้าสู่โรงแรมที่พักในย่าน Daoli District ใจกลางเมือง",
                 note: "แนะนำเลือกที่พักใกล้ถนนคนเดินจงยางเพื่อให้สะดวกต่อการเดินเที่ยวตลอดทริป"
               },
@@ -1498,7 +1501,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง / 中央大街)",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "เดินเล่นชมสถาปัตยกรรมสไตล์ยุโรปและรัสเซียอายุกว่าร้อยปี ปูด้วยหินแกรนิตทรงหลังเต่า ถ่ายรูปคู่โคมไฟระยิบระยับและประติมากรรมน้ำแข็งริมทางเดิน",
                 note: "ช่วงเวลาบ่ายแก่ๆ แสงแดดจะกระทบตึกสไตล์บาโรกสวยงามมาก"
               },
@@ -1507,7 +1510,7 @@
                 type: "food",
                 badgeText: "Food & Treat",
                 title: "ไอศกรีม Madieer (หม่าเตี๋ยเอ่อร์ - 马迭尔冰棍)",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Modern+Hotel+Zhongyang+Street+Harbin",
                 desc: "กินไอศกรีมแท่งรสคลาสสิกท้าความหนาวระดับติดลบกลางถนนคนเดิน เป็น Signature ประจำเมืองฮาร์บินที่ไม่ละลายในมือ",
                 note: "รสชาติต้นตำรับรสนมและวานิลลา หอมมันกลมกล่อม"
               },
@@ -1516,7 +1519,7 @@
                 type: "food",
                 badgeText: "Dinner",
                 title: "Dongfang Jiaozi Wang (ร้านราชาเกี๊ยวตงฟาง / 东方饺子王)",
-                mapsUrl: "https://goo.gl/maps/search/Dongfang+Jiaozi+Wang+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dongfang+Jiaozi+Wang+Harbin",
                 desc: "มื้อค่ำร้านราชาเกี๊ยวชื่อดัง ลิ้มลองเกี๊ยวต้มไส้หมู กุ่ยช่าย เนื้อ และเห็ดร้อนๆ เสิร์ฟพร้อมซุปและน้ำจิ้มจิ๊กโฉ่วผสมน้ำมันพริกเผ็ดหอม",
                 note: "เกี๊ยวทำสดใหม่ แป้งบางไส้แน่น ช่วยคลายหนาวได้ดีเยี่ยม"
               }
@@ -1532,7 +1535,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย / 圣索菲亚大教堂)",
-                mapsUrl: "https://goo.gl/maps/search/St.+Sophia+Cathedral+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=St.+Sophia+Cathedral+Harbin",
                 desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์สไตล์ไบแซนไทน์อันงดงาม มรดกสถาปัตยกรรมรัสเซีย ถ่ายรูปคู่ฝูงนกพิราบบินตัดกับยอดโดมหัวหอมสีเขียวและหิมะขาวโพลน",
                 note: "ช่วงเช้าแสงแดดส่องด้านหน้าโบสถ์ ถ่ายภาพบุคคลได้สวยที่สุด"
               },
@@ -1541,7 +1544,7 @@
                 type: "food",
                 badgeText: "Lunch",
                 title: "ร้านอาหารรัสเซีย Lucia หรือ Huamei Western Restaurant (华梅西餐厅)",
-                mapsUrl: "https://goo.gl/maps/search/Huamei+Western+Restaurant+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Huamei+Western+Restaurant+Harbin",
                 desc: "สัมผัสวัฒนธรรมอาหารรัสเซียต้นตำรับ ลิ้มลองซุปบีทรูทสีแดงสด (Borscht), ขนมปังรัสเซียทาเนย, สเต็กเนื้อ และไส้กรอกฮาร์บินรมควัน",
                 note: "ร้านตั้งอยู่ใกล้ถนนจงยาง เดินถึงได้ใน 5-10 นาที"
               },
@@ -1550,7 +1553,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เดินทางด้วยรถไฟใต้ดิน Metro Line 2 สู่ Ice and Snow World",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ice+and+Snow+World+Station+Harbin",
                 desc: "ขึ้นรถไฟใต้ดิน <strong>Metro Line 2</strong> จากสถานีในเมือง ตรงสู่สถานี <strong>Ice and Snow World Station</strong> สะดวก รวดเร็ว และไม่ต้องเสี่ยงกับปัญหารถติดบนสะพานข้ามแม่น้ำ",
                 note: "เลี่ยงการเรียกแท็กซี่ช่วง 16:00-18:00 เพราะการจราจรหนาแน่นมาก"
               },
@@ -1559,7 +1562,7 @@
                 type: "attraction",
                 badgeText: "Attraction Highlight",
                 title: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะฮาร์บิน / 哈尔滨冰雪大世界)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Ice+and+Snow+World",
                 desc: "ไฮไลท์อันดับ 1 ของโลก ชมปราสาทน้ำแข็งแกะสลักยักษ์ประดับไฟ LED หลากสียามค่ำคืน เล่นสไลเดอร์น้ำแข็งยักษ์ (Ice Slide) และขึ้นชิงช้าสวรรค์ชมวิวมุมสูง",
                 note: "แนะนำเข้าตั้งแต่บ่ายสองเพื่อถ่ายภาพกลางวัน แล้วอยู่ต่อจนถึงเวลาเปิดไฟช่วง 16:30 น."
               },
@@ -1568,7 +1571,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เดินทางกลับที่พักด้วย Metro Line 2",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "นั่งรถไฟใต้ดิน Metro Line 2 กลับสู่ย่าน Daoli District อย่างรวดเร็วและอุ่นสบาย",
                 note: "ควรเตรียมแผ่นร้อน (Warm Pad) ไว้สำหรับมือถือเพราะอุณหภูมิลานน้ำแข็งลดฮวบถึง -25°C"
               }
@@ -1584,7 +1587,7 @@
                 type: "food",
                 badgeText: "Breakfast Street Food",
                 title: "สตรีทฟู้ดตลาดเช้าหงจวน (Hongzhuan Street Food)",
-                mapsUrl: "https://goo.gl/maps/search/Hongzhuan+Morning+Market",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hongzhuan+Morning+Market+Harbin",
                 desc: "ลิ้มลองอาหารเช้าพื้นเมืองร้อนๆ ควันพวยพุ่ง ซาลาเปานึ่งไส้หมูสับ, ปาท่องโก๋ยักษ์ทอดกรอบ, น้ำเต้าหู้ร้อน และถังหูลู่ผลไม้เคลือบน้ำตาลแช่แข็งกรอบอร่อย",
                 note: "ตลาดเปิดตั้งแต่ 06:00 - 09:00 น. บรรยากาศคึกคักและเต็มไปด้วยไออุ่นวิถีชีวิตชาวฮาร์บิน"
               },
@@ -1593,7 +1596,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Hongzhuan Morning Market (ตลาดเช้าหงจวน / 红专早市)",
-                mapsUrl: "https://goo.gl/maps/search/Hongzhuan+Morning+Market",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hongzhuan+Morning+Market+Harbin",
                 desc: "เดินชมตลาดเช้ากลางแจ้งที่คึกคักที่สุดในฮาร์บิน แผงขายปลาแช่แข็งตั้งตรงเป็นแท่ง ผลไม้แช่แข็ง และผักสดท่ามกลางอุณหภูมิติดลบยี่สิบองศา",
                 note: "เดินเท้าจากที่พักย่าน Daoli ได้อย่างสะดวก"
               },
@@ -1602,7 +1605,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Songhua River (แม่น้ำซงฮวา / 松花江 - เดินเล่นลานน้ำแข็ง)",
-                mapsUrl: "https://goo.gl/maps/search/Songhua+River+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Songhua+River+Harbin",
                 desc: "เดินเล่นบนผืนแม่น้ำซงฮวาที่กลายเป็นแผ่นน้ำแข็งหนาทึบ สนุกกับกิจกรรมลากเลื่อนหิมะ สเก็ตน้ำแข็ง ม้าลากเลื่อน และสโนว์คาร์ท",
                 note: "เดินทะลุจากปลายถนนคนเดินจงยางสู่ริมแม่น้ำได้โดยตรง"
               },
@@ -1611,7 +1614,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Diamond Sea (ทะเลเพชรฮาร์บิน / 钻石海)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Diamond+Sea",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Diamond+Sea",
                 desc: "ชมและถ่ายรูปกับก้อนน้ำแข็งโปร่งแสงขนาดยักษ์ที่ถูกตัดขึ้นจากแม่น้ำซงฮวา วางเรียงรายริมฝั่งน้ำสะท้อนแสงแดดระยิบระยับประดุจทะเลเพชรกลางหิมะ",
                 note: "สวมรองเท้ากันลื่นเพื่อความปลอดภัยในการเดินบนแผ่นน้ำแข็ง"
               },
@@ -1620,7 +1623,7 @@
                 type: "food",
                 badgeText: "Dinner",
                 title: "ร้านปิ้งย่างบาร์บีคิวตงเป่ย (Dongbei BBQ / 东北烧烤)",
-                mapsUrl: "https://goo.gl/maps/search/Dongbei+BBQ+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dongbei+BBQ+Harbin",
                 desc: "ปิดท้ายวันด้วยบาร์บีคิวปิ้งย่างสไตล์อีสานจีน เนื้อแกะย่างโรยผงยี่หร่า, เอ็นเนื้อย่าง, ปีกไก่ย่าง และขนมปังปิ้งเนยน้ำตาลแสนอร่อย",
                 note: "จิบเบียร์ฮาร์บิน (Harbin Beer) เย็นฉ่ำคู่กับบาร์บีคิวร้อนๆ"
               }
@@ -1636,7 +1639,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Harbin Railway Station (สถานีรถไฟฮาร์บิน / 哈尔滨站)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Railway+Station",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Railway+Station",
                 desc: "ชมความโอ่อ่าของสถานีรถไฟสถาปัตยกรรมยุโรปคลาสสิกที่สวยงามที่สุดแห่งหนึ่งของจีน หลังคารูปโดมและหอนาฬิกาโบราณสะท้อนกลิ่นอายประวัติศาสตร์",
                 note: "สามารถเดินทางด้วย DiDi หรือ Metro Line 2"
               },
@@ -1645,7 +1648,7 @@
                 type: "food",
                 badgeText: "Lunch Highlight",
                 title: "เถี่ยกัวตุ้น (Tie Guo Dun - 铁锅炖 สตูว์กระทะเหล็กไซส์ยักษ์)",
-                mapsUrl: "https://goo.gl/maps/search/Tie+Guo+Dun+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Tie+Guo+Dun+Harbin",
                 desc: "ลองกิน เถี่ยกัวตุ้น สตูว์กระทะเหล็กไซส์ยักษ์ เมนูเด็ดอันดับ 1 ของภาคอีสานจีน ต้มซี่โครงหมู ห่าน หรือปลา พร้อมแป้งข้าวโพดแปะขอบกระทะหอมกรอบ",
                 note: "ทานร่วมกันรอบโต๊ะกระทะร้อน เพิ่มพลังความอบอุ่นสู้ความหนาว"
               },
@@ -1654,7 +1657,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เรียก Taxi หรือ DiDi สู่ Music Park",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Music+Park",
                 desc: "เรียก Taxi หรือ DiDi เพื่อความรวดเร็วและอุ่นสบายในการข้ามฝั่งแม่น้ำไปยังสวนดนตรี",
                 note: "แอป DiDi ใน Alipay ใช้งานง่ายและคำนวณราคาชัดเจน"
               },
@@ -1663,7 +1666,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Giant Snowman at Music Park (ตุ๊กตาหิมะยักษ์ สวนดนตรี / 音乐公园大雪人)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Music+Park",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Music+Park",
                 desc: "จุดเช็คอินยอดฮิตริมฝั่งแม่น้ำ ถ่ายรูปคู่กับสโนว์แมนไซส์ยักษ์สวมหมวกและผ้าพันคอสีแดงสดสุดน่ารัก",
                 note: "เตรียมมุมกล้องมุมกว้างเพื่อเก็บภาพตุ๊กตาหิมะคู่กับท้องฟ้าฤดูหนาว"
               },
@@ -1672,7 +1675,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Harbin Grand Theatre (โรงละครฮาร์บินแกรนด์เธียเตอร์ / 哈尔滨大剧院)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Grand+Theatre",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Grand+Theatre",
                 desc: "สถาปัตยกรรมล้ำสมัยระดับโลก รูปทรงเกลียวหิมะและน้ำแข็งโค้งมนกลมกลืนกับธรรมชาติ ถ่ายรูปสวยทั้งช่วงแสงทไวไลท์และยามเปิดไฟกลางคืน",
                 note: "ตัวอาคารเปิดให้เดินขึ้นบันไดวนภายนอกชมวิวมุมสูงได้"
               }
@@ -1688,7 +1691,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เหมา Taxi หรือเรียก DiDi มุ่งหน้าสู่ Volga Manor",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Volga+Manor+Harbin",
                 desc: "เดินทางออกจากตัวเมืองฮาร์บินสู่ Volga Manor ระยะทางประมาณ 30 กม. ใช้เวลาเดินทางประมาณ 50-60 นาที",
                 note: "แนะนำนัดหมายเวลากลับหรือเหมาคนขับไป-กลับล่วงหน้าเพื่อความสะดวก"
               },
@@ -1697,7 +1700,7 @@
                 type: "attraction",
                 badgeText: "Attraction Highlight",
                 title: "Volga Manor (คฤหาสน์วอลก้า / 伏尔加庄园)",
-                mapsUrl: "https://goo.gl/maps/search/Volga+Manor+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Volga+Manor+Harbin",
                 desc: "เดินชิลๆ ถ่ายรูปสไตล์ยุโรป ท่ามกลางหมู่บ้านรัสเซียจำลอง ปราสาทโบราณ โบสถ์ไม้เซนต์นิโคลัส และสะพานหิมะ ดั่งหลุดเข้าไปในเทพนิยายรัสเซีย",
                 note: "มีกิจกรรมเล่นสไลเดอร์หิมะจากยอดปราสาทและชิมวอดก้าในแก้วน้ำแข็ง"
               },
@@ -1706,7 +1709,7 @@
                 type: "food",
                 badgeText: "Lunch",
                 title: "อาหารกลางวันสไตล์รัสเซียที่ร้านอาหารใน Volga Manor",
-                mapsUrl: "https://goo.gl/maps/search/Volga+Manor+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Volga+Manor+Harbin",
                 desc: "ทานอาหารกลางวันสไตล์รัสเซียที่ร้านอาหารใน Volga Manor จิบไวน์อุ่น ขนมปังอบสด สเต็กเนื้อ และซุปบอร์ช ท่ามกลางวิวปราสาทหิมะ",
                 note: "บรรยากาศในร้านตกแต่งด้วยไม้และเตาผิงรัสเซียแท้ๆ"
               },
@@ -1715,7 +1718,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เดินทางกลับเข้าสู่ตัวเมืองฮาร์บิน",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "นั่งรถ Taxi/DiDi เดินทางกลับเข้าสู่ย่าน Daoli District พักผ่อนและเตรียมตัวสำหรับมื้อค่ำ",
                 note: "ใช้เวลาประมาณ 1 ชั่วโมงในการเดินทางกลับ"
               },
@@ -1724,7 +1727,7 @@
                 type: "food",
                 badgeText: "Dinner",
                 title: "ชาบูหม้อไฟทองแดงตงเป่ย (Copper Pot Hot Pot)",
-                mapsUrl: "https://goo.gl/maps/search/Hot+Pot+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Hot+Pot+Harbin",
                 desc: "ล้อมวงกินหม้อไฟทองแดงแบบดั้งเดิม ลวกเนื้อแกะสไลซ์นุ่มๆ จิ้มน้ำจิ้มถั่วลิสงและงาเข้มข้น คลายความเหนื่อยล้าหลังกลับจากนอกเมือง",
                 note: "น้ำซุปใสกลมกล่อมช่วยชูรสชาติของเนื้อแกะชั้นดี"
               }
@@ -1740,7 +1743,7 @@
                 type: "attraction",
                 badgeText: "Souvenirs & Shopping",
                 title: "ซื้อของฝากย่านถนนคนเดินก่อนกลับ (Harbin Souvenirs / 中央大街)",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "เดินเล่นช้อปปิ้งของฝากยอดนิยม: ไส้กรอกแดงฮาร์บิน (Harbin Red Sausage), ช็อกโกแลตรัสเซีย, ชาตงเป่ย และตุ๊กตาแม่ลูกดก",
                 note: "ร้าน Churin (ชิวหลิน) บนถนนจงยางเป็นร้านของฝากเก่าแก่ที่สุด"
               },
@@ -1749,7 +1752,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เช็คเอาท์จากที่พัก นั่ง Taxi/DiDi ไปสนามบินไท่ผิง (HRB)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Taiping+International+Airport",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "เช็คเอาท์จากโรงแรม นั่ง Taxi หรือ Airport Shuttle Bus ไปยังสนามบิน Harbin Taiping International Airport (HRB) ใช้เวลาประมาณ 45-60 นาที",
                 note: "เผื่อเวลาเช็คอินและโหลดสัมภาระอย่างน้อย 2.5 - 3 ชั่วโมงก่อนเวลาเครื่องออก"
               },
@@ -1758,7 +1761,7 @@
                 type: "food",
                 badgeText: "Airport Meal",
                 title: "รับประทานอาหารอุ่นๆ ก่อนขึ้นเครื่องบิน",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "ทานเกี๊ยวน้ำร้อนๆ หรือบะหมี่เนื้ออุ่นสบายท้องภายในอาคารผู้โดยสารสนามบิน",
                 note: "จิบชาร้อนเติมความอบอุ่นก่อนเดินทาง"
               },
@@ -1790,7 +1793,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เดินทางจากสนามบิน HRB เข้าที่พักตัวเมืองฮาร์บิน",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "ขึ้น Airport Bus หรือ Taxi ไปยังที่พักใจกลางเมืองฮาร์บิน เช็คอินและเก็บสัมภาระ",
                 note: "เตรียมเสื้อผ้าอุ่นหนาสำหรับกิจกรรมลุยหิมะในวันถัดไป"
               },
@@ -1799,7 +1802,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง)",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "เดินเล่นชมสถาปัตยกรรมยุโรปคลาสสิก ปรับร่างกายให้คุ้นเคยกับความหนาวเย็นและหิมะขาว",
                 note: "ชมประติมากรรมน้ำแข็งและแสงไฟประดับตลอดยาวกว่า 1.4 กิโลเมตร"
               },
@@ -1808,7 +1811,7 @@
                 type: "food",
                 badgeText: "Dinner",
                 title: "อาหารจีนท้องถิ่นภาคอีสาน (Dongbei Cuisine)",
-                mapsUrl: "https://goo.gl/maps/search/Dongbei+Cuisine+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dongbei+Cuisine+Harbin",
                 desc: "อาหารจีนท้องถิ่นภาคอีสาน ชิม Guo Bao Rou (หมูทอดเปรี้ยวหวานกรอบกระทะ), ต้มผักกาดดองกระดูกหมู และเกี๊ยวต้มร้อนๆ",
                 note: "รสชาติเข้มข้น จานใหญ่จุใจตามสไตล์ชาวตงเป่ย"
               }
@@ -1824,7 +1827,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย)",
-                mapsUrl: "https://goo.gl/maps/search/St.+Sophia+Cathedral",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=St.+Sophia+Cathedral+Harbin",
                 desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์มรดกสถาปัตยกรรมรัสเซียอันเลื่องชื่อ ถ่ายภาพยอดโดมสีเขียวตัดกับหิมะขาว",
                 note: "เปิดให้เข้าชมพิพิธภัณฑ์ประวัติศาสตร์ด้านในโบสถ์"
               },
@@ -1833,7 +1836,7 @@
                 type: "food",
                 badgeText: "Lunch",
                 title: "อาหารรัสเซียต้นตำรับฮาร์บิน",
-                mapsUrl: "https://goo.gl/maps/search/Huamei+Western+Restaurant+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Huamei+Western+Restaurant+Harbin",
                 desc: "อาหารรัสเซีย ซุปบอร์ช ขนมปังอบชีสร้อนๆ และสเต็กเนื้อ เพื่อเตรียมพลังงานสำหรับลานน้ำแข็ง",
                 note: "ร้านอาหารรัสเซียรอบถนนจงยางมีบรรยากาศย้อนยุคอบอุ่น"
               },
@@ -1842,7 +1845,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เดินทางด้วย Metro Line 2 ไปยัง Ice and Snow World",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ice+and+Snow+World+Station+Harbin",
                 desc: "นั่งรถไฟใต้ดินสาย 2 ตรงสู่หน้าประตูทางเข้างาน สะดวกและเลี่ยงการจราจรติดขัด",
                 note: "ใช้เวลาเพียง 15-20 นาทีจากใจกลางเมือง"
               },
@@ -1851,7 +1854,7 @@
                 type: "attraction",
                 badgeText: "Attraction Highlight",
                 title: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะ)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Ice+and+Snow+World",
                 desc: "ชมปราสาทน้ำแข็งแกะสลักยักษ์ระดับโลกสุดตระการตา สนุกกับสไลเดอร์น้ำแข็งยาวกว่า 500 เมตร และชิงช้าสวรรค์ยักษ์",
                 note: "ช่วงค่ำไฟประดับเปิดครบทุกจุด อลังการดั่งเมืองในเทพนิยาย"
               }
@@ -1867,7 +1870,7 @@
                 type: "transport",
                 badgeText: "Bullet Train",
                 title: "นั่งรถไฟความเร็วสูง Harbin Station - Yabuli West Station",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Railway+Station",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Railway+Station",
                 desc: "นั่งรถไฟความเร็วสูง (High-speed train) จากสถานี Harbin Railway Station สู่ Yabuli West Station (ประมาณ 1 - 1.5 ชม.) แล้วต่อ Shuttle Bus เข้าสู่ที่พักในรีสอร์ท",
                 note: "ควรจองตั๋วรถไฟความเร็วสูงล่วงหน้าผ่าน Trip.com หรือ 12306"
               },
@@ -1876,7 +1879,7 @@
                 type: "attraction",
                 badgeText: "Ski Resort",
                 title: "Yabuli Ski Resort (ลานสกียาบูลี่ / 亚布力滑雪场)",
-                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Yabuli+Ski+Resort",
                 desc: "ลานสกีระดับโลกที่ใหญ่ที่สุดในประเทศจีน มีสิ่งอำนวยความสะดวกครบครัน เส้นทางสกีมาตรฐานสากลทุกระดับความยาก",
                 note: "เช็คอินโรงแรมและติดต่อรับอุปกรณ์สกี / สโนว์บอร์ด"
               },
@@ -1885,7 +1888,7 @@
                 type: "food",
                 badgeText: "Lunch",
                 title: "ทานอาหารอุ่นๆ ในรีสอร์ทที่ Yabuli",
-                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Yabuli+Ski+Resort",
                 desc: "ทานอาหารอุ่นๆ ในรีสอร์ทที่ Yabuli เช่น ราเมนร้อนๆ ข้าวหน้าเนื้อตุ๋น หรือซุปเห็ดป่า เติมพลังเตรียมเล่นหิมะ",
                 note: "มีคาเฟ่และร้านอาหารกระจายอยู่ทั่วบริเวณคลับเฮาส์"
               },
@@ -1894,7 +1897,7 @@
                 type: "attraction",
                 badgeText: "Activity",
                 title: "ซ้อมสโนว์บอร์ด & วอร์มอัพร่างกายช่วงบ่าย",
-                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Yabuli+Ski+Resort",
                 desc: "เริ่มเล่นสโนว์บอร์ดหรือสกีรอบบ่าย ปรับความคุ้นเคยกับเนินหิมะธรรมชาติและเช็คสภาพอุปกรณ์",
                 note: "มีโซนลานสกีสำหรับผู้เริ่มต้นพร้อมบันไดเลื่อนพรมวิเศษ (Magic Carpet)"
               }
@@ -1910,7 +1913,7 @@
                 type: "attraction",
                 badgeText: "Extreme Sport Highlight",
                 title: "เล่น Snowboard เต็มวันที่ Yabuli Ski Resort",
-                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Yabuli+Ski+Resort",
                 desc: "เล่นสโนว์บอร์ดและสกีเต็มวันบนลานหิมะธรรมชาติคุณภาพพรีเมียม ขึ้นกระเช้าลอยฟ้าชมวิวยอดเขาที่ปกคลุมด้วยหิมะขาวบริสุทธิ์แบบพาโนรามา",
                 note: "มีบริการครูฝึกสอนมืออาชีพสำหรับผู้ที่ต้องการเทคนิคขั้นสูง"
               },
@@ -1919,7 +1922,7 @@
                 type: "food",
                 badgeText: "Lunch",
                 title: "พักรับประทานอาหารกลางวันและโกโก้ร้อนใน Ski Club",
-                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Yabuli+Ski+Resort",
                 desc: "พักคลายเมื่อยด้วยช็อกโกแลตร้อน ขนมปังปิ้ง และซุปกระดูกหมูอุ่นๆ ชมวิวนักสกีผ่านหน้าต่างกระจกบานใหญ่",
                 note: "พักผ่อนเพื่อเติมความอบอุ่นก่อนลุยต่อรอบบ่าย"
               },
@@ -1928,7 +1931,7 @@
                 type: "attraction",
                 badgeText: "Activity",
                 title: "ลุยเนินหิมะต่อเนื่องรอบบ่าย & ถ่ายภาพแอคชั่น",
-                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Yabuli+Ski+Resort",
                 desc: "สนุกกับการเล่นสโนว์บอร์ดต่อเนื่องบนเส้นทางลาดชันปานกลาง พร้อมถ่ายภาพและวิดีโอแอคชั่นสุดเท่บนเนินหิมะ",
                 note: "ลานสกีจะเริ่มทยอยปิดช่วง 16:30 น. ก่อนแสงหมด"
               },
@@ -1946,7 +1949,7 @@
                 type: "food",
                 badgeText: "Dinner Highlight",
                 title: "หม้อไฟ (Hot Pot) คลายหนาวหลังเล่นสกี",
-                mapsUrl: "https://goo.gl/maps/search/Yabuli+Ski+Resort",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Yabuli+Ski+Resort",
                 desc: "หม้อไฟ (Hot Pot) คลายหนาวหลังเล่นสกี เนื้อแพะและเนื้อวัวสไลซ์บาง ลวกในน้ำซุปสมุนไพรร้อนกรุ่น จิ้มน้ำจิ้มงาเข้มข้น",
                 note: "เมนูฟินที่สุดหลังจากการออกกำลังกายบนหิมะมาทั้งวัน"
               }
@@ -1962,7 +1965,7 @@
                 type: "transport",
                 badgeText: "Bullet Train",
                 title: "รถไฟความเร็วสูง Yabuli West - Harbin",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Railway+Station",
                 desc: "นั่งรถไฟความเร็วสูงจาก Yabuli West กลับเข้าสู่สถานี Harbin Railway Station อย่างตรงเวลาและสะดวกสบาย",
                 note: "ใช้เวลาเดินทางเพียง 1 ชั่วโมง 15 นาที"
               },
@@ -1971,7 +1974,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เช็คอินโรงแรมในฮาร์บินและเก็บสัมภาระ",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "เดินทางเข้าโรงแรมที่พักย่านใจกลางเมือง Daoli District เพื่อเก็บกระเป๋า",
                 note: "เตรียมตัวสำหรับมื้อกลางวันและกิจกรรมรอบบ่าย"
               },
@@ -1980,7 +1983,7 @@
                 type: "food",
                 badgeText: "Lunch",
                 title: "เถี่ยกัวตุ้น (สตูว์กระทะเหล็ก)",
-                mapsUrl: "https://goo.gl/maps/search/Tie+Guo+Dun+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Tie+Guo+Dun+Harbin",
                 desc: "เถี่ยกัวตุ้น (สตูว์กระทะเหล็ก) อาหารอีสานจานเด็ดไซส์ยักษ์ ทานร้อนๆ ฉลองความสำเร็จจบทริปสกี",
                 note: "ซุปเข้มข้นตุ๋นเนื้อเปื่อยนุ่มพร้อมแผ่นแป้งข้าวโพดกรอบนอกนุ่มใน"
               },
@@ -1989,7 +1992,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "กลับเข้า Harbin, เดินเล่น Songhua River (แม่น้ำซงฮวา)",
-                mapsUrl: "https://goo.gl/maps/search/Songhua+River",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Songhua+River+Harbin",
                 desc: "กลับเข้าสู่ Harbin เดินเล่นบนผืนน้ำแข็งแม่น้ำซงฮวา ชมพระอาทิตย์ตกดินเหนือแม่น้ำเยือกแข็งอันกว้างใหญ่",
                 note: "ช่วง 16:00 แสงเย็นสีส้มสะท้อนกับผิวน้ำแข็งสวยงามมาก"
               },
@@ -1998,7 +2001,7 @@
                 type: "food",
                 badgeText: "Dinner",
                 title: "เกี๊ยวร้อนๆ และอาหารว่างย่าน Daoli",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dongfang+Jiaozi+Wang+Harbin",
                 desc: "ทานอาหารค่ำสบายๆ เดินเล่นซื้อของฝากบนถนนคนเดินจงยางก่อนวันเดินทางกลับ",
                 note: "พักผ่อนเติมพลังหลังจากลุยสกีมาหลายวัน"
               }
@@ -2014,7 +2017,7 @@
                 type: "attraction",
                 badgeText: "Sightseeing",
                 title: "Zhongyang Pedestrian Street (เดินเล่นรอบเช้า)",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "แวะถ่ายรูปเก็บตกบรรยากาศเมืองและซื้อของฝากชิ้นสุดท้าย",
                 note: "บรรยากาศยามเช้าเงียบสงบ เหมาะแก่การถ่ายรูปมุมกว้าง"
               },
@@ -2023,7 +2026,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เช็คเอาท์, HRB - BKK นั่ง Taxi ไปสนามบิน",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Taiping+International+Airport",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "เช็คเอาท์จากที่พัก นั่งรถ Taxi หรือ Airport Bus ไปยังสนามบินนานาชาติไท่ผิง (HRB)",
                 note: "เผื่อเวลาเดินทางไปสนามบินประมาณ 1 ชั่วโมง"
               },
@@ -2032,7 +2035,7 @@
                 type: "food",
                 badgeText: "Airport Meal",
                 title: "ของว่างและอาหารสนามบิน",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "จิบชาร้อนและรับประทานของว่างที่สนามบินก่อนขึ้นเครื่องบิน",
                 note: "เตรียมตัวขึ้นเครื่องเดินทางกลับประเทศไทย"
               },
@@ -2064,7 +2067,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เดินทางจากสนามบิน HRB เข้าที่พักในฮาร์บิน",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "Airport Bus หรือ Taxi เข้าสู่ที่พักในฮาร์บิน เช็คอินและเตรียมเสื้อผ้ากันหนาวขั้นสูงสุด",
                 note: "ที่โม่เหออุณหภูมิอาจแตะ -40°C จึงต้องเตรียมอุปกรณ์ให้พร้อมตั้งแต่วันแรก"
               },
@@ -2073,7 +2076,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง)",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "เดินเล่นชมสถาปัตยกรรมยุโรป ซื้ออุปกรณ์กันหนาวเพิ่มเติม เช่น แผ่นร้อนแปะเท้า ถุงมือกันลม และหมวกไหมพรมหนา",
                 note: "บนถนนจงยางมีร้านจำหน่ายอุปกรณ์เอาท์ดอร์ฤดูหนาวครบครัน"
               },
@@ -2082,7 +2085,7 @@
                 type: "food",
                 badgeText: "Dinner",
                 title: "อาหารท้องถิ่นตงเปื่อุ่นๆ (Dongbei Food)",
-                mapsUrl: "https://goo.gl/maps/search/Dongbei+Cuisine+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dongbei+Cuisine+Harbin",
                 desc: "ทานอาหารจีนอุ่นๆ เพื่อปรับตัวกับสภาพอากาศ เช่น บะหมี่ร้อน เกี๊ยวต้ม หรือข้าวอบหม้อดิน",
                 note: "พักผ่อนนอนเร็วเพื่อเตรียมตื่นเช้าบินสู่เมืองโม่เหอ"
               }
@@ -2098,7 +2101,7 @@
                 type: "transport",
                 badgeText: "Domestic Flight",
                 title: "บินภายในประเทศ HRB - Mohe (OHE) ประมาณ 2 ชม.",
-                mapsUrl: "https://goo.gl/maps/search/Mohe+Gulian+Airport",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mohe+Gulian+Airport",
                 desc: "บินจาก Harbin (HRB) สู่ Mohe Gulian Airport (OHE) สนามบินที่อยู่เหนือสุดของจีน ใช้เวลาบินประมาณ 2 ชั่วโมง ชมวิวมุมสูงป่าสนหิมะไทกา",
                 note: "เมื่อก้าวลงจากเครื่องบินจะสัมผัสได้ถึงไอหนาวระดับขั้วโลกทันที"
               },
@@ -2107,7 +2110,7 @@
                 type: "transport",
                 badgeText: "Private Car",
                 title: "นั่งรถเช่าเหมาคันเข้า Beiji Cun (Arctic Village)",
-                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Beiji+Cun+Mohe",
                 desc: "นั่งรถเช่าเหมาคันพร้อมคนขับท้องถิ่นที่มีระบบทำความร้อน มุ่งหน้าเข้าสู่หมู่บ้านเป่ยจี๋ชุน (ใช้เวลาประมาณ 1.5 ชม.)",
                 note: "คนขับท้องถิ่นมีความชำนาญในการขับรถบนถนนน้ำแข็งและหิมะ"
               },
@@ -2116,7 +2119,7 @@
                 type: "attraction",
                 badgeText: "Attraction Highlight",
                 title: "เดินทางไป Mohe & Beiji Cun (Arctic Village / 北极村)",
-                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Beiji+Cun+Mohe",
                 desc: "เดินทางถึงหมู่บ้านเป่ยจี๋ชุน ดินแดนขั้วโลกเหนือแดนมังกร ชมบ้านไม้ท่อนซุงสไตล์รัสเซีย (Mukeden) ที่ปกคลุมด้วยหิมะหนาเหมือนบ้านขนมปังผิง",
                 note: "ที่นี่คือหมู่บ้านที่อยู่ทางตอนเหนือสุดของประเทศจีน ติดชายแดนรัสเซีย"
               },
@@ -2125,7 +2128,7 @@
                 type: "food",
                 badgeText: "Lunch",
                 title: "อาหารท้องถิ่นตงเป่ยแท้ๆ ในหมู่บ้านโม่เหอ",
-                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Beiji+Cun+Mohe",
                 desc: "อาหารท้องถิ่นตงเป่ยแท้ๆ ในหมู่บ้าน ปรุงจากวัตถุดิบชาวบ้าน เช่น ผัดผักป่าดอง, ซุปกระดูกหมูมันฝรั่งร้อนๆ และไข่เจียวเห็ดป่า",
                 note: "รสชาติพื้นบ้านแท้ๆ ทานในห้องอุ่นด้วยเตาผิงคัง (Kang bed)"
               },
@@ -2134,7 +2137,7 @@
                 type: "attraction",
                 badgeText: "Nightfall",
                 title: "ชมพระอาทิตย์ตกดินเหนือขั้วโลกแดนเหนือ",
-                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Beiji+Cun+Mohe",
                 desc: "ชมท้องฟ้ายามเย็นที่เริ่มมืดตั้งแต่ 16:00 น. ไฟในหมู่บ้านเริ่มเปิดสว่างส่องกระทบหิมะขาว อากาศลดฮวบลงอย่างรวดเร็ว",
                 note: "ช่วงกลางคืนสามารถออกมาดูดาวระยิบระยับเต็มท้องฟ้าได้ชัดเจนมาก"
               }
@@ -2150,7 +2153,7 @@
                 type: "attraction",
                 badgeText: "Iconic Experience",
                 title: "สาดน้ำร้อนกลายเป็นละอองน้ำแข็ง (Splash Water Freeze ท้าความหนาว -40°C)",
-                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Beiji+Cun+Mohe",
                 desc: "สัมผัสประสบการณ์ไฮไลท์ระดับตำนาน: ตักน้ำร้อนเดือดใส่กระติกแล้วสาดขึ้นสู่อากาศ น้ำร้อนจะกลายเป็นเกล็ดน้ำแข็งรูปพัดฟุ้งกระจายในเสี้ยววินาที",
                 note: "ต้องทำในอุณหภูมิติดลบ 30 ถึง 40 องศาเซลเซียสเท่านั้น ถ่ายวิดีโอสโลว์โมชั่นสวยมาก"
               },
@@ -2159,7 +2162,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Northernmost Post Office (ที่ทำการไปรษณีย์เหนือสุดของจีน / 最北邮政局)",
-                mapsUrl: "https://goo.gl/maps/search/Northernmost+Post+Office+China",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Northernmost+Post+Office+China",
                 desc: "Northernmost Post Office (ส่งโปสการ์ด) ส่งโปสการ์ดพร้อมประทับตราประจำวันที่ทำการไปรษณีย์เหนือสุดแดนมังกรส่งกลับมาเป็นที่ระลึกที่บ้าน",
                 note: "มีโปสการ์ดและแสตมป์ลายพิเศษของหมู่บ้านเป่ยจี๋ชุนจำหน่าย"
               },
@@ -2168,7 +2171,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "เที่ยวจุดเหนือสุดของจีน & แม่น้ำเฮยหลงเจียง (China's Northernmost Point)",
-                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Beiji+Cun+Mohe",
                 desc: "เที่ยวจุดเหนือสุดของจีน ถ่ายรูปคู่เสาหลักเขตแดนเหนือสุด ริมฝั่งแม่น้ำเฮยหลงเจียง (Amur River) ซึ่งฝั่งตรงข้ามคือผืนแผ่นดินประเทศรัสเซีย",
                 note: "ยืนมองเห็นหมู่บ้านฝั่งรัสเซียได้อย่างชัดเจน"
               },
@@ -2177,7 +2180,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "รถเช่าเหมาคันพาทัวร์ในหมู่บ้าน",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Beiji+Cun+Mohe",
                 desc: "รถเช่าเหมาคันพาทัวร์ในหมู่บ้าน พร้อมระบบทำความร้อนตลอดการเดินทาง สะดวกและอุ่นสบาย",
                 note: "ไม่แนะนำให้เดินเท้าระยะไกลเนื่องจากความหนาวเย็นสุดขีด"
               },
@@ -2186,7 +2189,7 @@
                 type: "food",
                 badgeText: "Lunch Highlight",
                 title: "ปลาย่างหรือสตูว์ร้อนๆ สู้ความหนาว -40 องศา",
-                mapsUrl: "https://goo.gl/maps/search/Beiji+Cun+Mohe",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Beiji+Cun+Mohe",
                 desc: "ปลาย่างหรือสตูว์ร้อนๆ สู้ความหนาว -40 องศา ลิ้มลองปลาแม่น้ำเฮยหลงเจียงเนื้อหวานแน่น ต้มในหม้อซุปร้อนๆ กลิ่นหอมสมุนไพร",
                 note: "ปลาแม่น้ำเย็นมีไขมันดีและเนื้อสัมผัสสดหวานเป็นเอกลักษณ์"
               }
@@ -2202,7 +2205,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "รถเช่าไปสนามบิน Mohe (OHE)",
-                mapsUrl: "https://goo.gl/maps/search/Mohe+Gulian+Airport",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Mohe+Gulian+Airport",
                 desc: "นั่งรถเช่าเดินทางออกจากหมู่บ้านเป่ยจี๋ชุน มุ่งหน้าสู่สนามบิน Mohe Gulian Airport",
                 note: "ชมวิวทิวทัศน์ป่าสนไทกาขาวโพลนสองข้างทางส่งท้าย"
               },
@@ -2211,7 +2214,7 @@
                 type: "transport",
                 badgeText: "Domestic Flight",
                 title: "บิน Mohe (OHE) - Harbin (HRB)",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "บินกลับ Harbin ด้วยเที่ยวบินภายในประเทศ ใช้เวลาประมาณ 2 ชั่วโมง เดินทางกลับสู่เมืองหลวงแห่งน้ำแข็ง",
                 note: "เดินทางถึงสนามบินไท่ผิงฮาร์บินช่วงบ่าย"
               },
@@ -2220,7 +2223,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เดินทางเข้าโรงแรมที่พักในฮาร์บิน",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "นั่ง Taxi หรือ Airport Bus เข้าเช็คอินโรงแรมที่พักในย่าน Daoli District เพื่อเตรียมเที่ยวต่อ",
                 note: "เก็บกระเป๋าและพักผ่อนในห้องพักอุ่นๆ"
               },
@@ -2229,7 +2232,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "Zhongyang Pedestrian Street (เดินเล่นผ่อนคลายในเมือง)",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Zhongyang+Pedestrian+Street+Harbin",
                 desc: "เดินเล่นผ่อนคลายในตัวเมืองฮาร์บิน ช้อปปิ้งและสัมผัสบรรยากาศความคึกคักหลังกลับจากหมู่บ้านขั้วโลก",
                 note: "จิบชาร้อนหรือกาแฟในคาเฟ่สไตล์รัสเซีย"
               },
@@ -2238,7 +2241,7 @@
                 type: "food",
                 badgeText: "Dinner",
                 title: "พักผ่อนและทานอาหารใกล้ที่พักใน Harbin",
-                mapsUrl: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dongbei+BBQ+Harbin",
                 desc: "พักผ่อนและทานอาหารใกล้ที่พักใน Harbin เช่น บาร์บีคิวปิ้งย่างตงเป่ย หรือเกี๊ยวต้มร้อนๆ อิ่มอร่อยสบายๆ",
                 note: "เติมพลังเพื่อเตรียมตัวชมไฮไลท์ปราสาทน้ำแข็งระดับโลกในวันถัดไป"
               }
@@ -2254,7 +2257,7 @@
                 type: "attraction",
                 badgeText: "Attraction",
                 title: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย)",
-                mapsUrl: "https://goo.gl/maps/search/St.+Sophia+Cathedral",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=St.+Sophia+Cathedral+Harbin",
                 desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์สถาปัตยกรรมรัสเซียอันงดงาม ถ่ายภาพมรดกทางประวัติศาสตร์คู่กับหิมะขาว",
                 note: "แสงแดดยามเช้าส่องกระทบยอดโดมสวยงามมาก"
               },
@@ -2263,7 +2266,7 @@
                 type: "food",
                 badgeText: "Lunch",
                 title: "เถี่ยกัวตุ้น (Tie Guo Dun - สตูว์กระทะเหล็กยักษ์)",
-                mapsUrl: "https://goo.gl/maps/search/Tie+Guo+Dun+Harbin",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Tie+Guo+Dun+Harbin",
                 desc: "เถี่ยกัวตุ้น สตูว์กระทะเหล็กไซส์ยักษ์เมนูยอดฮิต ตุ๋นซี่โครงหมูและผักพร้อมแป้งข้าวโพดแปะขอบกระทะ",
                 note: "มื้อกลางวันอิ่มอร่อยเต็มพิกัดก่อนไปลุยงานน้ำแข็ง"
               },
@@ -2272,7 +2275,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "นั่ง Metro Line 2 สู่ Ice and Snow World",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Ice+and+Snow+World+Station+Harbin",
                 desc: "เดินทางด้วยรถไฟใต้ดิน Metro Line 2 สะดวกรวดเร็ว ตรงสู่สถานี Ice and Snow World",
                 note: "เดินทางรวดเร็ว เลี่ยงปัญหารถติดบนสะพาน"
               },
@@ -2281,7 +2284,7 @@
                 type: "attraction",
                 badgeText: "Attraction Highlight",
                 title: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะ)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Ice+and+Snow+World",
                 desc: "สัมผัสความยิ่งใหญ่ตระการตาของปราสาทน้ำแข็งแกะสลักยักษ์ระดับโลก สนุกกับสไลเดอร์ยักษ์และแสงสีไฟ LED ยามค่ำคืน",
                 note: "ไฮไลท์ปิดท้ายทริปฮาร์บินอย่างยิ่งใหญ่และประทับใจไม่รู้ลืม"
               }
@@ -2297,7 +2300,7 @@
                 type: "attraction",
                 badgeText: "Airport Sight",
                 title: "สนามบินนานาชาติไท่ผิง (HRB)",
-                mapsUrl: "https://goo.gl/maps/search/Harbin+Taiping+International+Airport",
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "เดินทางถึงสนามบินเตรียมตัวเช็คอินและโหลดสัมภาระ",
                 note: "เผื่อเวลาเช็คอินอย่างน้อย 2.5 ชั่วโมง"
               },
@@ -2306,7 +2309,7 @@
                 type: "transport",
                 badgeText: "Transportation",
                 title: "เช็คเอาท์, HRB - BKK นั่ง Taxi ไปสนามบิน",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "เช็คเอาท์และเดินทางไปสนามบินเพื่อบินกลับ HRB - BKK เดินทางกลับโดยสวัสดิภาพ",
                 note: "สิ้นสุดทริปขั้วโลกเหนือแดนมังกรอย่างสมบูรณ์แบบ"
               },
@@ -2315,7 +2318,7 @@
                 type: "food",
                 badgeText: "Airport Snack",
                 title: "อาหารว่างและเครื่องดื่มอุ่นๆ ก่อนขึ้นเครื่อง",
-                mapsUrl: null,
+                mapsUrl: "https://www.google.com/maps/search/?api=1&query=Harbin+Taiping+International+Airport",
                 desc: "ชิมกาแฟอุ่นๆ และของว่างที่สนามบินก่อนขึ้นเครื่องบิน",
                 note: "พักผ่อนสบายๆ รอเวลาบอร์ดดิ้ง"
               },
@@ -2454,13 +2457,13 @@
                           <!-- Prominent Title & Maps Action Row -->
                           <div class="timeline-title-row">
                             ${item.mapsUrl ? `
-                              <a href="${item.mapsUrl}" target="_blank" rel="noopener noreferrer" class="location-title-link" title="คลิกเพื่อเปิดดูพิกัดบน Google Maps ในแท็บใหม่">
+                              <a href="${item.mapsUrl}" target="_blank" rel="noopener noreferrer" class="location-title-link" onclick="event.stopPropagation();" title="คลิกเพื่อเปิดดูพิกัดบน Google Maps ในแท็บใหม่">
                                 <i class="fa-solid ${typeIcon} title-icon"></i>
                                 <span>${item.title}</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.78rem; opacity: 0.85;"></i>
                               </a>
 
-                              <a href="${item.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn-maps-action" title="เปิดตำแหน่งบน Google Maps">
+                              <a href="${item.mapsUrl}" target="_blank" rel="noopener noreferrer" class="btn-maps-action" onclick="event.stopPropagation();" title="เปิดตำแหน่งบน Google Maps">
                                 <i class="fa-solid fa-diamond-turn-right"></i>
                                 <span>เปิด Google Maps</span>
                               </a>
