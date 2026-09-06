@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harbin Winter Trip Itinerary | แผนเที่ยวฮาร์บินเมืองน้ำแข็ง 3 เส้นทาง</title>
+  <meta name="description" content="คู่มือแผนการเดินทางท่องเที่ยวฮาร์บินฤดูหนาว 6 วัน 3 สไตล์: ชมสถาปัตยกรรมสุดคลาสสิก, ตะลุยลานสกี Yabuli, หรือท้าลมหนาวขั้วโลกเหนือ Mohe -40°C พร้อมพิกัด Google Maps ทุกจุด" />
+
+  <!-- Google Fonts: Prompt (Thai) & Plus Jakarta Sans (English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6.5.1 via CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME (Winter Ice & Snow Aesthetic)
+       ========================================================================== */
+    :root {
+      --bg-dark: #070d1e;
+      --bg-gradient: radial-gradient(circle at 50% 0%, #15274d 0%, #0a132c 45%, #050a18 100%);
+      --card-bg: rgba(16, 29, 62, 0.72);
+      --card-bg-hover: rgba(23, 41, 88, 0.88);
+      --card-border: rgba(180, 225, 255, 0.18);
+      --card-border-active: #00f2fe;
+
+      --ice-50: #f0f9ff;
+      --ice-100: #e0f2fe;
+      --ice-200: #bae6fd;
+      --ice-300: #7dd3fc;
+      --ice-400: #38bdf8;
+      --ice-500: #0ea5e9;
+      --ice-600: #0284c7;
+
+      --frost-cyan: #00f2fe;
+      --frost-blue: #38bdf8;
+      --snow-white: #ffffff;
+      --silver-text: #cbd5e1;
+      --muted-text: #94a3b8;
+
+      --accent-orange: #fb923c;
+      --accent-green: #34d399;
+      --accent-rose: #fb7185;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 26px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 12px 32px -4px rgba(2, 132, 199, 0.25), 0 8px 16px -6px rgba(0, 0, 0, 0.5);
+      --glow-cyan: 0 0 24px rgba(0, 242, 254, 0.35);
+
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--snow-white);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Canvas for interactive snowfall */
+    #snow-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Ambient atmospheric glow spots */
+    .glow-sphere-1 {
+      position: fixed;
+      top: -120px;
+      left: 5%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(0, 242, 254, 0) 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-sphere-2 {
+      position: fixed;
+      top: 45%;
+      right: -80px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(79, 172, 254, 0.12) 0%, rgba(45, 212, 191, 0) 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .main-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem 1.25rem;
+    }
+
+    /* ==========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================== */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.4rem;
+      background: rgba(14, 26, 56, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-full);
+      margin-bottom: 2.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .brand-icon-wrap {
+      background: linear-gradient(135deg, #00f2fe 0%, #0284c7 100%);
+      color: #050a18;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
+    }
+
+    .nav-brand span {
+      background: linear-gradient(90deg, #ffffff, #bae6fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .pill-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ice-100);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 0.48rem 0.95rem;
+      border-radius: var(--radius-full);
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .pill-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--ice-400);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       HERO HEADER SECTION
+       ========================================================================== */
+    .hero-section {
+      text-align: center;
+      padding: 1rem 0.5rem 2.75rem 0.5rem;
+    }
+
+    .badge-subzero {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.4rem 1.15rem;
+      border-radius: var(--radius-full);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--ice-300);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+    }
+
+    .badge-subzero i {
+      color: var(--frost-cyan);
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.18); opacity: 0.75; }
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-title .frost-text {
+      background: linear-gradient(135deg, #ffffff 10%, #bae6fd 40%, #38bdf8 80%, #00f2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 12px rgba(0, 242, 254, 0.25));
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 2.3vw, 1.25rem);
+      color: var(--silver-text);
+      max-width: 820px;
+      margin: 0 auto 1.85rem auto;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .stat-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .stat-chip:hover {
+      transform: translateY(-2px);
+      border-color: var(--ice-400);
+      background: var(--card-bg-hover);
+    }
+
+    .stat-chip i {
+      font-size: 1.15rem;
+      color: var(--frost-cyan);
+    }
+
+    .stat-chip strong {
+      color: #ffffff;
+      font-weight: 600;
+      display: block;
+      font-size: 0.92rem;
+    }
+
+    .stat-chip span {
+      color: var(--muted-text);
+      font-size: 0.8rem;
+    }
+
+    /* ==========================================================================
+       LEVEL 1: ROUTE OPTION SWITCHER (3 TABS)
+       ========================================================================== */
+    .routes-section {
+      margin-top: 2.2rem;
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-heading {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--ice-100);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-subheading {
+      color: var(--muted-text);
+      font-size: 0.95rem;
+    }
+
+    .tabs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .tabs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .route-tab-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      cursor: pointer;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--snow-white);
+      outline: none;
+    }
+
+    .route-tab-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: transparent;
+      transition: background var(--transition-fast);
+    }
+
+    .route-tab-card:hover {
+      background: var(--card-bg-hover);
+      border-color: rgba(56, 189, 248, 0.45);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .route-tab-card.active {
+      background: linear-gradient(175deg, rgba(20, 42, 88, 0.92) 0%, rgba(11, 23, 50, 0.98) 100%);
+      border-color: var(--card-border-active);
+      box-shadow: var(--glow-cyan), inset 0 0 20px rgba(0, 242, 254, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .route-tab-card.active::before {
+      background: linear-gradient(90deg, #00f2fe, #38bdf8);
+    }
+
+    .tab-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.9rem;
+    }
+
+    .tab-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 0.28rem 0.7rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--ice-200);
+    }
+
+    .route-tab-card.active .tab-badge {
+      background: rgba(0, 242, 254, 0.16);
+      border-color: rgba(0, 242, 254, 0.45);
+      color: var(--frost-cyan);
+    }
+
+    .tab-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: var(--ice-300);
+      transition: all var(--transition-fast);
+    }
+
+    .route-tab-card.active .tab-icon-box {
+      background: linear-gradient(135deg, #00f2fe, #0284c7);
+      color: #050a18;
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.55);
+    }
+
+    .tab-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .tab-subtitle {
+      font-size: 0.88rem;
+      color: var(--ice-300);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .tab-desc {
+      font-size: 0.84rem;
+      color: var(--muted-text);
+      line-height: 1.5;
+      margin-bottom: 1.15rem;
+    }
+
+    .tab-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .feature-tag {
+      font-size: 0.74rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--silver-text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* ==========================================================================
+       MAIN ITINERARY CONTAINER & CONTROLS
+       ========================================================================== */
+    .itinerary-main-box {
+      background: rgba(13, 23, 50, 0.82);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .itinerary-main-box {
+        padding: 1.15rem 0.85rem;
+        border-radius: var(--radius-lg);
+      }
+    }
+
+    .itinerary-summary-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-bottom: 1.4rem;
+      margin-bottom: 1.4rem;
+      border-bottom: 1px solid rgba(180, 225, 255, 0.12);
+    }
+
+    .summary-text-group h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.2rem;
+    }
+
+    .summary-text-group p {
+      font-size: 0.88rem;
+      color: var(--ice-300);
+    }
+
+    .action-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--ice-200);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .btn-action:hover {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--ice-400);
+      color: #ffffff;
+    }
+
+    /* Filter & Search Bar */
+    .filter-wrapper {
+      margin-bottom: 1.35rem;
+    }
+
+    .search-field {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-field input {
+      width: 100%;
+      background: rgba(8, 17, 40, 0.75);
+      border: 1px solid rgba(180, 225, 255, 0.18);
+      border-radius: var(--radius-md);
+      padding: 0.7rem 1rem 0.7rem 2.45rem;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.88rem;
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .search-field input:focus {
+      border-color: var(--frost-cyan);
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.28);
+    }
+
+    .search-field i {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted-text);
+      font-size: 0.92rem;
+    }
+
+    /* ==========================================================================
+       LEVEL 2: ACCORDION LIST (DAYS 1 TO 6)
+       ========================================================================== */
+    .accordion-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .acc-item {
+      background: var(--card-bg);
+      border: 1px solid rgba(180, 225, 255, 0.14);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .acc-item:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .acc-item.active {
+      border-color: rgba(56, 189, 248, 0.6);
+      background: rgba(16, 30, 64, 0.92);
+      box-shadow: 0 4px 24px rgba(0, 242, 254, 0.12);
+    }
+
+    .acc-header {
+      padding: 1.15rem 1.4rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: background var(--transition-fast);
+      gap: 1rem;
+    }
+
+    .acc-header:hover {
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .acc-day-info {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .day-num-tag {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(0, 242, 254, 0.05));
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      color: var(--frost-cyan);
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-md);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .acc-item.active .day-num-tag {
+      background: linear-gradient(135deg, #00f2fe, #0284c7);
+      color: #050a18;
+      border-color: transparent;
+      box-shadow: 0 0 14px rgba(0, 242, 254, 0.45);
+    }
+
+    .day-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+
+    .day-vibe-name {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .day-quick-summary {
+      font-size: 0.82rem;
+      color: var(--muted-text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .acc-chevron {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ice-300);
+      transition: all var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .acc-item.active .acc-chevron {
+      transform: rotate(180deg);
+      background: rgba(56, 189, 248, 0.2);
+      color: #ffffff;
+      border-color: var(--ice-400);
+    }
+
+    /* Accordion Body & Collapse */
+    .acc-body-wrapper {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .acc-body-content {
+      padding: 0 1.4rem 1.4rem 1.4rem;
+      border-top: 1px solid rgba(180, 225, 255, 0.08);
+      padding-top: 1.25rem;
+    }
+
+    .vibe-callout-pill {
+      margin-bottom: 1rem;
+      padding: 0.6rem 0.95rem;
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 3px solid var(--frost-cyan);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.86rem;
+      color: var(--ice-200);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    /* ==========================================================================
+       CARD DETAILS GRID (Attractions, Transport, Food)
+       ========================================================================== */
+    .day-details-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 960px) {
+      .day-details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-column {
+      background: rgba(9, 17, 39, 0.62);
+      border: 1px solid rgba(180, 225, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color var(--transition-fast);
+    }
+
+    .card-column:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .col-header {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .col-header.attractions-title { color: var(--frost-cyan); }
+    .col-header.transport-title { color: var(--ice-400); }
+    .col-header.food-title { color: var(--accent-orange); }
+
+    .items-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* ATTRACTION BOX WITH GOOGLE MAPS LINK */
+    .attraction-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.85rem;
+      transition: all var(--transition-fast);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .attraction-box:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .attraction-headline {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .attraction-title {
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 0.92rem;
+      line-height: 1.4;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .maps-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.26rem 0.65rem;
+      font-size: 0.74rem;
+      font-weight: 600;
+      background: rgba(14, 165, 233, 0.16);
+      color: var(--ice-300);
+      border: 1px solid rgba(14, 165, 233, 0.4);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+      margin-left: auto;
+    }
+
+    .maps-link-btn:hover {
+      background: var(--ice-500);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(14, 165, 233, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .attraction-notes {
+      font-size: 0.82rem;
+      color: var(--muted-text);
+      line-height: 1.45;
+    }
+
+    /* TRANSPORT & FOOD ROWS */
+    .info-item-row {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      font-size: 0.88rem;
+    }
+
+    .info-item-row i {
+      margin-top: 0.25rem;
+      flex-shrink: 0;
+    }
+
+    .info-item-row .transport-icon { color: var(--ice-400); }
+    .info-item-row .food-icon { color: var(--accent-orange); }
+
+    .item-body strong {
+      color: #ffffff;
+      display: block;
+      font-size: 0.88rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .item-body span {
+      font-size: 0.82rem;
+      color: var(--silver-text);
+      line-height: 1.45;
+      display: block;
+    }
+
+    /* ==========================================================================
+       SURVIVAL GUIDE & WINTER TIPS
+       ========================================================================== */
+    .survival-section {
+      margin-top: 3.5rem;
+      background: rgba(14, 26, 56, 0.75);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .survival-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .survival-header h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .survival-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .survival-box {
+      background: rgba(9, 17, 39, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .survival-box-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ice-200);
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .survival-box p {
+      font-size: 0.85rem;
+      color: var(--muted-text);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted-text);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    footer a {
+      color: var(--ice-400);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Print media query */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #111827 !important;
+      }
+      #snow-canvas, .glow-sphere-1, .glow-sphere-2, .nav-bar, .action-controls, .filter-wrapper {
+        display: none !important;
+      }
+      .itinerary-main-box, .acc-item, .card-column {
+        background: #ffffff !important;
+        border: 1px solid #e5e7eb !important;
+        box-shadow: none !important;
+        color: #111827 !important;
+      }
+      .acc-body-wrapper {
+        max-height: none !important;
+      }
+      .maps-link-btn {
+        border: 1px solid #0284c7 !important;
+        color: #0369a1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Snowfall canvas -->
+  <canvas id="snow-canvas"></canvas>
+
+  <!-- Ambient frost spheres -->
+  <div class="glow-sphere-1"></div>
+  <div class="glow-sphere-2"></div>
+
+  <div class="main-wrapper">
+
+    <!-- Top Navigation Bar -->
+    <header class="nav-bar">
+      <a href="#" class="nav-brand">
+        <div class="brand-icon-wrap">
+          <i class="fa-solid fa-snowflake"></i>
+        </div>
+        <span>Harbin Winter Itinerary</span>
+      </a>
+
+      <div class="nav-actions">
+        <button id="toggle-snow-btn" class="pill-btn" title="เปิด/ปิด แอนิเมชันหิมะตก">
+          <i class="fa-regular fa-snowflake"></i>
+          <span class="btn-text">Snow: ON</span>
+        </button>
+        <button id="btn-print" class="pill-btn" title="พิมพ์หรือบันทึกเป็น PDF">
+          <i class="fa-solid fa-print"></i>
+          <span class="btn-text">Print / PDF</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="badge-subzero">
+        <i class="fa-solid fa-icicles"></i>
+        <span>Harbin Ice City • 6-Day Winter Journey</span>
+      </div>
+
+      <h1 class="hero-title">
+        มหัศจรรย์เมืองน้ำแข็ง <span class="frost-text">ฮาร์บิน</span>
+      </h1>
+
+      <p class="hero-desc">
+        คู่มือแผนท่องเที่ยวฮาร์บินฤดูหนาว 6 วัน ครบทั้ง 3 รูปแบบเส้นทาง: สโลว์ไลฟ์ชมสถาปัตยกรรมรัสเซีย, ตะลุยลานสกีระดับตำนาน Yabuli, หรือมุ่งหน้าสู่ขั้วโลกเหนือแดนมังกร Mohe ท้าความหนาวระดับ -40°C
+      </p>
+
+      <!-- Stats Bar -->
+      <div class="stats-container">
+        <div class="stat-chip">
+          <i class="fa-solid fa-temperature-arrow-down"></i>
+          <div>
+            <strong>-15°C ถึง -35°C</strong>
+            <span>อุณหภูมิเฉลี่ย (พ.ย. - ก.พ.)</span>
+          </div>
+        </div>
+
+        <div class="stat-chip">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <div>
+            <strong>6 วัน 5 คืน</strong>
+            <span>ระยะเวลามาตรฐานทุกเส้นทาง</span>
+          </div>
+        </div>
+
+        <div class="stat-chip">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <div>
+            <strong>Google Maps Ready</strong>
+            <span>คลิกเปิดพิกัดจริงได้ทันทีทุกจุด</span>
+          </div>
+        </div>
+
+        <div class="stat-chip">
+          <i class="fa-solid fa-language"></i>
+          <div>
+            <strong>TH / EN / 中文</strong>
+            <span>ชื่อสถานที่ครบ 3 ภาษา ค้นหาง่าย</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEVEL 1: ROUTE OPTION SWITCHER (3 TABS) -->
+    <section class="routes-section" id="itinerary-routes">
+      <div class="section-title-wrap">
+        <h2 class="section-heading">
+          <i class="fa-solid fa-compass" style="color: var(--frost-cyan);"></i>
+          เลือกเส้นทางการเดินทางของคุณ
+        </h2>
+        <p class="section-subheading">คลิกเลือกตัวเลือกรูทด้านล่างเพื่อสลับรายละเอียดแผนการเดินทาง 6 วัน</p>
+      </div>
+
+      <div class="tabs-grid" role="tablist">
+        <!-- Option 1 Tab Button -->
+        <button class="route-tab-card active" id="tab-btn-opt1" data-option="opt1" role="tab" aria-selected="true">
+          <div>
+            <div class="tab-top-row">
+              <span class="tab-badge">Option 01 • Classic Chill</span>
+              <div class="tab-icon-box">
+                <i class="fa-solid fa-city"></i>
+              </div>
+            </div>
+            <div class="tab-title">Harbin Atmospheric & Chill</div>
+            <div class="tab-subtitle">สโลว์ไลฟ์ สถาปัตยกรรม & เทศกาลน้ำแข็ง</div>
+            <p class="tab-desc">
+              ดื่มด่ำบรรยากาศเมืองฮาร์บินแบบจุใจ เดินเล่นถนนคนเดินจงยาง ชมโบสถ์เซนต์โซเฟีย ตะลุยเมืองน้ำแข็งระดับโลก และสัมผัสหมู่บ้านรัสเซีย Volga Manor
+            </p>
+          </div>
+          <div class="tab-features">
+            <span class="feature-tag"><i class="fa-solid fa-person-walking"></i> เที่ยวสบาย</span>
+            <span class="feature-tag"><i class="fa-solid fa-camera"></i> ถ่ายรูปสวย</span>
+            <span class="feature-tag"><i class="fa-solid fa-hotel"></i> พัก Daoli</span>
+          </div>
+        </button>
+
+        <!-- Option 2 Tab Button -->
+        <button class="route-tab-card" id="tab-btn-opt2" data-option="opt2" role="tab" aria-selected="false">
+          <div>
+            <div class="tab-top-row">
+              <span class="tab-badge">Option 02 • Snowboard & Ski</span>
+              <div class="tab-icon-box">
+                <i class="fa-solid fa-person-snowboarding"></i>
+              </div>
+            </div>
+            <div class="tab-title">Harbin + Snowboard & Yabuli</div>
+            <div class="tab-subtitle">เมืองน้ำแข็ง + ลานสกีระดับเอเชีย</div>
+            <p class="tab-desc">
+              นั่งรถไฟความเร็วสูงสู่ Yabuli Ski Resort สนุกสุดเหวี่ยงกับการเล่นสโนว์บอร์ดและสกีเต็มวัน เติมพลังด้วยหม้อไฟร้อนๆ ก่อนกลับมาเก็บไฮไลท์ในเมือง
+            </p>
+          </div>
+          <div class="tab-features">
+            <span class="feature-tag"><i class="fa-solid fa-train-fast"></i> รถไฟความเร็วสูง</span>
+            <span class="feature-tag"><i class="fa-solid fa-person-skating"></i> กีฬาหิมะ</span>
+            <span class="feature-tag"><i class="fa-solid fa-fire"></i> หม้อไฟอุ่นๆ</span>
+          </div>
+        </button>
+
+        <!-- Option 3 Tab Button -->
+        <button class="route-tab-card" id="tab-btn-opt3" data-option="opt3" role="tab" aria-selected="false">
+          <div>
+            <div class="tab-top-row">
+              <span class="tab-badge">Option 03 • Arctic Explorer</span>
+              <div class="tab-icon-box">
+                <i class="fa-solid fa-compass-drafting"></i>
+              </div>
+            </div>
+            <div class="tab-title">Harbin + Mohe (Arctic Village)</div>
+            <div class="tab-subtitle">จุดเหนือสุดของจีน & ท้าความหนาว -40°C</div>
+            <p class="tab-desc">
+              บินลัดฟ้าสู่เมืองโม่เหอ (Mohe) และหมู่บ้านเป่ยจี๋ชุน (Arctic Village) ส่งโปสการ์ดจากที่ทำการไปรษณีย์เหนือสุดแดนมังกร พร้อมสู้ความหนาวระดับขั้วโลก
+            </p>
+          </div>
+          <div class="tab-features">
+            <span class="feature-tag"><i class="fa-solid fa-plane-departure"></i> บินภายใน</span>
+            <span class="feature-tag"><i class="fa-solid fa-snowflake"></i> ขั้วโลกเหนือจีน</span>
+            <span class="feature-tag"><i class="fa-solid fa-car-side"></i> รถเหมาส่วนตัว</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- ITINERARY DISPLAY CONTAINER -->
+      <div class="itinerary-main-box">
+
+        <!-- Top summary of selected option -->
+        <div class="itinerary-summary-bar">
+          <div class="summary-text-group">
+            <h3 id="current-route-title">Option 1: Harbin Atmospheric & Chill (6 Days)</h3>
+            <p id="current-route-sub">เส้นทางเน้นเก็บบรรยากาศ เดินชิล ถ่ายรูปสถาปัตยกรรม และเต็มอิ่มกับเทศกาลน้ำแข็ง</p>
+          </div>
+
+          <div class="action-controls">
+            <button id="btn-expand-all" class="btn-action" title="ขยายทุกวัน">
+              <i class="fa-solid fa-angles-down"></i> ขยายทั้งหมด
+            </button>
+            <button id="btn-collapse-all" class="btn-action" title="ยุบทุกวัน">
+              <i class="fa-solid fa-angles-up"></i> ยุบทั้งหมด
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="filter-wrapper">
+          <div class="search-field">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="search-input" placeholder="ค้นหาสถานที่, อาหาร, หรือการเดินทาง เช่น โซเฟีย, Metro, สตูว์..." />
+          </div>
+        </div>
+
+        <!-- LEVEL 2: ACCORDION CONTAINER -->
+        <div class="accordion-container" id="accordion-root">
+          <!-- Populated by JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WINTER SURVIVAL TIPS SECTION -->
+    <section class="survival-section">
+      <div class="survival-header">
+        <i class="fa-solid fa-shield-halved" style="color: var(--frost-cyan); font-size: 1.6rem;"></i>
+        <h3>ข้อแนะนำ & เคล็ดลับการเตรียมตัวรับมือความหนาว -20°C ถึง -40°C</h3>
+      </div>
+
+      <div class="survival-grid">
+        <div class="survival-box">
+          <div class="survival-box-title">
+            <i class="fa-solid fa-shirt" style="color: var(--ice-400);"></i>
+            <span>การแต่งกายแบบเลเยอร์ (Layering)</span>
+          </div>
+          <p>
+            <strong>ชั้นใน:</strong> Heattech Ultra Warm หรือ Merino Wool แนบเนื้อแห้งไว<br>
+            <strong>ชั้นกลาง:</strong> เสื้อ Fleece หรือ Down Jacket ขนเป็ด 800+ Fill Power<br>
+            <strong>ชั้นนอก:</strong> เสื้อกันลมและหิมะกันน้ำ (Gore-Tex หรือ Water-resistant)<br>
+            <strong>รองเท้า:</strong> พื้นดอกยางลึกกันลื่น ลุยหิมะ และใส่แผ่นหนามกันลื่น (Ice Cleats)
+          </p>
+        </div>
+
+        <div class="survival-box">
+          <div class="survival-box-title">
+            <i class="fa-solid fa-mobile-screen-button" style="color: #38bdf8;"></i>
+            <span>การดูแลอุปกรณ์อิเล็กทรอนิกส์</span>
+          </div>
+          <p>
+            แบตเตอรี่สมาร์ตโฟนจะหมดเร็วมากในอุณหภูมิติดลบ แนะนำให้ติด <strong>แผ่นความร้อน (Warm Pad)</strong> ไว้ด้านหลังเคสโทรศัพท์ และพก Power Bank ไว้ในกระเป๋าเสื้อโค้ตชั้นในที่อุ่น
+          </p>
+        </div>
+
+        <div class="survival-box">
+          <div class="survival-box-title">
+            <i class="fa-solid fa-credit-card" style="color: #34d399;"></i>
+            <span>แอปพลิเคชัน & การชำระเงิน</span>
+          </div>
+          <p>
+            ติดตั้งและผูกบัตรเครดิต/ทราเวลการ์ดกับ <strong>Alipay</strong> และ <strong>WeChat Pay</strong> ไว้ล่วงหน้า สำหรับเรียกแท็กซี่ใช้บริการ <strong>DiDi</strong> ภายใน Alipay สะดวกและไม่ถูกปฏิเสธ
+          </p>
+        </div>
+
+        <div class="survival-box">
+          <div class="survival-box-title">
+            <i class="fa-solid fa-hand-holding-heart" style="color: #fb7185;"></i>
+            <span>แผ่นร้อน & อุปกรณ์เสริม</span>
+          </div>
+          <p>
+            พกแผ่นแปะร้อน (Kai-po) ทั้งแบบแปะตัวและแบบใส่ในรองเท้า ที่ปิดหู (Earmuffs), ผ้าพันคอผืนหนา, ถุงมือทัชสกรีนแบบกันลม, และหน้ากากกันลมเพื่อไม่ให้ผิวหน้าชา
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2024-2025 Harbin Winter Trip Itinerary. Designed with <i class="fa-solid fa-heart" style="color: #fb7185;"></i> for Winter Explorers.</p>
+      <p style="margin-top: 0.4rem; font-size: 0.8rem; color: var(--muted-text);">
+        Interactive Single-Page HTML • Styled with Ice & Snow Theme • Ready for GitHub Pages
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT: DATA & INTERACTION LOGIC
+       ========================================================================== -->
+  <script>
+    /* --------------------------------------------------------------------------
+       1. DATA SOURCE (The 3 Itinerary Options with complete Google Maps URLs)
+       -------------------------------------------------------------------------- */
+    const ITINERARY_DATA = {
+      opt1: {
+        title: "Option 1: Harbin Atmospheric & Chill (6 Days)",
+        subtitle: "สัมผัสแรกกับเมืองน้ำแข็ง สถาปัตยกรรมรัสเซีย & สโลว์ไลฟ์สุดคลาสสิก",
+        days: [
+          {
+            dayNumber: 1,
+            vibe: "สัมผัสแรกกับเมืองน้ำแข็ง",
+            preview: "Zhongyang Pedestrian Street • ไอศกรีม Madieer • เกี๊ยว Dongfang Jiaozi Wang",
+            attractions: [
+              {
+                name: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง / 中央大街)",
+                desc: "เดินเล่นชมสถาปัตยกรรมยุโรปและรัสเซียอายุกว่าร้อยปี พร้อมโคมไฟและประติมากรรมน้ำแข็งริมทาง",
+                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin"
+              }
+            ],
+            transport: [
+              {
+                mode: "Airport Shuttle Bus หรือ Taxi / DiDi",
+                detail: "นั่งจากสนามบินนานาชาติไท่ผิง (HRB) เข้าสู่โรงแรมที่พักในย่าน Daoli District ใจกลางเมือง"
+              }
+            ],
+            food: [
+              {
+                highlight: "ไอศกรีม Madieer (หม่าเตี๋ยเอ่อร์ - 马迭尔冰棍)",
+                detail: "กินไอศกรีมแท่งรสคลาสสิกท้าความหนาวระดับติดลบกลางถนนคนเดิน เป็น Signature ประจำเมืองฮาร์บิน"
+              },
+              {
+                highlight: "Dongfang Jiaozi Wang (东方饺子王)",
+                detail: "มื้อค่ำร้านราชาเกี๊ยวชื่อดัง ลิ้มลองเกี๊ยวต้มไส้หมู กุ่ยช่าย เนื้อ และเห็ดร้อนๆ ซดน้ำซุปอุ่นใจ"
+              }
+            ]
+          },
+          {
+            dayNumber: 2,
+            vibe: "สถาปัตยกรรมรัสเซีย & เมืองน้ำแข็งระดับโลก",
+            preview: "St. Sophia Cathedral • Harbin Ice and Snow World • อาหารรัสเซีย",
+            attractions: [
+              {
+                name: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย / 圣索菲亚大教堂)",
+                desc: "ช่วงเช้า: ชมโบสถ์คริสต์ออร์โธดอกซ์สไตล์ไบแซนไทน์อันงดงาม ถ่ายรูปคู่ฝูงนกพิราบและหิมะขาวโพลน",
+                url: "https://goo.gl/maps/search/St.+Sophia+Cathedral+Harbin"
+              },
+              {
+                name: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะฮาร์บิน / 哈尔滨冰雪大世界)",
+                desc: "ช่วงบ่าย-ค่ำ: ไฮไลท์อันดับ 1 ของโลก ชมปราสาทน้ำแข็งแกะสลักยักษ์ประดับไฟ LED หลากสี สไลเดอร์น้ำแข็งยักษ์ และชิงช้าสวรรค์",
+                url: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World"
+              }
+            ],
+            transport: [
+              {
+                mode: "เดิน หรือ DiDi (ช่วงเช้า)",
+                detail: "เดินชิลล์จากที่พักไปโบสถ์เซนต์โซเฟีย (ประมาณ 10-15 นาที)"
+              },
+              {
+                mode: "Metro Line 2 (รถไฟใต้ดินสาย 2)",
+                detail: "ไป Ice and Snow World แนะนำให้นั่งรถไฟใต้ดิน (Metro Line 2) สะดวกที่สุด เลี่ยงปัญหารถติดและหาแท็กซี่ยากช่วงเลิกงาน"
+              }
+            ],
+            food: [
+              {
+                highlight: "ร้านอาหารรัสเซีย Lucia หรือ Huamei Western Restaurant (华梅西餐厅)",
+                detail: "อาหารรัสเซียที่ร้าน Lucia หรือ Huamei Western Restaurant เช่น ซุปบีทรูท (Borscht), ขนมปังรัสเซีย, สเต็กเนื้อ และไส้กรอกฮาร์บินรมควัน"
+              }
+            ]
+          },
+          {
+            dayNumber: 3,
+            vibe: "วิถีชีวิตท้องถิ่น & แม่น้ำซงฮวา",
+            preview: "Hongzhuan Morning Market • Songhua River • Diamond Sea",
+            attractions: [
+              {
+                name: "Hongzhuan Morning Market (ตลาดเช้าหงจวน / 红专早市)",
+                desc: "สัมผัสวิถีชีวิตตลาดเช้า ควันฉุยท่ามกลางความหนาว ชมพ่อค้าแม่ค้าขายอาหารเช้าและผลไม้แช่แข็ง",
+                url: "https://goo.gl/maps/search/Hongzhuan+Morning+Market"
+              },
+              {
+                name: "Songhua River (แม่น้ำซงฮวา / 松花江)",
+                desc: "เดินเล่นลานน้ำแข็งยักษ์บนผืนแม่น้ำที่กลายเป็นน้ำแข็งหนา กิจกรรมลากเลื่อน สเก็ตน้ำแข็ง",
+                url: "https://goo.gl/maps/search/Songhua+River+Harbin"
+              },
+              {
+                name: "Diamond Sea (ทะเลเพชรฮาร์บิน / 钻石海)",
+                desc: "ชมก้อนน้ำแข็งโปร่งแสงขนาดยักษ์ที่ถูกตัดขึ้นจากแม่น้ำซงฮวา วางเรียงรายระยิบระยับประดุจทะเลเพชร",
+                url: "https://goo.gl/maps/search/Harbin+Diamond+Sea"
+              }
+            ],
+            transport: [
+              {
+                mode: "เดินเท้าเป็นหลัก (Walking Friendly)",
+                detail: "สถานที่อยู่ใกล้กันในย่าน Daoli สามารถเดินเท้าเชื่อมต่อกันได้อย่างเพลิดเพลิน"
+              }
+            ],
+            food: [
+              {
+                highlight: "สตรีทฟู้ดตลาดเช้า (Street Food)",
+                detail: "สตรีทฟู้ดตลาดเช้า ซาลาเปาร้อนๆ ควันพวยพุ่ง, ปาท่องโก๋ยักษ์, ถังหูลู่แช่แข็งกรุบกรอบ"
+              }
+            ]
+          },
+          {
+            dayNumber: 4,
+            vibe: "ความยิ่งใหญ่ยุคใหม่",
+            preview: "Harbin Railway Station • Giant Snowman • Harbin Grand Theatre",
+            attractions: [
+              {
+                name: "Harbin Railway Station (สถานีรถไฟฮาร์บิน / 哈尔滨站)",
+                desc: "สถานีรถไฟสไตล์ยุโรปคลาสสิกสุดอลังการ หนึ่งในสถานีรถไฟที่สวยที่สุดในจีน",
+                url: "https://goo.gl/maps/search/Harbin+Railway+Station"
+              },
+              {
+                name: "Giant Snowman at Music Park (ตุ๊กตาหิมะยักษ์ สวนดนตรี / 音乐公园大雪人)",
+                desc: "จุดถ่ายรูปแลนด์มาร์กยอดฮิต สโนว์แมนไซส์ยักษ์สวมหมวกแดงน่ารักริมแม่น้ำ",
+                url: "https://goo.gl/maps/search/Harbin+Music+Park"
+              },
+              {
+                name: "Harbin Grand Theatre (โรงละครฮาร์บินแกรนด์เธียเตอร์ / 哈尔滨大剧院)",
+                desc: "สถาปัตยกรรมล้ำสมัยระดับโลก รูปทรงเกลียวหิมะและน้ำแข็ง สวยงามสะกดสายตา",
+                url: "https://goo.gl/maps/search/Harbin+Grand+Theatre"
+              }
+            ],
+            transport: [
+              {
+                mode: "Taxi หรือ DiDi (แอปเรียกรถ)",
+                detail: "เรียก Taxi หรือ DiDi (แอปเรียกรถ) เพื่อความรวดเร็วและอุ่นสบายในการย้ายจุดข้ามฝั่งแม่น้ำ"
+              }
+            ],
+            food: [
+              {
+                highlight: "เถี่ยกัวตุ้น (Tie Guo Dun - 铁锅炖)",
+                detail: "ลองกิน เถี่ยกัวตุ้น (Tie Guo Dun - สตูว์กระทะเหล็กไซส์ยักษ์) เมนูเด็ดภาคอีสานจีน ตุ๋นไก่ ห่าน หรือซี่โครงหมู พร้อมแป้งข้าวโพดแปะขอบกระทะ"
+              }
+            ]
+          },
+          {
+            dayNumber: 5,
+            vibe: "กลิ่นอายหมู่บ้านรัสเซีย",
+            preview: "Volga Manor • สถาปัตยกรรมสไตล์ยุโรป • อาหารกลางวันรัสเซีย",
+            attractions: [
+              {
+                name: "Volga Manor (คฤหาสน์วอลก้า / 伏尔加庄园)",
+                desc: "เดินชิลๆ ถ่ายรูปสไตล์ยุโรป หมู่บ้านรัสเซียจำลองปราสาท โบสถ์ไม้ และสะพานหิมะ",
+                url: "https://goo.gl/maps/search/Volga+Manor+Harbin"
+              }
+            ],
+            transport: [
+              {
+                mode: "เหมา Taxi หรือเรียก DiDi",
+                detail: "อยู่นอกเมือง ใช้เวลาเดินทางประมาณ 1 ชม. แนะนำนัดเวลากลับหรือจ้างเหมาแบบไป-กลับ"
+              }
+            ],
+            food: [
+              {
+                highlight: "อาหารกลางวันสไตล์รัสเซียที่ร้านอาหารใน Volga Manor",
+                detail: "ทานอาหารกลางวันสไตล์รัสเซียที่ร้านอาหารใน Volga Manor ท่ามกลางวิวหิมะและปราสาทคลาสสิก"
+              }
+            ]
+          },
+          {
+            dayNumber: 6,
+            vibe: "เดินทางกลับ",
+            preview: "เช็คเอาท์ • ช้อปปิ้งของฝาก • เดินทางไปสนามบิน (HRB) - BKK",
+            attractions: [
+              {
+                name: "ซื้อของฝากย่านถนนคนเดินก่อนกลับ (Harbin Souvenirs)",
+                desc: "เลือกซื้อไส้กรอกแดงฮาร์บิน, ช็อกโกแลตรัสเซีย, และของที่ระลึกเมืองน้ำแข็ง",
+                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street+Harbin"
+              }
+            ],
+            transport: [
+              {
+                mode: "Taxi / DiDi ไปสนามบิน",
+                detail: "เช็คเอาท์, นั่ง Taxi ไปสนามบิน (HRB) - BKK เดินทางกลับโดยสวัสดิภาพ"
+              }
+            ],
+            food: [
+              {
+                highlight: "มื้อส่งท้ายก่อนขึ้นเครื่อง",
+                detail: "ทานเกี๊ยวน้ำหรือบะหมี่ร้อนๆ สบายท้องที่สนามบินก่อนขึ้นเครื่องบิน"
+              }
+            ]
+          }
+        ]
+      },
+
+      opt2: {
+        title: "Option 2: Harbin + Snowboard & Yabuli (6 Days)",
+        subtitle: "ทริปไฮไลท์เมืองน้ำแข็ง ผสานความมันส์บนลานสกีระดับตำนานของเอเชีย",
+        days: [
+          {
+            dayNumber: 1,
+            vibe: "สัมผัสแรก & เช็คอินฮาร์บิน",
+            preview: "Zhongyang Pedestrian Street • อาหารจีนท้องถิ่น Dongbei",
+            attractions: [
+              {
+                name: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง)",
+                desc: "เดินเล่นชมสถาปัตยกรรมยุโรปและปรับตัวกับความหนาวเย็น",
+                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street"
+              }
+            ],
+            transport: [
+              {
+                mode: "Airport Bus / Taxi",
+                detail: "Airport Bus/Taxi ไปที่พักย่านใจกลางเมืองฮาร์บิน"
+              }
+            ],
+            food: [
+              {
+                highlight: "อาหารจีนท้องถิ่น (Dongbei Cuisine)",
+                detail: "อาหารจีนท้องถิ่นภาคอีสาน เช่น Guo Bao Rou (หมูชุบแป้งทอดกรอบซอสเปรี้ยวหวาน) รสชาติต้นตำรับ"
+              }
+            ]
+          },
+          {
+            dayNumber: 2,
+            vibe: "โบสถ์ประวัติศาสตร์ & ปราสาทน้ำแข็ง",
+            preview: "St. Sophia Cathedral • Harbin Ice and Snow World • อาหารรัสเซีย",
+            attractions: [
+              {
+                name: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย)",
+                desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์มรดกสถาปัตยกรรมรัสเซียอันเลื่องชื่อ",
+                url: "https://goo.gl/maps/search/St.+Sophia+Cathedral"
+              },
+              {
+                name: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะ)",
+                desc: "ชมปราสาทน้ำแข็งแกะสลักระดับโลกสุดตระการตายามค่ำคืน",
+                url: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World"
+              }
+            ],
+            transport: [
+              {
+                mode: "Metro Line 2",
+                detail: "เดินทางด้วยรถไฟใต้ดิน Metro Line 2 สะดวกรวดเร็ว ตรงสู่หน้าทางเข้างาน"
+              }
+            ],
+            food: [
+              {
+                highlight: "อาหารรัสเซีย",
+                detail: "ลิ้มลองอาหารรัสเซีย ซุปบอร์ช และขนมปังอบเนยร้อนๆ คลายหนาว"
+              }
+            ]
+          },
+          {
+            dayNumber: 3,
+            vibe: "มุ่งหน้าสู่ลานสกี",
+            preview: "รถไฟความเร็วสูง Harbin - Yabuli • พักผ่อนในรีสอร์ท",
+            attractions: [
+              {
+                name: "Yabuli Ski Resort (ลานสกียาบูลี่ / 亚布力滑雪场)",
+                desc: "ลานสกีระดับโลกที่ใหญ่ที่สุดในประเทศจีน มีสิ่งอำนวยความสะดวกครบครันและเส้นทางสกีทุกระดับ",
+                url: "https://goo.gl/maps/search/Yabuli+Ski+Resort"
+              }
+            ],
+            transport: [
+              {
+                mode: "รถไฟความเร็วสูง + Shuttle Bus",
+                detail: "นั่งรถไฟความเร็วสูง (High-speed train) จาก Harbin Station - Yabuli West Station (ประมาณ 1.5 ชม.), ต่อ Shuttle bus เข้าที่พัก"
+              }
+            ],
+            food: [
+              {
+                highlight: "ทานอาหารอุ่นๆ ในรีสอร์ทที่ Yabuli",
+                detail: "ทานอาหารอุ่นๆ ในรีสอร์ทที่ Yabuli เช่น บะหมี่ร้อน ข้าวหน้าเนื้อตุ๋น เติมพลังเตรียมเล่นสกี"
+              }
+            ]
+          },
+          {
+            dayNumber: 4,
+            vibe: "สนุกสุดเหวี่ยงบนเนินหิมะ",
+            preview: "เล่น Snowboard เต็มวัน • หม้อไฟ Hot Pot คลายหนาว",
+            attractions: [
+              {
+                name: "เล่น Snowboard เต็มวันที่ Yabuli",
+                desc: "สนุกกับการเล่นสโนว์บอร์ดและสกีเต็มวันบนลานหิมะธรรมชาติคุณภาพสูง",
+                url: "https://goo.gl/maps/search/Yabuli+Ski+Resort"
+              }
+            ],
+            transport: [
+              {
+                mode: "เดิน หรือ Shuttle bus ภายในรีสอร์ท",
+                detail: "เดินทางสะดวกภายในพื้นที่ของสกีรีสอร์ทและโรงแรม"
+              }
+            ],
+            food: [
+              {
+                highlight: "หม้อไฟ (Hot Pot)",
+                detail: "หม้อไฟ (Hot Pot) คลายหนาวหลังเล่นสกี เนื้อแกะและเนื้อวัวสไลซ์บาง จิ้มน้ำจิ้มงาเข้มข้น"
+              }
+            ]
+          },
+          {
+            dayNumber: 5,
+            vibe: "กลับสู่ฮาร์บิน & ชมแม่น้ำเยือกแข็ง",
+            preview: "รถไฟความเร็วสูงกลับ Harbin • Songhua River • เถี่ยกัวตุ้น",
+            attractions: [
+              {
+                name: "กลับเข้า Harbin, เดินเล่น Songhua River",
+                desc: "เดินทางกลับเข้าสู่ฮาร์บิน เดินเล่นบนผืนน้ำแข็งแม่น้ำซงฮวา ชมพระอาทิตย์ตกดิน",
+                url: "https://goo.gl/maps/search/Songhua+River"
+              }
+            ],
+            transport: [
+              {
+                mode: "รถไฟความเร็วสูง Yabuli - Harbin",
+                detail: "นั่งรถไฟความเร็วสูง Yabuli West - Harbin กลับเข้าสู่ตัวเมืองฮาร์บินอย่างรวดเร็ว"
+              }
+            ],
+            food: [
+              {
+                highlight: "เถี่ยกัวตุ้น (สตูว์กระทะเหล็ก)",
+                detail: "เถี่ยกัวตุ้น (สตูว์กระทะเหล็ก) อาหารอีสานจานเด็ดไซส์ยักษ์ ทานร้อนๆ ฉลองจบทริปสกี"
+              }
+            ]
+          },
+          {
+            dayNumber: 6,
+            vibe: "เดินทางกลับ",
+            preview: "เช็คเอาท์ • HRB - BKK",
+            attractions: [
+              {
+                name: "เดินทางสู่สนามบินฮาร์บินไท่ผิง",
+                desc: "เดินทางสู่สนามบินเตรียมตัวบินกลับกรุงเทพฯ",
+                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street"
+              }
+            ],
+            transport: [
+              {
+                mode: "Taxi / Shuttle Bus สู่สนามบิน HRB",
+                detail: "เช็คเอาท์, HRB - BKK เดินทางกลับโดยสวัสดิภาพ"
+              }
+            ],
+            food: [
+              {
+                highlight: "อาหารว่างก่อนขึ้นเครื่อง",
+                detail: "ชิมชาร้อนและของว่างที่สนามบิน"
+              }
+            ]
+          }
+        ]
+      },
+
+      opt3: {
+        title: "Option 3: Harbin + Mohe (Arctic Village) (6 Days)",
+        subtitle: "ทริปขั้วโลกเหนือแดนมังกร สัมผัสความหนาวสุดขั้ว -40°C และจุดเหนือสุดของจีน",
+        days: [
+          {
+            dayNumber: 1,
+            vibe: "เริ่มต้นทริป & เช็คอินฮาร์บิน",
+            preview: "Zhongyang Pedestrian Street • เตรียมพร้อมตะลุยขั้วโลก",
+            attractions: [
+              {
+                name: "Zhongyang Pedestrian Street (ถนนคนเดินจงยาง)",
+                desc: "เดินเล่นชมบรรยกรรมสไตล์ยุโรป ซื้ออุปกรณ์กันหนาวเพิ่มเติม",
+                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street"
+              }
+            ],
+            transport: [
+              {
+                mode: "Airport Bus / Taxi",
+                detail: "Airport Bus/Taxi เข้าสู่ที่พักในฮาร์บิน"
+              }
+            ],
+            food: [
+              {
+                highlight: "อาหารท้องถิ่นตงเป่ย",
+                detail: "ทานอาหารจีนอุ่นๆ เพื่อปรับตัวกับสภาพอากาศ"
+              }
+            ]
+          },
+          {
+            dayNumber: 2,
+            vibe: "มุ่งหน้าสู่จุดเหนือสุดของจีน",
+            preview: "บินภายใน HRB - Mohe • รถเช่าเหมาคัน • Beiji Cun (Arctic Village)",
+            attractions: [
+              {
+                name: "เดินทางไป Mohe & Beiji Cun (Arctic Village)",
+                desc: "เดินทางถึงเมืองโม่เหอ จุดเหนือสุดของประเทศจีน และเดินทางเข้าสู่หมู่บ้านเป่ยจี๋ชุน ดินแดนขั้วโลกเหนือแดนมังกร",
+                url: "https://goo.gl/maps/search/Beiji+Cun+Mohe"
+              }
+            ],
+            transport: [
+              {
+                mode: "บิน HRB - Mohe (OHE) + รถเช่าเหมาคัน",
+                detail: "บินภายในประเทศ HRB - Mohe (OHE) ประมาณ 2 ชม., นั่งรถเช่าเหมาคันเข้า Beiji Cun (Arctic Village)"
+              }
+            ],
+            food: [
+              {
+                highlight: "อาหารท้องถิ่นตงเป่ยแท้ๆ ในหมู่บ้าน",
+                detail: "อาหารท้องถิ่นตงเป่ยแท้ๆ ในหมู่บ้านโม่เหอ ผัดผักป่าดอง ซุปกระดูกหมูมันฝรั่งร้อนๆ"
+              }
+            ]
+          },
+          {
+            dayNumber: 3,
+            vibe: "สัมผัสความหนาวระดับขั้วโลก -40°C",
+            preview: "จุดเหนือสุดของจีน • Northernmost Post Office • ปลาย่างแม่น้ำเย็น",
+            attractions: [
+              {
+                name: "เที่ยวจุดเหนือสุดของจีน (China's Northernmost Point)",
+                desc: "ชมแลนด์มาร์กจุดเหนือสุดของประเทศจีน ริมฝั่งแม่น้ำเฮยหลงเจียง ชายแดนจีน-รัสเซีย ทดลองสาดน้ำร้อนกลายเป็นละอองน้ำแข็ง",
+                url: "https://goo.gl/maps/search/Beiji+Cun+Mohe"
+              },
+              {
+                name: "Northernmost Post Office (ที่ทำการไปรษณีย์เหนือสุดของจีน)",
+                desc: "Northernmost Post Office (ส่งโปสการ์ด) ส่งโปสการ์ดพร้อมประทับตราที่ทำการไปรษณีย์เหนือสุดแดนมังกรเป็นที่ระลึก",
+                url: "https://goo.gl/maps/search/Northernmost+Post+Office+China"
+              }
+            ],
+            transport: [
+              {
+                mode: "รถเช่าเหมาคันพาทัวร์ในหมู่บ้าน",
+                detail: "รถเช่าเหมาคันพาทัวร์ในหมู่บ้าน พร้อมระบบทำความร้อนตลอดการเดินทาง"
+              }
+            ],
+            food: [
+              {
+                highlight: "ปลาย่างหรือสตูว์ร้อนๆ สู้ความหนาว -40 องศา",
+                detail: "ปลาย่างหรือสตูว์ร้อนๆ สู้ความหนาว -40 องศา ปรุงจากปลาแม่น้ำเย็นเนื้อหวานสด"
+              }
+            ]
+          },
+          {
+            dayNumber: 4,
+            vibe: "บินกลับสู่ฮาร์บิน",
+            preview: "รถเช่าสู่สนามบิน • บิน Mohe - Harbin • พักผ่อนในเมือง",
+            attractions: [
+              {
+                name: "บินกลับ Harbin & พักผ่อนย่านตัวเมือง",
+                desc: "เดินทางกลับสู่ฮาร์บิน เตรียมตัวสำหรับเทศกาลน้ำแข็งระดับโลกในวันถัดไป",
+                url: "https://goo.gl/maps/search/Zhongyang+Pedestrian+Street"
+              }
+            ],
+            transport: [
+              {
+                mode: "รถเช่าไปสนามบิน + บิน Mohe - Harbin",
+                detail: "รถเช่าไปสนามบิน, บิน Mohe - Harbin (HRB) และเดินทางเข้าโรงแรมที่พัก"
+              }
+            ],
+            food: [
+              {
+                highlight: "พักผ่อนและทานอาหารใกล้ที่พักใน Harbin",
+                detail: "พักผ่อนและทานอาหารใกล้ที่พักใน Harbin เช่น บาร์บีคิวปิ้งย่างตงเป่ย หรือเกี๊ยวต้มร้อนๆ"
+              }
+            ]
+          },
+          {
+            dayNumber: 5,
+            vibe: "ไฮไลท์ระดับโลกในฮาร์บิน",
+            preview: "St. Sophia Cathedral • Harbin Ice and Snow World • เถี่ยกัวตุ้น",
+            attractions: [
+              {
+                name: "St. Sophia Cathedral (โบสถ์เซนต์โซเฟีย)",
+                desc: "ชมโบสถ์คริสต์ออร์โธดอกซ์สถาปัตยกรรมรัสเซียอันงดงาม",
+                url: "https://goo.gl/maps/search/St.+Sophia+Cathedral"
+              },
+              {
+                name: "Harbin Ice and Snow World (โลกน้ำแข็งและหิมะ)",
+                desc: "สัมผัสความยิ่งใหญ่ตระการตาของปราสาทน้ำแข็งแกะสลักยักษ์ระดับโลก",
+                url: "https://goo.gl/maps/search/Harbin+Ice+and+Snow+World"
+              }
+            ],
+            transport: [
+              {
+                mode: "Metro Line 2",
+                detail: "เดินทางด้วยรถไฟใต้ดิน Metro Line 2 สะดวกรวดเร็ว ตรงสู่ Ice and Snow World"
+              }
+            ],
+            food: [
+              {
+                highlight: "เถี่ยกัวตุ้น (Tie Guo Dun)",
+                detail: "เถี่ยกัวตุ้น สตูว์กระทะเหล็กไซส์ยักษ์เมนูยอดฮิต ปิดท้ายทริปสุดประทับใจ"
+              }
+            ]
+          },
+          {
+            dayNumber: 6,
+            vibe: "เดินทางกลับ",
+            preview: "เช็คเอาท์ • HRB - BKK",
+            attractions: [
+              {
+                name: "สนามบินนานาชาติไท่ผิง (HRB)",
+                desc: "เดินทางถึงสนามบินเตรียมตัวเดินทางกลับสู่กรุงเทพฯ",
+                url: "https://goo.gl/maps/search/Harbin+Taiping+International+Airport"
+              }
+            ],
+            transport: [
+              {
+                mode: "HRB - BKK",
+                detail: "เช็คเอาท์, HRB - BKK เดินทางกลับประเทศไทยโดยสวัสดิภาพ"
+              }
+            ],
+            food: [
+              {
+                highlight: "อาหารว่างก่อนขึ้นเครื่อง",
+                detail: "รับประทานของว่างและเครื่องดื่มอุ่นๆ ที่สนามบิน"
+              }
+            ]
+          }
+        ]
+      }
+    };
+
+    /* --------------------------------------------------------------------------
+       2. INTERACTIVITY & ACCORDION RENDERING
+       -------------------------------------------------------------------------- */
+    let currentOption = 'opt1';
+    let searchQuery = '';
+
+    const accordionRoot = document.getElementById('accordion-root');
+    const tabButtons = document.querySelectorAll('.route-tab-card');
+    const currentRouteTitle = document.getElementById('current-route-title');
+    const currentRouteSub = document.getElementById('current-route-sub');
+    const btnExpandAll = document.getElementById('btn-expand-all');
+    const btnCollapseAll = document.getElementById('btn-collapse-all');
+    const searchInput = document.getElementById('search-input');
+    const btnPrint = document.getElementById('btn-print');
+
+    function renderAccordions() {
+      const data = ITINERARY_DATA[currentOption];
+      if (!data) return;
+
+      currentRouteTitle.textContent = data.title;
+      currentRouteSub.textContent = data.subtitle;
+
+      let html = '';
+
+      data.days.forEach((day, index) => {
+        // Search filter matching
+        const q = searchQuery.toLowerCase().trim();
+        let matchesSearch = true;
+        if (q) {
+          const matchVibe = day.vibe && day.vibe.toLowerCase().includes(q);
+          const matchPreview = day.preview && day.preview.toLowerCase().includes(q);
+          const matchAttr = day.attractions && day.attractions.some(a => a.name.toLowerCase().includes(q) || a.desc.toLowerCase().includes(q));
+          const matchFood = day.food && day.food.some(f => (f.highlight && f.highlight.toLowerCase().includes(q)) || (f.detail && f.detail.toLowerCase().includes(q)));
+          const matchTrans = day.transport && day.transport.some(t => (t.mode && t.mode.toLowerCase().includes(q)) || (t.detail && t.detail.toLowerCase().includes(q)));
+          matchesSearch = matchVibe || matchPreview || matchAttr || matchFood || matchTrans;
+        }
+
+        if (!matchesSearch) return;
+
+        // Default open the first day, or open all if searching
+        const isOpen = searchQuery ? true : (index === 0);
+
+        html += `
+          <div class="acc-item ${isOpen ? 'active' : ''}" data-day-index="${index}">
+            <div class="acc-header" role="button" tabindex="0" aria-expanded="${isOpen}">
+              <div class="acc-day-info">
+                <div class="day-num-tag">
+                  <i class="fa-solid fa-calendar-day"></i>
+                  <span>DAY 0${day.dayNumber}</span>
+                </div>
+                <div class="day-title-wrap">
+                  <span class="day-vibe-name">
+                    <i class="fa-solid fa-sparkles" style="color: var(--frost-cyan); font-size: 0.8rem;"></i>
+                    ${day.vibe || 'กิจกรรมประจำวัน'}
+                  </span>
+                  <span class="day-quick-summary">${day.preview || ''}</span>
+                </div>
+              </div>
+
+              <div class="acc-chevron" aria-label="Toggle Details">
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+            </div>
+
+            <div class="acc-body-wrapper" style="${isOpen ? 'max-height: 2500px;' : ''}">
+              <div class="acc-body-content">
+
+                ${day.vibe ? `
+                  <div class="vibe-callout-pill">
+                    <i class="fa-solid fa-snowflake"></i>
+                    <span><strong>Day Highlight:</strong> ${day.vibe}</span>
+                  </div>
+                ` : ''}
+
+                <div class="day-details-grid">
+
+                  <!-- Attractions Card -->
+                  <div class="card-column">
+                    <div class="col-header attractions-title">
+                      <i class="fa-solid fa-map-pin"></i>
+                      <span>สถานที่ท่องเที่ยว & ไฮไลท์</span>
+                    </div>
+                    <div class="items-list">
+                      ${day.attractions.map(att => `
+                        <div class="attraction-box">
+                          <div class="attraction-headline">
+                            <span class="attraction-title">
+                              <i class="fa-regular fa-snowflake" style="font-size: 0.72rem; color: var(--frost-cyan);"></i>
+                              ${att.name}
+                            </span>
+                            ${att.url ? `
+                              <a href="${att.url}" target="_blank" rel="noopener noreferrer" class="maps-link-btn" title="คลิกเปิดพิกัดบน Google Maps">
+                                <i class="fa-solid fa-diamond-turn-right"></i>
+                                <span>Google Maps</span>
+                              </a>
+                            ` : ''}
+                          </div>
+                          ${att.desc ? `<div class="attraction-notes">${att.desc}</div>` : ''}
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+
+                  <!-- Transportation Card -->
+                  <div class="card-column">
+                    <div class="col-header transport-title">
+                      <i class="fa-solid fa-van-shuttle"></i>
+                      <span>การเดินทาง & ขนส่ง</span>
+                    </div>
+                    <div class="items-list">
+                      ${day.transport.map(tr => `
+                        <div class="info-item-row">
+                          <i class="fa-solid fa-route transport-icon"></i>
+                          <div class="item-body">
+                            <strong>${tr.mode}</strong>
+                            <span>${tr.detail}</span>
+                          </div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+
+                  <!-- Food & Dining Card -->
+                  <div class="card-column">
+                    <div class="col-header food-title">
+                      <i class="fa-solid fa-utensils"></i>
+                      <span>อาหาร & เมนูเด็ดห้ามพลาด</span>
+                    </div>
+                    <div class="items-list">
+                      ${day.food && day.food.length > 0 ? day.food.map(fd => `
+                        <div class="info-item-row">
+                          <i class="fa-solid fa-bowl-hot food-icon"></i>
+                          <div class="item-body">
+                            <strong>${fd.highlight}</strong>
+                            <span>${fd.detail}</span>
+                          </div>
+                        </div>
+                      `).join('') : `
+                        <div style="font-size: 0.84rem; color: var(--muted-text);">
+                          พักผ่อนและรับประทานอาหารตามอัธยาศัย
+                        </div>
+                      `}
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      if (html === '') {
+        html = `
+          <div style="text-align: center; padding: 3rem 1rem; color: var(--muted-text);">
+            <i class="fa-solid fa-magnifying-glass" style="font-size: 2.5rem; color: var(--ice-400); margin-bottom: 1rem; display: block;"></i>
+            <h4 style="color: #ffffff; margin-bottom: 0.5rem;">ไม่พบข้อมูลที่ตรงกับคำค้นหา "${searchQuery}"</h4>
+            <p style="font-size: 0.9rem;">ลองค้นหาด้วยคำอื่น เช่น "โซเฟีย", "Metro", หรือ "สตูว์"</p>
+          </div>
+        `;
+      }
+
+      accordionRoot.innerHTML = html;
+      bindAccordionEvents();
+    }
+
+    function bindAccordionEvents() {
+      const headers = accordionRoot.querySelectorAll('.acc-header');
+      headers.forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.closest('.acc-item');
+          const collapse = item.querySelector('.acc-body-wrapper');
+          const isActive = item.classList.contains('active');
+
+          if (isActive) {
+            collapse.style.maxHeight = '0px';
+            item.classList.remove('active');
+            header.setAttribute('aria-expanded', 'false');
+          } else {
+            collapse.style.maxHeight = (collapse.scrollHeight + 350) + 'px';
+            item.classList.add('active');
+            header.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    }
+
+    // Switch Option Tabs (Level 1)
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        currentOption = btn.dataset.option;
+        renderAccordions();
+      });
+    });
+
+    // Expand All / Collapse All Controls
+    btnExpandAll.addEventListener('click', () => {
+      const items = accordionRoot.querySelectorAll('.acc-item');
+      items.forEach(item => {
+        const collapse = item.querySelector('.acc-body-wrapper');
+        const header = item.querySelector('.acc-header');
+        collapse.style.maxHeight = '2500px';
+        item.classList.add('active');
+        header.setAttribute('aria-expanded', 'true');
+      });
+    });
+
+    btnCollapseAll.addEventListener('click', () => {
+      const items = accordionRoot.querySelectorAll('.acc-item');
+      items.forEach(item => {
+        const collapse = item.querySelector('.acc-body-wrapper');
+        const header = item.querySelector('.acc-header');
+        collapse.style.maxHeight = '0px';
+        item.classList.remove('active');
+        header.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Search filter
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderAccordions();
+    });
+
+    // Print functionality
+    btnPrint.addEventListener('click', () => {
+      window.print();
+    });
+
+    /* --------------------------------------------------------------------------
+       3. INTERACTIVE 60FPS SNOWFALL CANVAS
+       -------------------------------------------------------------------------- */
+    const canvas = document.getElementById('snow-canvas');
+    const ctx = canvas.getContext('2d');
+    let animationFrameId = null;
+    let isSnowing = true;
+    let snowflakes = [];
+    const SNOWFLAKE_COUNT = 65;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Snowflake {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.radius = Math.random() * 2.6 + 0.8;
+        this.density = Math.random() * 1 + 0.5;
+        this.speedY = Math.random() * 1.2 + 0.5;
+        this.speedX = Math.sin(Math.random() * Math.PI) * 0.4;
+        this.opacity = Math.random() * 0.65 + 0.25;
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.y * 0.01) * 0.3;
+
+        if (this.y > canvas.height + 10 || this.x < -10 || this.x > canvas.width + 10) {
+          this.reset();
+          this.y = -10;
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(224, 242, 254, ${this.opacity})`;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = 'rgba(186, 230, 253, 0.8)';
+        ctx.fill();
+        ctx.closePath();
+      }
+    }
+
+    for (let i = 0; i < SNOWFLAKE_COUNT; i++) {
+      const flake = new Snowflake();
+      flake.y = Math.random() * canvas.height;
+      snowflakes.push(flake);
+    }
+
+    function animateSnow() {
+      if (!isSnowing) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      snowflakes.forEach(flake => {
+        flake.update();
+        flake.draw();
+      });
+      animationFrameId = requestAnimationFrame(animateSnow);
+    }
+
+    animateSnow();
+
+    // Toggle snow button
+    const toggleSnowBtn = document.getElementById('toggle-snow-btn');
+    toggleSnowBtn.addEventListener('click', () => {
+      isSnowing = !isSnowing;
+      const btnText = toggleSnowBtn.querySelector('.btn-text');
+      if (isSnowing) {
+        btnText.textContent = 'Snow: ON';
+        toggleSnowBtn.style.color = 'var(--ice-100)';
+        animateSnow();
+      } else {
+        btnText.textContent = 'Snow: OFF';
+        toggleSnowBtn.style.color = 'var(--muted-text)';
+        cancelAnimationFrame(animationFrameId);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    });
+
+    // Initial render on load
+    renderAccordions();
+  </script>
+</body>
+</html>
